@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>/// interpreter</title>
+    <style>
+        html { font-family: Arial, sans-serif; }
+        textarea { width: 90%; height: 6em; display: block; font-family: Consolas, monospace; }
+    </style>
+    <script src="./slashes.js"></script>
+    <script type="text/javascript">
+        var step, run, code, start, stop, output, program;
+        window.addEventListener("load", function(){
+            code    = document.getElementById("code");
+            run     = document.getElementById("run");
+            step    = document.getElementById("step");
+            start   = document.getElementById("start");
+            stop    = document.getElementById("stop");
+            output  = document.getElementById("output");
+            program = document.getElementById("program");
+            var delay = 50;
+            
+            output.value = "";
+            
+            var nextFunc = null;
+            var inst = null;
+            function startProcess(){
+                run.disabled = false;
+                step.disabled = false;
+                stop.disabled = false;
+                start.disabled = true;
+                inst = new Slashes(code.value, undefined, function(){
+                    step.disabled = true;
+                    run.disabled = true;
+                });
+                inst.outputFunc = function(str){
+                    output.value += str;
+                }
+            }
+            
+            function endProcess(){
+                run.disabled = true;
+                step.disabled = true;
+                stop.disabled = true;
+                start.disabled = false;
+                program.value = "";
+                output.value = "";
+                nextFunc = null;
+                inst = null;
+            }
+            
+            function stepClick(){
+                if(nextFunc){
+                    nextFunc();
+                } else {
+                    inst.update = function(next, inst){
+                        nextFunc = next;
+                        program.value = inst.program;
+                    }
+                    inst.run();
+                }
+            }
+            
+            function runClick(){
+                inst.update = function(next, inst){
+                    program.value = inst.program;
+                    setTimeout(next, delay);
+                }
+                inst.run();
+            }
+            
+            endProcess();
+            start.addEventListener("click", startProcess);
+            stop.addEventListener("click", endProcess);
+            step.addEventListener("click", stepClick);
+            run.addEventListener("click", runClick);
+        });
+    </script>
+</head>
+<body>
+    <textarea id="code"></textarea>
+    <button id="start">Instantiate</button>
+    <button id="run" disabled>Run</button>
+    <button id="step" disabled>Step</button>
+    <button id="stop" disabled>Stop/Reset</button>
+    <h2>Program</h2>
+    <textarea id="program" readonly></textarea>
+    <h2>Output</h2>
+    <textarea id="output" readonly></textarea>
+</body>
+</html>
