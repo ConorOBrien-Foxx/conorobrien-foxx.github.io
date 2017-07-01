@@ -10,6 +10,45 @@
     <script src="./slashes.js"></script>
     <script type="text/javascript">
         var step, run, code, start, stop, output, program;
+        function encode(program){
+            return btoa(encodeURIComponent(program));
+        }
+        
+        function decode(program){
+            try {
+                return decodeURIComponent(atob(program));
+            } catch(e){
+                return null;
+            }
+        }
+        
+        function getOptions(){
+            var loc = window.location.href;
+            var path = window.location.pathname;
+            return loc.slice(loc.indexOf(path) + path.length + 1);
+        }
+        
+        function setOptions(o){
+            var loc = window.location.href;
+            var path = window.location.pathname;
+            // https://stackoverflow.com/a/19279428/4119004
+            if (history.pushState) {
+                var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?" + o;
+                window.history.pushState({path:newurl},'',newurl);
+            }
+        }
+            
+        function loadProgram(){
+            var o;
+            if(o = getOptions()){
+                code.value = decode(o) || "";
+            }
+        }
+        
+        function saveProgram(){
+            setOptions(encode(code.value));
+        }
+        
         window.addEventListener("load", function(){
             code    = document.getElementById("code");
             run     = document.getElementById("run");
@@ -18,6 +57,7 @@
             stop    = document.getElementById("stop");
             output  = document.getElementById("output");
             program = document.getElementById("program");
+            loadProgram();
             var delay = 50;
             
             output.value = "";
@@ -25,6 +65,7 @@
             var nextFunc = null;
             var inst = null;
             function startProcess(){
+                saveProgram();
                 run.disabled = false;
                 step.disabled = false;
                 stop.disabled = false;
