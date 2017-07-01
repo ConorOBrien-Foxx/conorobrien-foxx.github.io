@@ -46,6 +46,10 @@
                 program.value = "";
                 output.value = "";
                 nextFunc = null;
+                if(inst){
+                    inst.outputFunc = function(){}
+                    inst.update = function(){}
+                }
                 inst = null;
             }
             
