@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Concert+One|PT+Sans');
+
+body {
+    margin: 0;
+}
+
+body, button {
+    font-family: "PT Sans", sans-serif;
+    font-size: 16px;
+}
+
+#content {
+    width: 800px;
+    margin: 16px;
+}
+
+/* thanks to https://pearsonified.com/typography/ */
+#content > p {
+    line-height: 27px;
+}
+
+h1 {
+    font-size: 42px;
+}
+h2 {
+    font-size: 26px;
+    border-bottom: 2px solid #66BBAA;
+}
+h3 {
+    font-size: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Concert One', cursive;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    background-color: #66BBAA;
+    text-align: center;
+}
+
+.center {
+    text-align: center;
+}
+
+.promo {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    width: 120px;
+    height: 30px;
+    background: #117766;
+    border-radius: 30px;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    vertical-align: text-bottom;
+    line-height: 30px;
+    margin: 10px;
+}
+.promo:hover {
+    background: #99EEDD;
+    color: black;
+    cursor: pointer;
+}
+
+.promo > img {
+    vertical-align: text-bottom;
+    width: 1.5em;
+}
