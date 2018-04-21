@@ -1,0 +1,10 @@
+table.stats {
+    border-collapse: collapse;
+    float: right;
+    border: 3px solid #66BBAA;
+}
+
+table.stats * {
+    border: 2px solid #66BBAA;
+    padding: 5px;
+}

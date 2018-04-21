@@ -52,7 +52,7 @@ header {
     color: inherit;
     width: 120px;
     height: 30px;
-    background: #117766;
+    background: #339988;
     border-radius: 30px;
     color: white;
     padding: 5px;
@@ -70,4 +70,9 @@ header {
 .promo > img {
     vertical-align: text-bottom;
     width: 1.5em;
+}
+
+header img {
+    vertical-align: -0.1em;
+    width: 1em;
 }
