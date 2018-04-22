@@ -18,6 +18,16 @@ a.simple {
     margin: 16px;
 }
 
+.centerContent {
+    text-align: center;
+}
+.centerContent > div {
+    display: inline-block;
+}
+.centerContent > div > * {
+    text-align: left;
+}
+
 /* thanks to https://pearsonified.com/typography/ */
 #content > p {
     line-height: 27px;
@@ -47,7 +57,7 @@ header {
 }
 
 .center {
-    text-align: center;
+    text-align: center !important;
 }
 
 .promo {
