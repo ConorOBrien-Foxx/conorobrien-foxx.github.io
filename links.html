@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Link Redirects</title>
+    <meta charset="utf8">
+    <script>
+        window.addEventListener("load", function () {
+            let nString = window.location.search.slice(1);
+            if(!nString) {
+                console.error("No search string given");
+                return;
+            }
+            let n = parseInt(nString, 10);
+            console.log("Jumping to link:", n);
+            let as = document.querySelectorAll(".redirect-link a");
+            console.log(as);
+            let a = as[n];
+            if(!a) {
+                console.error("No tag corresponding to link number");
+                return;
+            }
+            window.location = a.href;
+        });
+    </script>
+</head>
+<body>
+    <ol class="redirect-link">
+        <li><a href="https://tio.run/##7VrbboMwDP2dTWITDhAIf1N11bSpKtM67QXx7SwOxNwCHa1WuV1eAo0c@@TE9mnUvm@@N8ft59vH19OheNnV2@JwLPa7533x@lCXIoQ4LyHMS5VDoJ96gBwqHEuhzJvIy6idDyDFIcMBFwhcEOGCSr9Dol3lZWbnAr0yxmeUlwla4@IoxBm0RDsB7XwVpDogxhGxNcX4racMPesP@K4ab2iBLtQMrMa1wEGSx4zcGhi4cWPW@A4wNPqWY/8hEYCmYPhAY0BrkKchdDtLFhC1u0XyOcFqkoAfUSbppEk6hqfIhzJTgQwZirmlecKSJsmNppQlTRlLVIpdK/ead/Oal3rNW0Dl5c7LnZc7L3f/Tu7uUOkyr3Re6bzSeaXzSnfjSncBpLu/zynGKif4qBtPZbsOoqsJmguGixOrYL@D0EX3mrUSFXelug2ROnUJs0DSCyWpi0jb7@Sn38jsbsf1MXu5A9rVoCsYBRHhQEEso8rhOhuSM/qhdQRy4VimJ2769ZxcNCsJRsNYNCRLtR3WIqCzAKLDXnNNBxRtjGZjrrtwlwlEl@1ZfYC9M5CO5I7bPkNHQ9M99JO6V@RpZKPrkQJL8rZULdKSCKt7qaMcu@QfV@Fi8q9vjMPvXq5yV8PcnNWjoRQZnybtgdI@Ws7Ukf/eFqZwz7nhn9UiqWAm/2eAv70quO/nVVXVj/UP">My Longest PPCG Visited Streak (4/5/2021)</a></li>
+    </ol>
+</body>
