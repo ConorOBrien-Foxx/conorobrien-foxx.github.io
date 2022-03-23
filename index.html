@@ -5,8 +5,52 @@
     <meta charset="UTF-8">
     <title>About | Conor O'Brien</title>
     <link rel="STYLESHEET" href="./main.css">
+    <script type="text/javascript">
+        const clearChildren = (el) => {
+            while(el.firstChild) {
+                el.removeChild(el.firstChild);
+            }
+        }
+        window.addEventListener("load", function () {
+            const popupBackground = document.getElementById("popup-background");
+            const popupContent = document.getElementById("popup-content");
+            const popupBar = document.getElementById("popup-bar");
+            const popup = document.getElementById("popup");
+            
+            const hidePopup = () => {
+                popupBackground.classList.add("hidden");
+            };
+            
+            popupBar.addEventListener("click", hidePopup);
+            
+            popupBackground.addEventListener("click", function (ev) {
+                if(ev.target === popupBackground) {
+                    hidePopup();
+                }
+            });
+            
+            for(let img of document.querySelectorAll("img.preview")) {
+                img.addEventListener("click", function () {
+                    popupBackground.classList.remove("hidden");
+                    // create content
+                    clearChildren(popupContent);
+                    let largeImage = document.createElement("img");
+                    largeImage.src = img.src;
+                    largeImage.classList.add("display");
+                    popupContent.appendChild(largeImage);
+                });
+            }
+        });
+    </script>
 </head>
 <body>
+    <div id="popup-background" class="hidden">
+        <div id="popup">
+            <div id="popup-bar">x</div>
+            <div id="popup-content">
+            </div>
+        </div>
+    </div>
     <header>
         <a href="./">Conor O'Brien</a>
         <div>
@@ -47,12 +91,17 @@
         <ul>
             <li>
                 <strong><a href="https://limitlesssocks.github.io/EXU-Scrape/">Extinction Unleashed</a></strong> - A static website for a Yu-Gi-Oh! community, featuring a <a href="https://limitlesssocks.github.io/EXU-Scrape/new-search">searchable</a> <a href="https://limitlesssocks.github.io/EXU-Scrape/search">database</a>, <a href="https://limitlesssocks.github.io/EXU-Scrape/editor">deck editor</a>, and <a href="https://limitlesssocks.github.io/EXU-Scrape/data">statistics explorer</a>.
+                <br/>
+                <img src="./img/exu-search.jpg" class="preview">
             </li>
             <li>
                 <strong><a href="https://ygopro.org/yugioh-card-maker/">YGOPRO Custom Card Maker</a></strong> - An interactive Yu-Gi-Oh! custom card editor, featuring a diverse set of templates and card sharing features.
+                <br/>
+                <img src="./img/card-editor.jpg" class="preview">
             </li>
             <li>
                 <strong><a href="https://github.com/ConorOBrien-Foxx/Pyramid-Scheme">Pyramid Scheme</a></strong> - An esoteric programming language derived from Scheme, but the programs are visually organized in ASCII art triangles. Cited in <a href="http://sigbovik.org/2021/proceedings.pdf">SIGBOVIK 2021</a> (<em>Macro-driven metalanguage for writing Pyramid Scheme programs</em>, Marcin Konowalczyk, 2021, p.227-235).
+                <br/>
             </li>
             <li>
                 <strong><a href="https://github.com/ConorOBrien-Foxx/stacked">stacked</a></strong> - A postfix, stack-based programming language written in JavaScript.
