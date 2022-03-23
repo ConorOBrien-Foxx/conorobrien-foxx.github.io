@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conor O'Brien</title>
+    <link href="./index.css" rel="STYLESHEET">
+    <script type="text/javascript">
+        function listen(element, event, func) {
+            element.addEventListener(event, func);
+        }
+        
+        function popup(title, text) {
+            alert(title + "\n" + text);
+        }
+        
+        var hereButton;
+        var secret = [
+            0xBDF03014519EB,
+            0x420A9026F7806,
+            0x2FFCB0250A46D
+        ];
+        listen(window, "load", function() {
+            hereButton = document.getElementById("hereButton");
+            listen(hereButton, "click", function() {
+                var address = secret.map(function(e) {
+                    return (e & (1<<28)-1).toString(36)
+                }).join("");
+                popup("Email address:", address + "@gmail.com");
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>./Conor O'Brien</h1>
+    </header>
+    
+    <div class="centerContent">
+    <div id="content">
+        <h2>Links</h2>
+        <div class="center">
+            <a class="promo" href="https://github.com/ConorOBrien-Foxx">
+                <img src="./github.svg">
+                <span>Github</span>
+            </a>
+            <a class="promo" href="https://codegolf.stackexchange.com/users/31957/conor-obrien">
+                <img src="./ppcg.svg">
+                <span>Code Golf</span>
+            </a>
+            <a class="promo" href="http://steamcommunity.com/id/sock-em-up/">
+                <img src="./steam.svg">
+                <span>Steam</span>
+            </a>
+            <a class="promo" href="./cubing">
+                <img src="./cube.png">
+                <span>Cubing</span>
+            </a>
+        </div>
+        <h2>About</h2>
+        <p>Language design enthusiast. I enjoy programming in Ruby, J, C, and JavaScript, in addition to my own languages like <a href="https://github.com/ConorOBrien-Foxx/stacked">Stacked</a> and <a href="https://github.com/ConorOBrien-Foxx/attache">Attache</a>. When I’m up for the challenge (or feel like hurting my mind), I pick up <a href="https://esolangs.org/wiki/Brainfuck">Brainf***</a>.</p>
+        <p>Code golf is an interesting way to program recreationally. I personally enjoy code golf because it’s basically one large test case for a language I make. After all, I believe a language is only as good as it can be short. (Thus Java often falls out of favor with me…)</p>
+        <p>Similarly, I heavily enjoy obfuscation. It’s an expression of the mastery that one has in a language, and an art form in itself.</p>
+        <p>When I’m not coding, I’m probably playing video games (TF2 is love, TF2 is life), writing, reading, or (<em>gasp</em>) socializing within what semblance of a social life I have.</p>
+        <p>About <em>me</em>, I’m a Christian man, proud to be serving my God. I do what I can to let people know there is a God who loves them, without stepping on people’s toes. I’m not shy about my faith, though I try not to flaunt it or greet people with a “HeyhowareyoudoyouknowJesus???/??”, e.g.</p>
+        <p>If, for whatever reason, you have read this far and, for whatever reason, wish to contact me, shoot me an email <button id="hereButton">here</button>.</p>
+    </div>
+    </div>
+</body>
+</html>
