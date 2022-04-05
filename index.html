@@ -5,59 +5,15 @@
     <meta charset="UTF-8">
     <title>About | Conor O'Brien</title>
     <link rel="STYLESHEET" href="./main.css">
-    <script type="text/javascript">
-        const clearChildren = (el) => {
-            while(el.firstChild) {
-                el.removeChild(el.firstChild);
-            }
-        }
-        window.addEventListener("load", function () {
-            const popupBackground = document.getElementById("popup-background");
-            const popupContent = document.getElementById("popup-content");
-            const popupBar = document.getElementById("popup-bar");
-            const popup = document.getElementById("popup");
-            
-            const hidePopup = () => {
-                popupBackground.classList.add("hidden");
-            };
-            
-            popupBar.addEventListener("click", hidePopup);
-            
-            popupBackground.addEventListener("click", function (ev) {
-                if(ev.target === popupBackground) {
-                    hidePopup();
-                }
-            });
-            
-            for(let img of document.querySelectorAll("img.preview")) {
-                img.addEventListener("click", function () {
-                    popupBackground.classList.remove("hidden");
-                    // create content
-                    clearChildren(popupContent);
-                    let largeImage = document.createElement("img");
-                    largeImage.src = img.src;
-                    largeImage.classList.add("display");
-                    popupContent.appendChild(largeImage);
-                });
-            }
-        });
-    </script>
+    <script src="image-preview.js"></script>
 </head>
 <body>
-    <div id="popup-background" class="hidden">
-        <div id="popup">
-            <div id="popup-bar">x</div>
-            <div id="popup-content">
-            </div>
-        </div>
-    </div>
     <header>
         <a href="./">Conor O'Brien</a>
         <div>
-            <a href="./" class="current">About</a> &sdot; <a href="/contact">Contact</a>
+            <a href="./" class="current">About</a> &sdot; <a href="./contact">Contact</a> &sdot; <a href="./projects">Projects</a>
         </div>
     </header>
-    <!-- http://sigbovik.org/2021/proceedings.pdf -->
     <div>
         <h1>Conor O'Brien</h1>
         <strong>Freelance Software Developer</strong>
