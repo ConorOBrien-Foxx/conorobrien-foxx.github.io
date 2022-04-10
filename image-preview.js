@@ -28,6 +28,9 @@ window.addEventListener("load", function () {
     };
     
     popupBar.addEventListener("click", hidePopup);
+    document.addEventListener("keydown", function (ev) {
+        if(ev.key === "Escape") hidePopup();
+    });
     
     popupBackground.addEventListener("click", function (ev) {
         if(ev.target === popupBackground) {

@@ -16,19 +16,57 @@
     </header>
     <div>
         <h1>Projects</h1>
-        <p>A page dedicated to going into a bit more depth on some of the stuff I have worked on, from various points throughout my life. I have been programming for quite some time, and have maintained a GitHub account since June 2015, so some of the projects vary in quality. This list is incomplete, and I will update it as I have time.</p>
+        <p>A page dedicated to going into a bit more depth on some of the coding projects I have worked on, from various points throughout my life. I have been programming for quite some time, and have maintained a GitHub account since June 2015, so some of the projects vary in quality. This list is incomplete, and I will update it as I have time. They are sorted from most to least recent by start date.</p>
         
-        <h2>Entropy of Life <span class="header-link">(<a href="https://github.com/ConorOBrien-Foxx/GameOfLifeDerivatives">GitHub</a> &sdot; <a href="https://devpost.com/software/game-of-life-derivatives">Devpost</a>)</span></h2>
-        <img src="./img/eol1.jpg" class="preview"> <img src="./img/eol2.jpg" class="preview">
-        <p>This project is the result of a weekend Hackathon, <a href="https://www.tribehacks.com/">Cypher VII</a>, March 25&ndash;27, 2022. I collaborated with <a href="https://github.com/jcruxton">Jonathan Ruxton</a> to create a visual application using Java's swing components to simulate <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a>, but where the borders between cells can break down as a result of extended activity. The application also features an implementation of <a href="https://en.wikipedia.org/wiki/Abelian_sandpile_model">Sandpiles</a>.</p>
+        <h2>Contents</h2>
+        <ol>
+            <li><a href="#Entropy_of_Life">Entropy of Life</a>, a Hackathon project to simulate a novel derivative of Game of Life.</li>
+            <li><a href="#Quartic">Quartic</a>, an assembly language that compiles to <a href="https://esolangs.org/wiki/4">4</a>.</li>
+            <li><a href="#YGOPRO_Custom_Card_Maker">YGOPRO Custom Card Maker</a>, a user-friendly Yu-Gi-Oh! custom card designer.</li>
+            <li><a href="#stacked">stacked</a>, a stack-based, postfix language that runs in your browser.</li>
+        </ol>
+        
+        <h2 id="Entropy_of_Life">Entropy of Life <span class="header-link">(<a href="https://github.com/ConorOBrien-Foxx/GameOfLifeDerivatives">GitHub</a> &sdot; <a href="https://devpost.com/software/game-of-life-derivatives">Devpost</a>)</span></h2>
+        <span class="subtitle">March 25&ndash;27, 2022</span>
+        <div class="img-gallery">
+            <img src="./img/eol1.jpg" class="preview"> <img src="./img/eol2.jpg" class="preview">
+        </div>
+        <p>For hackathon <a href="https://www.tribehacks.com/">Cypher VII</a>, I collaborated with <a href="https://devpost.com/jruxton37">Jonathan Ruxton</a> to create a visual application using Java's swing components to simulate <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a>, but where the borders between cells can break down as a result of extended activity. The application also features an implementation of <a href="https://en.wikipedia.org/wiki/Abelian_sandpile_model">Sandpiles</a>.</p>
         <p>I primarily worked on the display aspects of the application, while my partner worked on the logic of generations. We also had invaluable assistance from <a href="https://github.com/GreenGem-ButOnGitHub">Tetra</a>, who helped us generate and solidify the idea during the Hackathon.</p>
         
-        <h2>Quartic <span class="header-link">(<a href="https://github.com/ConorOBrien-Foxx/4Compiler">GitHub</a> &sdot; <a href="https://esolangs.org/wiki/User:Conor_O%27Brien/Compilers/Quartic">Esolang</a>)</span></h2>
+        <h2 id="Quartic">Quartic <span class="header-link">(<a href="https://github.com/ConorOBrien-Foxx/4Compiler">GitHub</a> &sdot; <a href="https://esolangs.org/wiki/User:Conor_O%27Brien/Compilers/Quartic">Esolang</a>)</span></h2>
+        <span class="subtitle">November 2021</span>
         <div class="img-gallery">
             <img src="./img/quartic.jpg" class="preview"> <img src="./img/4tc.jpg" class="preview"> 
         </div>
-        <p>Quartic is a programming language with Assembly-esque syntax that compiles to the esoteric language <a href="https://esolangs.org/wiki/4">4</a>. The most interesting challenge in 4, and by extension, Quartic, is that there is a finite memory of 100 cells, each containing an arbitrarily large integer. I designed Quartic because I wanted to prove 4 to be Turing Complete by proof of emulation, and needed a simpler, more controlled way to organize my efforts. <a href="https://raw.githubusercontent.com/ConorOBrien-Foxx/4Compiler/main/examples/quartic/turing-complete-min.quartic">This file</a> (snippet pictured above left) is an interpreter for the Turing Complete <a href="https://esolangs.org/wiki/Boolfuck">Boolfuck</a> language, storing the data tape as a very large integer. The corresponding compiled 4 program is pictured above right.</p>
-        <p>I wrote the Quartic compiler in Ruby, and it is able to compile to 4 and to <a href="https://dlang.org/">D</a>, and, by extension, to an executable file. The same compiler framework is also used to generate a "prettified" version of 4, and can help unobfuscate existing 4 source code files into (more) readable, commented code. The esolang page linked above features Quartic's specification.</p>
+        <p>Quartic is a programming language with assembly syntax that compiles to the esoteric language <a href="https://esolangs.org/wiki/4">4</a>. The most interesting challenge in 4, and by extension, Quartic, is that there is a finite memory of 100 cells, each containing an arbitrarily large integer. I designed Quartic because I wanted to prove 4 to be Turing Complete by proof of emulation, utilizing bigintegers as arbitrarily large data structures. To this end, I needed a simpler, more controlled way to organize my efforts. <a href="https://raw.githubusercontent.com/ConorOBrien-Foxx/4Compiler/main/examples/quartic/turing-complete-min.quartic">This file</a> (snippet pictured above left) is an interpreter for the Turing Complete <a href="https://esolangs.org/wiki/Boolfuck">Boolfuck</a> language, storing the data tape as a very large integer. The corresponding compiled 4 program is pictured above right.</p>
+        <p>I wrote the Quartic compiler in Ruby, and it is able to compile to 4 and to <a href="https://dlang.org/">D</a>, and, by extension, to an executable file. The same compiler framework is also used to generate a "prettified" version of 4, and can help unobfuscate existing 4 source code files into (more) readable, commented code. The esolang page linked above features Quartic's specification, including basic arithmetic commands, loops, branching, and preprocessing instructions.</p>
+        
+        <h2 id="YGOPRO_Custom_Card_Maker">YGOPRO Custom Card Maker <span class="header-link">(<a href="https://ygopro.org/yugioh-card-maker/">Website</a> &sdot; <a href="https://github.com/LimitlessSocks/TDOANE-CardMaker">GitHub</a>)</span></h2>
+        <span class="subtitle">March 2020&ndash;June 2020</span>
+        <div class="bipanel">
+            <div class="left">
+                <img src="./img/card-editor2.jpg" class="preview">
+            </div>
+            <div class="right">
+                <img src="./img/card-editor.jpg" class="preview">
+            </div>
+        </div>
+        <p>A custom card editor commissioned by the owner of <a href="https://ygopro.org/">YGOPRO The Dawn of a New Era</a>, developed using <a href="https://yemachu.github.io/cardmaker/">Neo New Card maker</a> as a base. Built with <a href="https://reactjs.org/">React</a>, the editor works in your browser and offers the most customization, accuracy, and accessibility of any Yu-Gi-Oh! card editor publicly available.</p>
+        
+        <h2 id=stacked>stacked <span class="header-link">(<a href="https://conorobrien-foxx.github.io/stacked/">Interpreter</a> &sdot; <a href="https://conorobrien-foxx.github.io/stacked/repl">REPL</a> &sdot; <a href="https://github.com/ConorOBrien-Foxx/stacked">GitHub</a>)</h2>
+        <span class="subtitle">December 2016&ndash;present</span>
+        <div class="bipanel">
+            <div class="left">
+                <img src="./img/stacked-repl1.jpg" class="preview">
+            </div>
+            <div class="right img-gallery">
+                <img src="./img/stacked-fy.jpg" class="preview">
+                <img src="./img/stacked-rld.jpg" class="preview">
+                <img src="./img/stacked-repl2.jpg" class="preview">
+            </div>
+        </div>
+        <p>A stack-based programming language written in JavaScript. Written with keeping both readability and concision in mind. A simple passion project started in December 2016, the language has grown to include quite a lot of functions. If you are interested in learning the syntax of the language, I would recommend reading <a href="https://github.com/ConorOBrien-Foxx/stacked/wiki/Tutorial-I:-a-stack-based-language">the wiki</a> and maybe perusing <a href="https://github.com/ConorOBrien-Foxx/stacked/blob/master/src/stdlib.js">the standard library</a>, as I the current language command documentation is sparse at best.</p>
     </div>
 </body>
 </html>
