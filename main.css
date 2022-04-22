@@ -5,13 +5,18 @@
     --text: #E1ECF4;
     --highlight: #84DD63;
     --highlight-bright: #BDEDAB;
-    --accent2: #627264;
+    --accent2: #3C4A3E;
+    --accent2-light: #546156;
     --accent3: #D0C88E;
     --accent4: #9D96EE;
+    
+    --header-font: 'Nova Round', cursive;
+    --code-font: "Ubuntu Mono", monospace;
+    --main-font: 'Lora', serif;
 }
 
 html {
-    font-family: 'Lora', serif;
+    font-family: var(--main-font);
     background-color: var(--background-theme);
     color: var(--text);
     font-size: 22px;
@@ -29,7 +34,7 @@ body {
 }
 
 code, pre {
-    font-family: "Ubuntu Mono", monospace;
+    font-family: var(--code-font);
 }
 
 @media screen and (min-width: 900px) {
@@ -46,8 +51,8 @@ p {
     background-color: #279034;
 }
 
-h1, h2, h3, h4, h5, h6, header {
-    font-family: 'Nova Round', cursive;
+h1, h2, h3, h4, h5, h6, header, .page-link {
+    font-family: var(--header-font);
     word-spacing: -0.2ch;
     margin: 0;
 }
@@ -158,4 +163,29 @@ img + p, .img-gallery + p {
 }
 #popup-background.hidden {
     display: none;
+}
+
+.page-link-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+.page-link {
+    background: var(--accent2);
+    display: flex;
+    align-items: center;
+    width: 260px;
+    padding: 15px;
+    border-radius: 15px;
+    gap: 15px;
+    text-decoration: none;
+    transition: background 0.1s linear;
+}
+.page-link:hover {
+    background: var(--accent2-light);
+}
+.page-link img {
+    width: 5ch;
 }
