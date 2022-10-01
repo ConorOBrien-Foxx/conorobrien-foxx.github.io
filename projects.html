@@ -23,6 +23,7 @@
             <li><a href="#Infinite_Automata">Infinite Automata</a>, a roguelike endless bullet hell.</li>
             <li><a href="#Entropy_of_Life">Entropy of Life</a>, a Hackathon project to simulate a novel derivative of Game of Life.</li>
             <li><a href="#Quartic">Quartic</a>, an assembly language that compiles to <a href="https://esolangs.org/wiki/4">4</a>.</li>
+            <li><a href="#More-Random-Animals">more-random-animals</a>, a small API for delivering pictures of random animals.</li>
             <li><a href="#YGOPRO_Custom_Card_Maker">YGOPRO Custom Card Maker</a>, a user-friendly Yu-Gi-Oh! custom card designer.</li>
             <li><a href="#stacked">stacked</a>, a stack-based, postfix language that runs in your browser.</li>
         </ol>
@@ -53,6 +54,13 @@
         </div>
         <p>Quartic is a programming language with assembly syntax that compiles to the esoteric language <a href="https://esolangs.org/wiki/4">4</a>. The most interesting challenge in 4, and by extension, Quartic, is that there is a finite memory of 100 cells, each containing an arbitrarily large integer. I designed Quartic because I wanted to prove 4 to be Turing Complete by proof of emulation, utilizing bigintegers as arbitrarily large data structures. To this end, I needed a simpler, more controlled way to organize my efforts. <a href="https://raw.githubusercontent.com/ConorOBrien-Foxx/4Compiler/main/examples/quartic/turing-complete-min.quartic">This file</a> (snippet pictured above left) is an interpreter for the Turing Complete <a href="https://esolangs.org/wiki/Boolfuck">Boolfuck</a> language, storing the data tape as a very large integer. The corresponding compiled 4 program is pictured above right.</p>
         <p>I wrote the Quartic compiler in Ruby, and it is able to compile to 4 and to <a href="https://dlang.org/">D</a>, and, by extension, to an executable file. The same compiler framework is also used to generate a "prettified" version of 4, and can help unobfuscate existing 4 source code files into (more) readable, commented code. The esolang page linked above features Quartic's specification, including basic arithmetic commands, loops, branching, and preprocessing instructions.</p>
+        
+        <h2 id="More-Random-Animals">more-random-animals <span class="header-link">(<a href="https://more-random-animals.herokuapp.com/">Demo Website</a> &sdot; <a href="https://github.com/LimitlessSocks/more-random-animals">GitHub</a>)</span></h2>
+        <span class="subtitle">July 2021</span>
+        <div class="img-gallery">
+            <img src="./img/ra1.jpg" class="preview">
+        </div>
+        <p>Made to address a lack of animals in <a href="https://www.npmjs.com/package/random-animals-api">AnimalsAPI</a>, this API features requests for randomized images of a variety of animals.</p>
         
         <h2 id="YGOPRO_Custom_Card_Maker">YGOPRO Custom Card Maker <span class="header-link">(<a href="https://ygopro.org/yugioh-card-maker/">Website</a> &sdot; <a href="https://github.com/LimitlessSocks/TDOANE-CardMaker">GitHub</a>)</span></h2>
         <span class="subtitle">March 2020&ndash;June 2020</span>

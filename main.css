@@ -9,6 +9,7 @@
     --accent2-light: #546156;
     --accent3: #D0C88E;
     --accent4: #9D96EE;
+    --text-highlight: #279034;
     
     --header-font: 'Nova Round', cursive;
     --code-font: "Ubuntu Mono", monospace;
@@ -48,7 +49,7 @@ p {
 }
 
 ::selection, ::-moz-selection {
-    background-color: #279034;
+    background-color: var(--text-highlight);
 }
 
 h1, h2, h3, h4, h5, h6, header, .page-link {
