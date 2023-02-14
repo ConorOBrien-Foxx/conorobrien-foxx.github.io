@@ -1,0 +1,26 @@
+:root {
+    --background-theme: #39163B;
+    --text: #FFF4EB;
+    --highlight: #34D1BF;
+    --highlight-bright: #7AE1D5;
+    --accent2: #9F7AA2;
+    --accent2-light: #CCBACE;
+    --accent3: #D78D8F;
+    --accent4: #96CEB6;
+    --text-highlight: #E97BA5;
+}
+
+#card-holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+img.preview {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+#card-holder h1 {
+    font-size: 1.3em;
+}
