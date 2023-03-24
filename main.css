@@ -58,6 +58,13 @@ h1, h2, h3, h4, h5, h6, header, .page-link {
     margin: 0;
 }
 
+h2:after, h2:before {
+    content: " ";
+    display: block;
+    border: 1px solid var(--text-highlight);
+    margin: 8px 0;
+}
+
 header {
     font-size: 30px;
     display: flex;
@@ -132,7 +139,7 @@ img.display {
     align-items: start;
     flex-wrap: wrap;
 }
-img + p, .img-gallery + p {
+img + p, .img-gallery + p, .inline.page-link + p {
     margin-top: 0;
 }
 
@@ -189,4 +196,11 @@ img + p, .img-gallery + p {
 }
 .page-link img {
     width: 5ch;
+}
+.inline.page-link {
+    width: 150px;
+    
+}
+.inline.page-link img {
+    width: 3ch;
 }
