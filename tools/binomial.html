@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" integrity="sha512-jgMqxLG97m1BO3cRIW5ESD++rF8uJ6Fbufba2xKb102eTX8UPCWhrKua+uKSNidBFFLKXKAByX2HmQUMQZBSUg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        math.config({
+            number: "BigNumber",
+            precision: 128,
+            epsilon: 1e-60
+        });
+    </script>
+    -->
+    <script src="./common.js"></script>
+    <script src="./binom.js"></script>
+    <title>Binomial Probability Calculator</title>
+    <link rel="stylesheet" href="tool.css">
+</head>
+<body>
+    <header>
+        <h1>Tools</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="./">Home</a></li>
+            <li><a href="./about">About</a></li>
+            <li><a href="./contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container binom-app thin">
+        <div class="centerer">
+            <div>
+            <h2>Binomial Probability Calculator</h2>
+            <div class="input-holder">
+            <table>
+                <tr>
+                    <td>Probability of success per trial</td>
+                    <td>\(p\)</td>
+                    <td><input class="trial short center" type="text" tabindex="1"></td>
+                </tr>
+                <tr>
+                    <td>Number of trials</td>
+                    <td>\(n\)</td>
+                    <td><input class="number short center" type="text" tabindex="1"></td>
+                </tr>
+                <tr>
+                    <td>Number of successes</td>
+                    <td>\(x\)</td>
+                    <td><input class="successes short center" type="text" tabindex="1"></td>
+                </tr>
+                <tr>
+                    <td>Binomial probability</td>
+                    <td class="displayExact">\(P(X=x)\)</td>
+                    <td><input readonly class="exact short center" type="text"></td>
+                </tr>
+                <tr>
+                    <td>Cumulative probability</td>
+                    <td class="displayCumulativeLess">\(P(X\lt x)\)</td>
+                    <td><input readonly class="cumulativeLess short center" type="text"></td>
+                </tr>
+                <tr>
+                    <td>Cumulative probability</td>
+                    <td class="displayCumulativeLessEqual">\(P(X\le x)\)</td>
+                    <td><input readonly class="cumulativeLessEqual short center" type="text"></td>
+                </tr>
+                <tr>
+                    <td>Cumulative probability</td>
+                    <td class="displayCumulativeGreater">\(P(X\gt x)\)</td>
+                    <td><input readonly class="cumulativeGreater short center" type="text"></td>
+                </tr>
+                <tr>
+                    <td>Cumulative probability</td>
+                    <td class="displayCumulativeGreaterEqual">\(P(X\ge x)\)</td>
+                    <td><input readonly class="cumulativeGreaterEqual short center" type="text"></td>
+                </tr>
+            </table>
+            <div class="button-row">
+                <button tabindex="1" class="submit">Submit</button>
+                <button tabindex="1" class="clear danger">Clear Entries</button>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="popup-background" class="popup-background" onclick="hidePopup()"></div>
+
+    <div id="popup" class="popup">
+        <div class="popup-header">
+            <span class="popup-title">Popup Title</span>
+            <button class="close-button danger" onclick="hidePopup()">X</span>
+        </div>
+        <div class="popup-content">
+            <p>Popup message goes here.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made by <a href="https://conorobrien-foxx.github.io/" target="_blank">Conor O'Brien</a>.</p>
+    </footer>
+</body>
+</html>
