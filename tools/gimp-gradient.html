@@ -12,7 +12,9 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools</title>
+    <script src="./common.js"></script>
+    <script src="./grad.js"></script>
+    <title>GIMP .ggr Gradient Generator</title>
     <link rel="stylesheet" href="tool.css">
 </head>
 <body>
@@ -27,18 +29,26 @@
         </ul>
     </nav>
 
-    <div class="container thin">
+    <div class="container gimp-grad-app thin">
         <div class="centerer">
-            <div>
-            <h2>Home</h2>
-            <h3>List of Tools</h3>
-            <ul>
-                <li><a href="./binomial">Binomial Probability Distribution Calculator</a></li>
-            </ul>
-            <ul>
-                <li><a href="./gimp-gradient">GIMP <code>.ggr</code> Gradient Generator</a></li>
-            </ul>
+            <main>
+            <h2>GIMP <code>.ggr</code> Gradient Generator</h2>
+            <!-- <p>hello</p> -->
+            <div class="input-holder" style="max-height: 200px; overflow-y: auto;">
+                <label><input class="discrete-input" type="checkbox">Discrete?</label>
+                <div class="color-input-container">
+                    <div class="color-input">
+                        <input type="text" class="short mono" value="#ff00ff">
+                        <input type="color" value="#ff00ff">
+                        <button class="symbol remove-color">-</button>
+                        <button class="symbol add-color">+</button>
+                    </div>
+                </div>
             </div>
+            <div class="sample-output" style="width: 300px; height: 300px; border: 1px solid white; margin: 0 auto">
+            </div>
+            <textarea class="ggr-output mono" readonly></textarea>
+            </main>
         </div>
     </div>
     

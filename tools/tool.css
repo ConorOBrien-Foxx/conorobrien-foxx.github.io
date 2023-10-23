@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@0&family=Roboto+Mono:wght@400;700&display=swap');
 
 :root {
     --dark-background: #111;
@@ -11,8 +11,13 @@
     --link-highlight: #00bcd4;
     --link-darken: #007f8b;
     
+    --button-color: #10786f;
+    --button-highlight: #1ccebe;
+    
     --field-color: #555;
     --field-color-light: #777;
+    --field-highlight: #777;
+    --field-highlight-light: #999;
     --field-readonly-color: #333;
     --field-readonly-color-light: #555;
     
@@ -23,6 +28,10 @@
 body, html, nav ul, h1 {
 	margin: 0;
 	padding: 0;
+}
+
+main > * {
+    margin: 10px;
 }
 
 nav, nav ul, .input-holder {
@@ -97,6 +106,10 @@ nav a:hover {
     background: var(--overall-background-light);
 }
 
+code, pre, button.symbol, .mono {
+    font-family: "Roboto Mono", "Consolas", monospace;
+}
+
 .container {
 	padding: 20px;
 	max-width: 1200px;
@@ -128,7 +141,7 @@ nav a:hover {
 }
 
 button {
-	background-color: var(--link-highlight);
+	background-color: var(--button-color);
 	padding: 10px 20px;
 	border: none;
 	border-radius: 5px;
@@ -137,7 +150,20 @@ button {
 }
 
 button:hover {
-	background-color: var(--link-darken);
+	background-color: var(--button-highlight);
+}
+button.symbol {
+    font-size: 1.2em;
+    width: 60px;
+}
+button.symbol, input[type="color"] {
+    height: 45px;
+}
+.color-input {
+    display: flex;
+}
+.color-input > * {
+    margin: 5px;
 }
 
 button.danger {
@@ -181,6 +207,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"],
+input[type="color"],
 textarea {
     background-color: var(--field-color);
     border: 3px solid var(--field-color-light);
@@ -189,6 +216,18 @@ textarea {
     border-radius: 5px;
     /* width: 100%; */
     transition: border-color 0.3s, background-color 0.3s;
+}
+textarea {
+    resize: none;
+    width: 100%;
+}
+input[type="color"] {
+    padding: 6px;
+    cursor: pointer;
+}
+input[type="color"]:hover {
+    background-color: var(--field-highlight);
+    border-color: var(--field-highlight-light);
 }
 input.short {
     width: 10ch;
@@ -202,9 +241,12 @@ input.wide {
 input.center {
     text-align: center;
 }
-input[readonly] {
+input[readonly], textarea[readonly] {
     background-color: var(--field-readonly-color);
     border-color: var(--field-readonly-color-light);
+}
+label {
+    user-select: none;
 }
 
 @media (max-width:768px) {
