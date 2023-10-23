@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N67W0KBG4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+
+      gtag("config", "G-5N67W0KBG4");
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <!--
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" integrity="sha512-jgMqxLG97m1BO3cRIW5ESD++rF8uJ6Fbufba2xKb102eTX8UPCWhrKua+uKSNidBFFLKXKAByX2HmQUMQZBSUg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         math.config({
             number: "BigNumber",
-            precision: 128,
+            precision: 64,
+            //precision: 1009,
             epsilon: 1e-60
         });
     </script>
-    -->
     <script src="./common.js"></script>
     <script src="./binom.js"></script>
     <title>Binomial Probability Calculator</title>
