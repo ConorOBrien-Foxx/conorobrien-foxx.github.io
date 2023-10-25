@@ -14,6 +14,8 @@
     --header-font: 'Nova Round', cursive;
     --code-font: "Ubuntu Mono", monospace;
     --main-font: 'Lora', serif;
+    
+    --line-height: 38px;
 }
 
 html {
@@ -21,6 +23,11 @@ html {
     background-color: var(--background-theme);
     color: var(--text);
     font-size: 22px;
+}
+
+.smaller-text {
+    font-size: 18px;
+    --line-height: 30px;
 }
 
 body {
@@ -45,7 +52,7 @@ code, pre {
 }
 
 p {
-    line-height: 38px;
+    line-height: var(--line-height);
 }
 
 ::selection, ::-moz-selection {
@@ -96,6 +103,39 @@ a.current {
 .subtitle {
     font-size: 1.1em;
     font-style: italic;
+}
+
+blockquote {
+    /* margin: 1em 0; */
+    /* padding: 10px; */
+    /* border-left: 2px solid #333; */
+    font-style: italic;
+}
+
+blockquote.open-quote {
+    position: relative;
+    /* padding-left: 30px; */
+}
+
+blockquote.open-quote::before {
+    content: "“";
+    position: absolute;
+    top: -5px;
+    left: -30px;
+    font-size: 2.5em;
+    color: var(--highlight);
+}
+
+.main-figure {
+    float: right;
+    max-width: 330px;
+    max-height: 430px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.main-header {
+    float: clear;
 }
 
 img.preview {
@@ -179,6 +219,9 @@ img + p, .img-gallery + p, .inline.page-link + p {
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 10px;
+}
+.left-flex {
+    justify-content: left;
 }
 .page-link {
     background: var(--accent2);

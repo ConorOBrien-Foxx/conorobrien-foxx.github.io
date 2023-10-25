@@ -24,34 +24,76 @@
     </header>
     <div>
         <h1>Papers</h1>
-        
-        <h2>Contents</h2>
-        <h3>Computer Science</h3>
-        <ol>
-            <li><a href="#Survey_of_Security">Survey of Security in Programming Language Design</a></li>
-        </ol>
-        <h3>Philosophy</h3>
-        <ol>
-            <li><a href="#Feeling_Free">Feeling Free and Moral Relevance</a></li>
-        </ol>
-        
-        <h2 class="main-header" id="Feeling_Free">Feeling Free and Moral Relevance</h2>
-        <span class="subtitle">December 23, 2022</span>
-        <a class="inline page-link" href="./doc/feeling-free.pdf" target="_blank">
-            <img src="./img/pdf.svg">
-            Full text
-        </a>
-        <p><strong>Authors:</strong> Conor O'Brien &sdot; <strong>Pages:</strong> 9 &sdot; <strong>Status:</strong> Complete</p>
-        <p><strong>Summary:</strong> What determines if we are free? Free will has long been the subject of heavy debate, and useful for determining moral responsibility. I propose that an agent is <em>morally responsible</em> for an action and its <em>reasonably foreseeable consequences</em> if and only if that agent <em>feels free</em> in doing that action. In so claiming, I investigate what it means to <em>feel free</em>, and what we can reasonably expect an agent to foresee.
-        
-        <h2 class="main-header" id="Survey_of_Security">Survey of Security in Programming Language Design</h2>
-        <span class="subtitle">December 9, 2022</span>
-        <a class="inline page-link" href="./doc/Survey_Programming_Languages.pdf" target="_blank">
-            <img src="./img/pdf.svg">
-            Full text
-        </a>
-        <p><strong>Authors:</strong> Conor O'Brien &sdot; <strong>Pages:</strong> 7 &sdot; <strong>Status:</strong> Complete</p>
-        <p><strong>Abstract:</strong> Previous surveys of security vulnerabilities have predominately focused on static identification. This paper seeks to fill the relatively unexamined niche in security survey literature which examines the design of programming languages themselves. It examines the vulnerability features of particular programming languages, as well as general features of programming languages, and potential methods used to mitigate the issues arising thereof. I express the language design maxims of Security-convenience alignment, Security consciousness, and Programmer-first safety.</p>
+        <p xmlns:cc="http://creativecommons.org/ns#" >All papers distributed here (unless otherwise stated) licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a>, in accordance with William &amp; Mary's <a href="https://guides.libraries.wm.edu/guide/copyright">Copyright ownership</a> policy:</p>
+        <blockquote cite="https://guides.libraries.wm.edu/guide/copyright" class="open-quote">
+        Regarding works for which <a href="https://guides.libraries.wm.edu/scholcomm/authorsrights">you have ownership</a>, you have the option to assign licensing terms using <a href="https://chooser-beta.creativecommons.org/">free licenses from the not-for-profit Creative Commons</a>.
+        </blockquote>
+        <div class="smaller-text">
+            <h2>Contents</h2>
+            <p>All papers sorted reverse chronologically (most recent first), but organized here also by subject for convenience.</p>
+            <h3>Computer Science</h3>
+            <ol>
+                <li><a href="#StellerJ_A_Compiled_Approach">StellerJ: A Compiled Approach to the Functional Array Language Paradigm</a></li>
+                <li><a href="#CIR_Applying_Cryptographic_IR">CIR: Applying Cryptographic IR for Lawmakers Targeting AES</a></li>
+                <li><a href="#Survey_of_Security">Survey of Security in Programming Language Design</a></li>
+            </ol>
+            <h3>Philosophy</h3>
+            <ol>
+                <li><a href="#Feeling_Free">Feeling Free and Moral Relevance</a></li>
+            </ol>
+            
+            <h2 class="main-header" id="StellerJ_A_Compiled_Approach">StellerJ: A Compiled Approach to the Functional Array Language Paradigm</h2>
+            <img src="./doc/stellerj-fig2-3.png" class="main-figure">
+            <span class="subtitle">May 16, 2023 &sdot; Computer Science</span>
+            <div class="page-link-container left-flex">
+                <a class="inline page-link" href="./doc/StellerJ_A_Compiled_Approach.pdf" target="_blank">
+                    <img src="./img/pdf.svg">
+                    Full text
+                </a>
+            </div>
+            <p><strong>Authors:</strong> Conor O'Brien &sdot; <strong>Pages:</strong> 5 &sdot; <strong>Status:</strong> Complete</p>
+            <p><strong>Abstract:</strong> StellerJ is a dialect of the functional array programming language J, targeted at LLVM. This paper examines the potential array languages like J have with high-performance computing by exploring the potential benefits of compiling instead of interpreting such languages. Compiling tacit structures involves dissecting the idioms used to construct them into compilable and analyzable fragments. The StellerJ implementation is compared for execution speed against equivalent programs in J, and in two approaches of programming in C++ (vectorized and unvectorized).</p>
+            <p><strong>Comments:</strong> Writing the paper and corresponding compiler was an interesting experience, but getting intimately acquainted with LLVM to utilize it to its fullest advantage was too lofty a goal for me. In retrospect, I would have chosen an easier compile target, such as C.</p>
+            
+            <h2 class="main-header" id="CIR_Applying_Cryptographic_IR">CIR: Applying Cryptographic IR for Lawmakers Targeting AES</h2>
+            <img src="./doc/cir-fig1.png" class="main-figure">
+            <span class="subtitle">May 15, 2023 &sdot; Computer Science</span>
+            <div class="page-link-container left-flex">
+                <a class="inline page-link" href="./doc/CIR_Applying_Cryptographic_IR.pdf" target="_blank">
+                    <img src="./img/pdf.svg">
+                    Full text
+                </a>
+                <a class="inline page-link" href="https://conorobrien-foxx.github.io/CIR/" target="_blank">
+                    <img src="./img/globe.svg" class="recolor">
+                    Web App
+                </a>
+            </div>
+            <p><strong>Authors:</strong> Conor O'Brien &sdot; <strong>Pages:</strong> 7 &sdot; <strong>Status:</strong> Complete</p>
+            <p><strong>Abstract:</strong> The process of implementing cryptographic protocols to meet external standards is complex, time-consuming, and requires effective communication between legislators, cryptographers, and programmers. The implementation of the Advanced Encryption Standard (AES) involves referencing multiple specifications, testing against given examples, and passing NIST approval. While established, tested, and open-source cryptographic algorithm implementations are recommended, implementing new or obscure algorithms face similar issues as rolling one's own crypto. This paper aims to investigate several research questions related to the implementation of cryptographic protocols, the structure of a correct AES implementation, adapting the way legislators write law to an IR, ensuring the integrity of our static web application, and assessing the effectiveness of a well-designed IR skeleton. As a result of our research, we propose CIR 0.1, a prototype intermediate representation which empowers programmers to express partial code skeletons with varying possible levels of granularity. We showcase its syntax, as well as demonstrate and evaluate potential intermediate representations in CIR for writeability, legibility, and accuracy. We find CIR to be more flexible than shipping an implementation with a protocol, but neither general enough for application to any protocol, nor qualitatively excellent enough to contend against existing solutions and the status quo.</p>
+            <p><strong>Comments:</strong> To quote my professor, &ldquo;your project idea is very promising, only the execution lacked&rdquo;. Unfortunately, it was an insanely busy semester, and I did not have sufficient time to adequately flesh out the idea.</p>
+            
+            <h2 class="main-header" id="Feeling_Free">Feeling Free and Moral Relevance</h2>
+            <span class="subtitle">December 23, 2022 &sdot; Philosophy</span>
+            <div class="page-link-container left-flex">
+                <a class="inline page-link" href="./doc/feeling-free.pdf" target="_blank">
+                    <img src="./img/pdf.svg">
+                    Full text
+                </a>
+            </div>
+            <p><strong>Authors:</strong> Conor O'Brien &sdot; <strong>Pages:</strong> 9 &sdot; <strong>Status:</strong> Complete</p>
+            <p><strong>Summary:</strong> What determines if we are free? Free will has long been the subject of heavy debate, and useful for determining moral responsibility. I propose that an agent is <em>morally responsible</em> for an action and its <em>reasonably foreseeable consequences</em> if and only if that agent <em>feels free</em> in doing that action. In so claiming, I investigate what it means to <em>feel free</em>, and what we can reasonably expect an agent to foresee.
+            
+            <h2 class="main-header" id="Survey_of_Security">Survey of Security in Programming Language Design</h2>
+            <span class="subtitle">December 9, 2022 &sdot; Computer Science</span>
+            <div class="page-link-container left-flex">
+                <a class="inline page-link" href="./doc/Survey_Programming_Languages.pdf" target="_blank">
+                    <img src="./img/pdf.svg">
+                    Full text
+                </a>
+            </div>
+            <p><strong>Authors:</strong> Conor O'Brien &sdot; <strong>Pages:</strong> 7 &sdot; <strong>Status:</strong> Complete</p>
+            <p><strong>Abstract:</strong> Previous surveys of security vulnerabilities have predominately focused on static identification. This paper seeks to fill the relatively unexamined niche in security survey literature which examines the design of programming languages themselves. It examines the vulnerability features of particular programming languages, as well as general features of programming languages, and potential methods used to mitigate the issues arising thereof. I express the language design maxims of Security-convenience alignment, Security consciousness, and Programmer-first safety.</p>
+        </div>
     </div>
 </body>
 </html>
