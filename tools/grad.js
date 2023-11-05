@@ -44,7 +44,7 @@ const colorsToGgp = (colors, generationMode) => {
                 ];
             });
         resultString += segmentCount + "\n";
-        resultString += segments.map(seg => seg.join(" ").replace(/\.0/g, "")).join("\n");
+        resultString += segments.map(seg => seg.join(" ").replace(/\.0$/g, "")).join("\n");
     } else if (generationMode === 1) {
         const segmentCount = colors.length;
         const coordinates = Array.from({
