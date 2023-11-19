@@ -44,7 +44,7 @@ const colorsToGgp = (colors, generationMode) => {
                 ];
             });
         resultString += segmentCount + "\n";
-        resultString += segments.map(seg => seg.join(" ").replace(/\.0$/g, "")).join("\n");
+        resultString += segments.map(seg => seg.join(" ")).join("\n");
     } else if (generationMode === 1) {
         const segmentCount = colors.length;
         const coordinates = Array.from({
@@ -134,12 +134,12 @@ window.addEventListener("load", function () {
                 if(colorInputs.length > 1) {
                     container.removeChild(colorInputs[myIndex]);
                 }
-                updateSample();
+                updateOutput();
             }
             else if(ev.target.classList.contains("add-color")) {
                 const newColorInput = document.createElement("div");
                 newColorInput.className = "color-input";
-                const randomColor = "#" + ((Math.random() * 0x1FFFFFF | 0) & 0xFFFFFF).toString(16);
+                const randomColor = "#" + ((0x1000000 + Math.random() * 0xFFFFFF | 0) & 0xFFFFFF).toString(16);
                 
                 newColorInput.innerHTML = `
                     <input type="text" class="short mono" value="${randomColor}">

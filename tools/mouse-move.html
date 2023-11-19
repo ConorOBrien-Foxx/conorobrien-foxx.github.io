@@ -12,7 +12,9 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools</title>
+    <script src="./common.js"></script>
+    <script src="./mousemove.js"></script>
+    <title>Mouse Movement Detector</title>
     <link rel="stylesheet" href="tool.css">
 </head>
 <body>
@@ -27,21 +29,23 @@
         </ul>
     </nav>
 
-    <div class="container thin">
+    <div class="container mouse-move-app">
         <div class="centerer">
-            <div>
-            <h2>Home</h2>
-            <h3>List of Tools</h3>
-            <ul>
-                <li><a href="./binomial">Binomial Probability Distribution Calculator</a></li>
-            </ul>
-            <ul>
-                <li><a href="./gimp-gradient">GIMP <code>.ggr</code> Gradient Generator</a></li>
-            </ul>
-            <ul>
-                <li><a href="./mouse-mover">Is my mouse moving?</a></li>
-            </ul>
-            </div>
+            <main>
+                <h2>Is my mouse moving?</h2>
+                <div class="input-holder" style="max-height: 200px; overflow-y: auto;">
+                    <label>Polling rate <input class="poll-rate short" type="number" value="50" step="50">ms</label>
+                    <label>Machine-readable messages?<input class="machine-readable" type="checkbox"></label>
+                </div>
+                
+                <div class="interact-box">
+                    <span class="notice">(Hover over)</span>
+                </div>
+                <h3>Messages</h3>
+                <div class="messages">
+                    
+                </div>
+            </main>
         </div>
     </div>
     
