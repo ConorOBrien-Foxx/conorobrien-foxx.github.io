@@ -2,6 +2,7 @@
  
 :root {
     --background-theme: #0A0A32;
+    --background-theme-dark: #141466;
     --text: #E1ECF4;
     --highlight: #84DD63;
     --highlight-bright: #BDEDAB;
@@ -82,6 +83,9 @@ header {
     border-bottom: 2px solid var(--highlight);
     /* margin-bottom: 15px; */
     padding: 20px 0;
+    position: sticky;
+    background-color: var(--background-theme);
+    top: 0;
 }
 
 a, a:visited {
@@ -135,7 +139,7 @@ blockquote.open-quote::before {
 }
 
 .main-header {
-    float: clear;
+    clear: both;
 }
 
 img.preview {
@@ -246,4 +250,23 @@ img + p, .img-gallery + p, .inline.page-link + p {
 }
 .inline.page-link img {
     width: 3ch;
+}
+
+.flex-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.flex-list > li {
+    display: block;
+    margin: 5px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: var(--background-theme-dark);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    min-width: 3ch;
+    text-align: center;
+}
+flex-br {
+    flex-basis: 100%;
+    display: block;
 }
