@@ -1,0 +1,88 @@
+:root {
+    --background-theme: #201335;
+    --text: #A8C7BB;
+    --highlight: #CE64FF;
+    --highlight-bright: #E3A6FF;
+    /* --accent2: #9F7AA2; */
+    /* --accent2-light: #CCBACE; */
+    /* --accent3: #D78D8F; */
+    /* --accent4: #96CEB6; */
+    --text-highlight: #4F4789;
+}
+
+.chess-puzzle {
+    display: flex;
+    justify-content: center;
+}
+@counter-style circled-alpha {
+  system: fixed;
+  symbols: Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ;
+  suffix: " ";
+}
+
+.chess-board {
+    width: 400px;
+    height: 400px;
+}
+
+.chess-puzzle.white img[data-piece^="w"] {
+    cursor: pointer;
+}
+.chess-puzzle.white img[data-piece^="b"] {
+    cursor: not-allowed;
+}
+.chess-puzzle.black img[data-piece^="b"] {
+    cursor: pointer;
+}
+.chess-puzzle.black img[data-piece^="w"] {
+    cursor: not-allowed;
+}
+
+.move-order {
+    width: 300px;
+    padding: 15px;
+    border: 2px solid;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0);
+}
+.move-order ol {
+    counter-reset: lis 1;
+    list-style-position: inside;
+    padding-left: 2ch;
+}
+.move-order li {
+    counter-increment: lis 1;
+}
+.move-order ol li::marker {
+    content: counter(lis, decimal) ".";
+}
+.move-order ol li.continued::marker {
+    content: counter(lis, decimal) "...";
+}
+.move-order li > span {
+    padding: 0 7px;
+}
+
+.message {
+    font-style: italic;
+}
+
+.old {
+    opacity: 0.5;
+    font-style: italic;
+}
+.mistake {
+    color: #E58F2A;
+}
+.blunder {
+    color: #CA3431
+}
+.excellent {
+    color: #5C8BB0;
+}
+.brilliant {
+    color: #1BACA6;
+}
+.great {
+    color: #95BB4A;
+}

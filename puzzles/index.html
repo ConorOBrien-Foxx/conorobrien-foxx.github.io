@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N67W0KBG4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+
+      gtag("config", "G-5N67W0KBG4");
+    </script>
+    <meta charset="UTF-8">
+    <title>Puzzles</title>
+    <link rel="STYLESHEET" href="./../main.css">
+    <link rel="STYLESHEET" href="./puzzles.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet"
+        href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
+        integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+        integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
+        crossorigin="anonymous"></script>
+    <script src="./puzzles.js"></script>
+</head>
+<body>
+    <header>
+        <a href="./">Puzzles</a>
+    </header>
+    <div>
+        <h1>Chess Puzzles</h1>
+        <h2>Puzzle 10: 1/9/2024</h2>
+        <p>White to move, mate in 3. Source: <a href="https://www.chess.com/analysis/game/live/98567091539?tab=review&move=45">My game, Chess.com, 1/9/2024</a>.</p>
+        <div class="white chess-puzzle">
+            <div id="chess-puzzle-board-10" class="chess-board"></div>
+            <div class="move-order">
+                <ol style="counter-reset: lis 22;" start="23">
+                    <li class="continued"><span class="blunder">Bd7??</span></li>
+                </ol>
+                <span class="message"></span>
+            </div>
+        </div>
+        <h2>Puzzle 9: 1/7/2024</h2>
+        <p>Black to move, mate in 3. Source: <a href="https://www.chess.com/analysis/game/live/98418279371?tab=review&move=30">My game, Chess.com, 1/7/2024</a>.</p>
+        <div class="black chess-puzzle">
+            <div id="chess-puzzle-board-9" class="chess-board"></div>
+            <div class="move-order">
+                <ol style="counter-reset: lis 15;" start="16">
+                    <li><span class="blunder">Bxg7??</span></li>
+                </ol>
+                <span class="message"></span>
+            </div>
+        </div>
+        <h2>Puzzle 8: 1/4/2024</h2>
+        <p>Black to move, mate in 2. Source: <a href="https://www.chess.com/analysis/game/live/98095778443?tab=review&move=122">My game, Chess.com, 12/12/2023</a>.</p>
+        <div class="black chess-puzzle">
+            <div id="chess-puzzle-board-8" class="chess-board"></div>
+            <div class="move-order">
+                <ol style="counter-reset: lis 61;" start="62">
+                    <li><span>Kh1</span></li>
+                </ol>
+                <span class="message"></span>
+            </div>
+        </div>
+        <h2>Puzzle 7: 12/12/2023</h2>
+        <p>Black to move, mate in 1. Source: <a href="https://www.chess.com/analysis/game/live/96145548161?tab=review&move=44">My game, Chess.com, 12/12/2023</a>.</p>
+        <div class="black chess-puzzle">
+            <div id="chess-puzzle-board-7" class="chess-board"></div>
+            <div class="move-order">
+                <ol style="counter-reset: lis 22;" start="23">
+                    <li><span class="blunder">Bxd4??</span></li>
+                </ol>
+                <span class="message"></span>
+            </div>
+        </div>
+        <h2>Puzzle 6: 11/29/2023</h2>
+        <p>Black to move, mate in 3. Source: <a href="https://www.chess.com/analysis/game/live/95066310389?tab=analysis&move=29">My game (hypothetical continuation), Chess.com, 11/29/2023</a>.</p>
+        <div class="black chess-puzzle">
+            <div id="chess-puzzle-board-6" class="chess-board"></div>
+            <div class="move-order">
+                <ol style="counter-reset: lis 10;" start="11">
+                    <li><span class="blunder">Bd4??</span></li>
+                </ol>
+                <span class="message"></span>
+            </div>
+        </div>
+        <h2>Puzzle 5: 11/23/2023</h2>
+        <p>White to move, winning tactical sequence. Source: <a href="https://www.chess.com/analysis/game/live/94530102975?tab=review&move=21">My game, Chess.com, 11/23/2023</a>.</p>
+        <div class="white chess-puzzle">
+            <div id="chess-puzzle-board-5" class="chess-board"></div>
+            <div class="move-order">
+                <ol style="counter-reset: lis 10;" start="11">
+                    <li class="continued"><span>a6</span></li>
+                </ol>
+                <span class="message"></span>
+            </div>
+        </div>
+        <h2>Puzzle 4: 11/22/2023</h2>
+        <p>Black to move, mate in 4. Source: <a href="https://www.chess.com/analysis/game/live/94453928881?tab=review&move=106">My game, Chess.com, 11/22/2023</a>.</p>
+        <div class="black chess-puzzle">
+            <div id="chess-puzzle-board-4" class="chess-board"></div>
+            <div class="move-order">
+                <ol style="counter-reset: lis 53;" start="54">
+                    <li><span class="blunder">b7??</span></li>
+                </ol>
+                <span class="message"></span>
+            </div>
+        </div>
+        <h2>Puzzle 3: 10/29/2023</h2>
+        <p>Black to move, mate in 1. Source: <a href="https://www.chess.com/analysis/game/live/92358741761?tab=review&move=62">My game, Chess.com, 10/29/2023</a>.</h2>
+        <div class="black chess-puzzle">
+            <div id="chess-puzzle-board-3" class="chess-board"></div>
+            <div class="move-order">
+                <ol style="counter-reset: lis 31;" start="32">
+                    <li><span class="mistake">Rh5??</span></li>
+                </ol>
+                <span class="message"></span>
+            </div>
+        </div>
+        <h2>Puzzle 2: 9/23/2023</h2>
+        <p>White to move, winning tactical sequence. Source: <a href="https://www.chess.com/analysis/game/live/89269146375?tab=review&move=43">My game, Chess.com, 9/23/2023</a>.</h2>
+        <div class="white chess-puzzle">
+            <div id="chess-puzzle-board-2" class="chess-board"></div>
+            <div class="move-order">
+                <ol style="counter-reset: lis 21;" start="22">
+                    <li class="continued"><span class="mistake">Rd8?</span></li>
+                </ol>
+                <span class="message"></span>
+            </div>
+        </div>
+        <h2>Puzzle 1: 9/2/2023</h2>
+        <p>White to move, winning tactical sequence. Source: <a href="https://www.chess.com/analysis/game/live/87434497475?tab=review&move=39">My game, Chess.com, 9/2/2023</a>.</h2>
+        <div class="white chess-puzzle">
+            <div id="chess-puzzle-board-1" class="chess-board"></div>
+            <div class="move-order">
+                <ol style="counter-reset: lis 19;" start="20">
+                    <li class="continued"><span class="mistake">e6?</span></li>
+                </ol>
+                <span class="message"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
