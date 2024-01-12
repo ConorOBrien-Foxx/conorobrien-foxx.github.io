@@ -275,25 +275,23 @@ window.addEventListener("load", function () {
     InteractiveChessboard("chess-puzzle-board-4", {
         position: "8/1P6/8/7p/6p1/2P1kp2/6r1/5K1R b - - 0 54",
         solution: [
-            ["g2", "b2", "bR", "Rb2!"],
-            ["b2", "b8", "bR", "Rxb8!"],
+            ["g2", "c2", "bR", "Rc2!"],
             ["g4", "g3", "bP", "g3"],
-            ["b8", "b1", "bR", "Rb1#"],
+            ["c2", "c1", "bR", "Rc1#"],
+            // ["b2", "b8", "bR", "Rxb8!"],
         ],
         responses: [
-            ["b7-b8=Q", "b8=Q"],
             ["f1-g1", "Kg1"],
-            ["h1-h5", "Rxh5"],
+            ["b7-b8=Q", "b8=Q"],
+            // ["f1-g1", "Kg1"],
+            // ["h1-h5", "Rxh5"],
         ],
         markings: [
             [
                 [ "b7", "blunder" ],
             ],
             [
-                [ "b2", "excellent" ],
-            ],
-            [
-                [ "b8", "excellent" ],
+                [ "c2", "excellent" ],
             ],
             null,
             [
