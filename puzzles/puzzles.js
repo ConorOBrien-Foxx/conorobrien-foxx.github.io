@@ -4,17 +4,19 @@ const BASE_CONFIG = {
     moveSpeed: 200,
 };
 
+const SQUARE_CLASS = "square-55d63";
+
 const InteractiveChessboard = (id, cfg) => {
     let playerToMove = cfg.position.split(" ")[1];
-    
-    // console.log(playerToMove);
     
     let baseElement = document.getElementById(id);
     let parent = baseElement.parentElement;
     let moveOrder = parent.querySelector(".move-order ol");
     let messageHolder = parent.querySelector(".message");
+    let config;
     
     let state = {
+        // variables
         playerToMove,
         moveOrder,
         board: null,
@@ -22,6 +24,9 @@ const InteractiveChessboard = (id, cfg) => {
         solutions: cfg.solutions ?? [ cfg.solution ],
         responses: cfg.responses,
         solutionIndex: 0,
+        tapMove: null,
+        nextMoveDelay: 100, //ms
+        // methods
         get currentStep() {
             return this.solutions.map(solution => solution[this.solutionIndex]);
         },
@@ -64,11 +69,15 @@ const InteractiveChessboard = (id, cfg) => {
                     messageHolder.textContent += " " + cfg.info;
                 }
             }
-            if(!this.responses[this.solutionIndex]) {
+            
+            let [ move, moveReadable ] = this.responses[this.solutionIndex] ?? [];
+            this.solutionIndex++;
+            this.updateMarkings();
+            
+            if(!move) {
                 return;
             }
-            let [ move, moveReadable ] = this.responses[this.solutionIndex];
-            this.solutionIndex++;
+            
             setTimeout(() => {
                 if(playerToMove === "b") {
                     li = document.createElement("li");
@@ -88,28 +97,62 @@ const InteractiveChessboard = (id, cfg) => {
                             [promoteSquare]: pos[promoteSquare][0] + promotion,
                         }));
                         // TODO: use our move speed instead
-                    }, BASE_CONFIG.moveSpeed);
+                    }, config.moveSpeed);
                 }
-            }, this.delay);
+            }, this.nextMoveDelay);
         },
-        delay: 100, //ms
-    };
-    
-    let config = Object.assign({}, BASE_CONFIG, cfg, {
-        onDragStart(source, piece, position, orientation) {
-            return !state.solved && piece[0] === state.playerToMove;
+        setTapMove(source, piece) {
+            let [ oldSource, oldPiece ] = this.tapMove ?? [];
+            let targetSquare = baseElement.querySelector(`.square-${source}`);
+            if(oldSource === source) {
+                this.tapMove = null;
+                targetSquare.classList.remove("highlight-selected");
+            }
+            else {
+                if(oldSource) {
+                    let oldSquare = baseElement.querySelector(`.square-${oldSource}`);
+                    oldSquare.classList.remove("highlight-selected");
+                }
+                this.tapMove = [ source, piece ];
+                targetSquare.classList.add("highlight-selected");
+            }
+            // console.log(source);
         },
-        onDrop(source, target, piece, newPos, oldPos, orientation) {
-            if(source === target) {
-                // ignore
+        removeTapMove() {
+            if(this.tapMove) {
+                this.setTapMove(...this.tapMove);
+            }
+        },
+        handleTapEnd(ev) {
+            if(!this.tapMove) {
                 return;
             }
-            let anySolution = state.currentStep.find(expectedSolution => {
+            let [ source, piece ] = this.tapMove;
+            let sourceSquare = baseElement.querySelector(`.square-${source}`);
+            sourceSquare.classList.remove("highlight-selected");
+            
+            let square = ev.target.closest("." + SQUARE_CLASS);
+            let target = square.dataset.square;
+            
+            this.tapMove = null;
+            
+            this.processMove(source, target, piece, true);
+        },
+        processMove(source, target, piece, makeMove = false) {
+            console.log(source, target, piece);
+            let anySolution = this.currentStep.find(expectedSolution => {
                 let [ expectedSource, expectedTarget, expectedPiece ] = expectedSolution;
                 return source === expectedSource && target === expectedTarget && piece === expectedPiece;
             });
+            this.removeTapMove();
             if(anySolution) {
-                state.nextMove(source, target, piece);
+                if(makeMove) {
+                    this.board.move(`${source}-${target}`);
+                    setTimeout(() => this.nextMove(source, target, piece), config.moveSpeed);
+                }
+                else {
+                    this.nextMove(source, target, piece);
+                }
             }
             else {
                 messageHolder.textContent = "That's not it.";
@@ -117,8 +160,49 @@ const InteractiveChessboard = (id, cfg) => {
                 return "snapback";
             }
         },
+        updateMarkings() {
+            let oldMarkings = config.markings?.[this.solutionIndex - 1];
+            
+            oldMarkings?.forEach(([ target, classes ]) => {
+                let squareToUnmark = baseElement.querySelector(`.square-${target}`);
+                // console.log(squareToUnmark, squareToUnmark.className);
+                squareToUnmark.className = squareToUnmark.className.replace(` highlight-movetype ${classes}`, "");
+            });
+            
+            let newMarkings = config.markings?.[this.solutionIndex];
+            
+            newMarkings?.forEach(([ target, classes ]) => {
+                let squareToMark = baseElement.querySelector(`.square-${target}`);
+                squareToMark.className += ` highlight-movetype ${classes}`;
+            });
+        },
+    };
+    
+    
+    config = Object.assign({}, BASE_CONFIG, cfg, {
+        onDragStart(source, piece, position, orientation) {
+            let isValid = !state.solved && piece[0] === state.playerToMove;
+            
+            if(isValid) {
+                state.setTapMove(source, piece);
+            }
+            
+            return isValid;
+        },
+        onDrop(source, target, piece, newPos, oldPos, orientation) {
+            if(source === target) {
+                // ignore
+                return;
+            }
+            return state.processMove(source, target, piece);
+        },
     });
-    return state.board = Chessboard(id, config);
+    state.board = Chessboard(id, config);
+    
+    baseElement.addEventListener("click", ev => state.handleTapEnd(ev));
+    state.updateMarkings();
+    
+    return state.board;
 }
 
 window.addEventListener("load", function () {
@@ -134,6 +218,17 @@ window.addEventListener("load", function () {
             ["e8-f7", "Kf7"],
             ["f7-e6", "Kxe6"],
         ],
+        markings: [
+            [
+                [ "e6", "mistake" ],
+            ],
+            [
+                [ "e6", "brilliant" ],
+            ],
+            [
+                [ "e1", "excellent" ],
+            ],
+        ],
         info: "22... Qxe1+?! also works, but is more dangerous for black's king after 23. Rxe1+.",
     });
     
@@ -146,6 +241,15 @@ window.addEventListener("load", function () {
         responses: [
             ["c6-d8", "Nxd8"],
         ],
+        markings: [
+            [
+                [ "d8", "mistake" ],
+            ],
+            [
+                [ "d8", "brilliant" ],
+            ],
+            null,
+        ],
         info: null,
     });
     
@@ -155,6 +259,14 @@ window.addEventListener("load", function () {
             ["c8", "d6", "bN", "Nd6#!"],
         ],
         responses: [
+        ],
+        markings: [
+            [
+                [ "h5", "blunder" ],
+            ],
+            [
+                [ "d6", "excellent" ],
+            ],
         ],
         orientation: "black",
         info: null,
@@ -173,6 +285,21 @@ window.addEventListener("load", function () {
             ["f1-g1", "Kg1"],
             ["h1-h5", "Rxh5"],
         ],
+        markings: [
+            [
+                [ "b7", "blunder" ],
+            ],
+            [
+                [ "b2", "excellent" ],
+            ],
+            [
+                [ "b8", "excellent" ],
+            ],
+            null,
+            [
+                [ "g1", "mate" ],
+            ],
+        ],
         orientation: "black",
         info: null,
     });
@@ -180,12 +307,20 @@ window.addEventListener("load", function () {
     InteractiveChessboard("chess-puzzle-board-5", {
         position: "2kr1q1r/1ppb2pp/p1n1pn2/1B1p1p2/5P2/1PN1PN2/P1PPQ1PP/R4RK1 w - - 0 12",
         solution: [
-            ["b5", "a6", "wB", "Bxc6!!"],
+            ["b5", "a6", "wB", "Bxa6!!"],
             ["e2", "a6", "wQ", "Qxa6+"],
         ],
         responses: [
             ["b7-a6", "bxa6"],
             ["c8-b8", "Kb8"],
+        ],
+        markings: [
+            [
+                [ "a6", "move" ],
+            ],
+            [
+                [ "a6", "brilliant" ],
+            ],
         ],
         info: null,
     });
@@ -213,6 +348,20 @@ window.addEventListener("load", function () {
             ["e3-d4", "exd4"],
             ["f3-e4", "Be4"],
         ],
+        markings: [
+            [
+                [ "d4", "blunder" ],
+            ],
+            null,
+            [
+                [ "e6", "great" ],
+                [ "e7", "great" ],
+                [ "e8", "great" ],
+            ],
+            [
+                [ "e2", "mate" ],
+            ]
+        ],
         orientation: "black",
         info: null,
     });
@@ -223,6 +372,14 @@ window.addEventListener("load", function () {
             ["e8", "e1", "bR", "Re1#"],
         ],
         responses: [
+        ],
+        markings: [
+            [
+                [ "d4", "blunder" ],
+            ],
+            [
+                [ "d1", "mate" ],
+            ]
         ],
         orientation: "black",
         info: null,
@@ -252,6 +409,18 @@ window.addEventListener("load", function () {
             [ "g1-h1", "Kh1" ],
             [ "h1-g1", "Kg1" ],
         ],
+        markings: [
+            [
+                [ "g7", "blunder" ],
+            ],
+            [
+                [ "h2", "excellent" ],
+            ],
+            null,
+            [
+                [ "g1", "mate" ],
+            ],
+        ],
         orientation: "black",
         info: "16... Qxh2+ is winning, of course, but the King escapes, and lives a little longer.",
     });
@@ -267,6 +436,21 @@ window.addEventListener("load", function () {
             [ "d8-e8", "Ke8" ],
             [ "a8-d8", "Rxd8" ],
         ],
+        markings: [
+            [
+                [ "d7", "blunder" ],
+            ],
+            [
+                [ "d7", "excellent" ],
+            ],
+            null,
+            [
+                [ "e8", "mate" ],
+            ]
+        ],
         info: "If 24...Kb8, the same exact sequence from white symmetrically produces checkmate.",
     });
+    
+    // prevent mobile dragging around
+    $(".chess-puzzle > .chess-board").on("touchmove", ev => ev.preventDefault());
 });

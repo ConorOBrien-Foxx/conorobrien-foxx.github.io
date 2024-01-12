@@ -72,17 +72,36 @@
     font-style: italic;
 }
 .mistake {
-    color: #E58F2A;
+    color: #E58F2A !important;
 }
 .blunder {
-    color: #CA3431
+    color: #CA3431 !important;
 }
 .excellent {
-    color: #5C8BB0;
+    color: #5C8BB0 !important;
 }
 .brilliant {
-    color: #1BACA6;
+    color: #1BACA6 !important;
 }
 .great {
-    color: #95BB4A;
+    color: #95BB4A !important;
+}
+.mate {
+    color: #333 !important;
+}
+.move {
+    color: rgb(255, 0, 255, 0.4) !important;
+}
+
+.square-55d63 {
+    /* transition: box-shadow 300ms; */
+    /* box-shadow: none; */
+}
+
+.highlight-movetype {
+    box-shadow: inset 0 0 6px 6px;
+}
+
+.highlight-selected {
+    box-shadow: inset 0 0 3px 3px var(--highlight);
 }
