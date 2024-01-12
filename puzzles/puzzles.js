@@ -392,6 +392,18 @@ window.addEventListener("load", function () {
         responses: [
             ["h1-g2", "Kg2"],
         ],
+        markings: [
+            [
+                [ "h1", "move" ],
+            ],
+            [
+                // [ "a1", "move" ],
+                // [ "g2", "move" ],
+            ],
+            [
+                // [ "h1", "move" ],
+            ]
+        ],
         orientation: "black",
         info: "TODO: Allow the puzzle solver to choose a piece to promote to, and display their choice.",
     });
