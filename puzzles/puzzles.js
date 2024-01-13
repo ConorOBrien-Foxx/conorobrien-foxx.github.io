@@ -1,3 +1,5 @@
+// TODO: add puzzle reset/move navigation
+
 const BASE_CONFIG = {
     draggable: true,
     pieceTheme: "https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png",
@@ -26,8 +28,9 @@ const InteractiveChessboard = (id, cfg) => {
         solutionIndex: 0,
         tapMove: null,
         nextMoveDelay: 100, //ms
+        marked: [],
         // methods
-        get currentStep() {
+        getCurrentStep() {
             return this.solutions.map(solution => solution[this.solutionIndex]);
         },
         nextMove(source, target, piece) {
@@ -44,13 +47,14 @@ const InteractiveChessboard = (id, cfg) => {
             });
             
             let span = document.createElement("span");
-            span.textContent = this.currentStep[0][3];
+            span.textContent = this.getCurrentStep()[0][3];
             if(span.textContent.endsWith("!!")) {
                 span.className = "brilliant";
             }
             else if(span.textContent.endsWith("!")) {
                 span.className = "excellent";
             }
+            span.className += "added";
             li.appendChild(span);
             
             if(playerToMove === "w") {
@@ -85,6 +89,7 @@ const InteractiveChessboard = (id, cfg) => {
                 }
                 let span = document.createElement("span");
                 span.textContent = moveReadable;
+                span.className = "added";
                 li.appendChild(span);
                 let [ whole, justMove, promotion ] = move.match(/^(.+?)(?:=(.))?$/);
                 console.log(justMove);
@@ -140,7 +145,7 @@ const InteractiveChessboard = (id, cfg) => {
         },
         processMove(source, target, piece, makeMove = false) {
             console.log(source, target, piece);
-            let anySolution = this.currentStep.find(expectedSolution => {
+            let anySolution = this.getCurrentStep().find(expectedSolution => {
                 let [ expectedSource, expectedTarget, expectedPiece ] = expectedSolution;
                 return source === expectedSource && target === expectedTarget && piece === expectedPiece;
             });
@@ -160,24 +165,68 @@ const InteractiveChessboard = (id, cfg) => {
                 return "snapback";
             }
         },
-        updateMarkings() {
-            let oldMarkings = config.markings?.[this.solutionIndex - 1];
-            
-            oldMarkings?.forEach(([ target, classes ]) => {
+        markCell(target, classes) {
+            if(this.marked.some(([ otherTarget, otherClasses ]) => 
+                otherTarget === target && otherClasses === classes
+            )) {
+                // do not duplicate
+                return false;
+            }
+            this.marked.push([ target, classes ]);
+            let squareToMark = baseElement.querySelector(`.square-${target}`);
+            squareToMark.className += ` highlight-movetype ${classes}`;
+            return true;
+        },
+        clearMarked() {
+            this.marked.forEach(([ target, classes ]) => {
                 let squareToUnmark = baseElement.querySelector(`.square-${target}`);
                 // console.log(squareToUnmark, squareToUnmark.className);
-                squareToUnmark.className = squareToUnmark.className.replace(` highlight-movetype ${classes}`, "");
+                squareToUnmark.classList.remove("highlight-movetype");
+                classes.split(" ").forEach(klass => {
+                    squareToUnmark.classList.remove(klass);
+                });
             });
+            
+            this.marked = [];
+        },
+        updateMarkings() {
+            this.clearMarked();
             
             let newMarkings = config.markings?.[this.solutionIndex];
             
             newMarkings?.forEach(([ target, classes ]) => {
-                let squareToMark = baseElement.querySelector(`.square-${target}`);
-                squareToMark.className += ` highlight-movetype ${classes}`;
+                this.markCell(target, classes);
+            });
+        },
+        markHint() {
+            if(!this.solutions[0]?.[this.solutionIndex]) {
+                return;
+            }
+            let firstHintGiven = !this.markCell(
+                this.solutions[0][this.solutionIndex][0],
+                "hint",
+            );
+            if(firstHintGiven) {
+                this.markCell(
+                    this.solutions[0][this.solutionIndex][1],
+                    "hint",
+                );
+            }
+        },
+        reset(originalState) {
+            Object.assign(state, originalState);
+            state.board = Chessboard(id, config);
+            state.updateMarkings();
+            moveOrder.querySelectorAll(".added").forEach(el => {
+                el.remove();
+            });
+            moveOrder.querySelectorAll("li").forEach(el => {
+                if(!el.children.length) {
+                    el.remove();
+                }
             });
         },
     };
-    
     
     config = Object.assign({}, BASE_CONFIG, cfg, {
         onDragStart(source, piece, position, orientation) {
@@ -201,6 +250,27 @@ const InteractiveChessboard = (id, cfg) => {
     
     baseElement.addEventListener("click", ev => state.handleTapEnd(ev));
     state.updateMarkings();
+    
+    let originalState = Object.assign({}, state);
+    
+    let controls = document.createElement("div");
+    controls.className = "puzzle-controls";
+    
+    let resetButton = document.createElement("button");
+    resetButton.textContent = "Reset";
+    resetButton.addEventListener("click", function () {
+        state.reset(originalState);
+    });
+    
+    let hintButton = document.createElement("button");
+    hintButton.textContent = "Hint";
+    hintButton.addEventListener("click", function () {
+        state.markHint();
+    });
+    
+    controls.appendChild(resetButton);
+    controls.appendChild(hintButton);
+    parent.after(controls);
     
     return state.board;
 }
@@ -459,6 +529,87 @@ window.addEventListener("load", function () {
             ]
         ],
         info: "If 24...Kb8, the same exact sequence from white symmetrically produces checkmate.",
+    });
+    
+    InteractiveChessboard("chess-puzzle-board-11", {
+        position: "1k1r3r/p7/Qpp4b/3q1p2/3p1P2/PPP3KP/5P2/3RR3 b - - 5 26",
+        solution: [
+            ["d8", "g8", "bR", "Rdg8+"],
+            ["h6", "f4", "bB", "Bxf4#"],
+        ],
+        responses: [
+            ["g3-h2", "Kh2"]
+        ],
+        markings: [
+            [
+                ["g3", "blunder"],
+            ],
+            null,
+            [
+                ["h2", "mate"],
+            ],
+        ],
+        orientation: "black",
+        info: "If 27.Kh4, then the same Bxf4# (or Bf8#), discovered checkmate.",
+    });
+    
+    InteractiveChessboard("chess-puzzle-board-12", {
+        position: "3R4/6pk/2p4p/2R5/2n5/4B2P/5PPK/1q6 b - - 1 42",
+        solution: [
+            ["c4", "e3", "bN", "Nxe3!"],
+            ["b1", "b6", "bQ", "Qb6!"],
+            ["c6", "d5", "bP", "cxd5"],
+            ["b6", "e3", "bQ", "Qxe3"],
+        ],
+        responses: [
+            ["f2-e3", "fxe3"],
+            ["d8-d5", "Rdd5"],
+            ["c5-d5", "Rxd5"],
+        ],
+        markings: [
+            [
+                ["c5", "blunder"],
+            ],
+            [
+                ["e3", "excellent"],
+            ],
+            [
+                ["b6", "excellent"],
+            ],
+            null,
+            [
+                ["e3", "great"],
+            ],
+        ],
+        orientation: "black",
+        info: "Although 43.fxe3 is certainly not forced, it is the most forcing move: Whereas with followups like Re5, black is spoiled for choice, the only move for black after 43.fxe3 is the tactical solution 43...Qb6.",
+    });
+    
+    InteractiveChessboard("chess-puzzle-board-13", {
+        position: "8/2p2p1k/p1b3pp/5Q2/1Pq1PR2/6P1/P4RKP/3r4 w - - 0 45",
+        solution: [
+            ["f5", "f7", "wQ", "Qxf7+"],
+            ["f4", "f7", "wR", "Rxf7+"],
+            ["f7", "f8", "wR", "Rf8+"],
+            ["f2", "f7", "wR", "R2f7#"],
+        ],
+        responses: [
+            ["c4-f7", "Qxf7"],
+            ["h7-g8", "Kg8"],
+            ["g8-g7", "Kg7"],
+        ],
+        markings: [
+            [
+                ["g6", "blunder"],
+            ],
+            null,
+            null,
+            null,
+            [
+                ["g7", "mate"],
+            ]
+        ],
+        info: null,
     });
     
     // prevent mobile dragging around
