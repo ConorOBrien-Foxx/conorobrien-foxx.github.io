@@ -533,9 +533,15 @@ window.addEventListener("load", function () {
     
     InteractiveChessboard("chess-puzzle-board-11", {
         position: "1k1r3r/p7/Qpp4b/3q1p2/3p1P2/PPP3KP/5P2/3RR3 b - - 5 26",
-        solution: [
-            ["d8", "g8", "bR", "Rdg8+"],
-            ["h6", "f4", "bB", "Bxf4#"],
+        solutions: [
+            [
+                ["d8", "g8", "bR", "Rdg8+"],
+                ["h6", "f4", "bB", "Bxf4#"],
+            ],
+            [
+                ["d8", "g8", "bR", "Rdg8+"],
+                ["d5", "g2", "bQ", "Qg2#"],
+            ],
         ],
         responses: [
             ["g3-h2", "Kh2"]
@@ -550,7 +556,7 @@ window.addEventListener("load", function () {
             ],
         ],
         orientation: "black",
-        info: "If 27.Kh4, then the same Bxf4# (or Bf8#), discovered checkmate.",
+        info: "If 27.Kh4, then Bxf4# (or Bf8#), discovered checkmate.",
     });
     
     InteractiveChessboard("chess-puzzle-board-12", {
