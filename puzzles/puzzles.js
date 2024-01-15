@@ -17,6 +17,16 @@ const InteractiveChessboard = (id, cfg) => {
     let messageHolder = parent.querySelector(".message");
     let config;
     
+    const addMoveClasses = span => {
+        if(span.textContent.endsWith("!!")) {
+            span.className = "brilliant";
+        }
+        else if(span.textContent.endsWith("!")) {
+            span.className = "excellent";
+        }
+        span.className += " added";
+    };
+    
     let state = {
         // variables
         playerToMove,
@@ -48,13 +58,7 @@ const InteractiveChessboard = (id, cfg) => {
             
             let span = document.createElement("span");
             span.textContent = this.getCurrentStep()[0][3];
-            if(span.textContent.endsWith("!!")) {
-                span.className = "brilliant";
-            }
-            else if(span.textContent.endsWith("!")) {
-                span.className = "excellent";
-            }
-            span.className += "added";
+            addMoveClasses(span);
             li.appendChild(span);
             
             if(playerToMove === "w") {
@@ -89,7 +93,7 @@ const InteractiveChessboard = (id, cfg) => {
                 }
                 let span = document.createElement("span");
                 span.textContent = moveReadable;
-                span.className = "added";
+                addMoveClasses(span);
                 li.appendChild(span);
                 let [ whole, justMove, promotion ] = move.match(/^(.+?)(?:=(.))?$/);
                 console.log(justMove);
@@ -616,6 +620,37 @@ window.addEventListener("load", function () {
             ]
         ],
         info: null,
+    });
+    
+    InteractiveChessboard("chess-puzzle-board-14", {
+        position: "r1b2rk1/ppq2ppp/2pbp3/Pn2N3/1P1P1B2/1Q4P1/5P1P/3RKB1R b K - 3 18",
+        solution: [
+            ["b5", "d4", "bN", "Nxd4!!"],
+            ["d6", "e5", "bB", "Bxe5"],
+            ["c7", "e5", "bQ", "Qxe5+"],
+        ],
+        responses: [
+            ["d1-d4", "Rxd4"],
+            ["f4-e5", "Bxe5"],
+            ["b3-e3", "Qe3!"],
+        ],
+        markings: [
+            [
+                ["d1", "mistake"],
+            ],
+            [
+                ["d4", "brilliant"],
+            ],
+            [
+                ["e5", "great"],
+            ],
+            [
+                ["e5", "great"],
+                ["e3", "excellent"],
+            ],
+        ],
+        orientation: "black",
+        info: "Black's plan from here involves either a queen trade or retreating the queen, but both are respectable.",
     });
     
     // prevent mobile dragging around
