@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N67W0KBG4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+
+      gtag("config", "G-5N67W0KBG4");
+    </script>
+    <meta charset="UTF-8">
+    <title>Languages | Conor O'Brien</title>
+    <link rel="STYLESHEET" href="./main.css">
+    <script src="tag-filter.js"></script>
+</head>
+<body>
+    <header>
+        <a href="./">Conor O'Brien</a>
+        <div>
+            <a href="./">About</a> &sdot; <a href="./contact">Contact</a> &sdot; <a href="./projects">Projects</a> &sdot; <a href="./papers">Papers</a>
+        </div>
+    </header>
+    <div>
+        <h1>Languages</h1>
+        <p>Programming language design and implementation has always been one of my greatest coding passions. For a time in my life, implementing small, unique programming languages was something I did on a weekly basis. I am now at the point in my life where, although I do not design languages with such frequency, I want to look over all that I've done, and chronicle all the languages I've made. Early on, I had a bad habit of not including any relevant code in the main/master branch, but everything in the gh-pages branch.</p>
+        <p>I've sorted them here chronologically. You can also click on the tags to filter by languages with them (eventually, when I get around to implementing that. Ctrl+F should work in the meantime.):</p>
+        <p>
+            <span class="action tag">unimplemented</span>
+            <span class="action tag">esolang</span>
+            <span class="action tag">praclang</span>
+            <span class="action tag">golf</span>
+        </p>
+        <h2>Contents</h2>
+        <ol>
+            <li><a href="#Simplex">Simplex</a></li>
+            <li><a href="#Nary">Nary</a></li>
+            <li><a href="#Cha_ne">Chaîne</a></li>
+            <li><a href="#dash">-</a></li>
+            <li><a href="#Merucik">Merucik</a></li>
+            <li><a href="#Comm">Comm</a></li>
+            <li><a href="#EarthBit">~EarthBit</a></li>
+            <li><a href="#Jolf">Jolf</a></li>
+            <li><a href="#GoLScript">GoLScript</a></li>
+            <li><a href="#Sindesi">Sindesi</a></li>
+            <li><a href="#Emotinomicon">Emotinomicon</a></li>
+            <li><a href="#Brainbash">Brainbash</a></li>
+            <li><a href="#Oration">Oration</a></li>
+            <li><a href="#NTFJ">NTFJ</a></li>
+            <li><a href="#CodenameDragon">Codename Dragon</a></li>
+            <li><a href="#Y">Y</a></li>
+            <li><a href="#Pris">Pris</a></li>
+            <li><a href="#Reng">Reng</a></li>
+            <li><a href="#Constant">Constant</a></li>
+            <li><a href="#dotKill">.kill();</a></li>
+            <li><a href="#ITML">ITML</a></li>
+            <li><a href="#yup">yup</a></li>
+            <li><a href="#vectil">vectil</a></li>
+            <li><a href="#reticular">reticular</a></li>
+            <li><a href="#Confiture">Confiture</a></li>
+            <li><a href="#jext">jext</a></li>
+            <li><a href="#stacked">stacked</a></li>
+            <li><a href="#Somme">Somme</a></li>
+            <li><a href="#Maverick">Maverick</a></li>
+            <li><a href="#PyramidScheme">Pyramid Scheme</a></li>
+            <li><a href="#Sir">Sir</a></li>
+            <li><a href="#Chain">Chain</a></li>
+            <li><a href="#Betrothed">Betrothed</a></li>
+            <li><a href="#Kevin">Kevin</a></li>
+            <li><a href="#Spectrum">Spectrum</a></li>
+            <li><a href="#shp">;#+</a></li>
+            <li><a href="#str">str</a></li>
+            <li><a href="#ExtraC">ExtraC</a></li>
+            <li><a href="#eacal">eacal</a></li>
+            <li><a href="#Spaced">Spaced</a></li>
+            <li><a href="#stac">stac</a></li>
+            <li><a href="#Corea">Corea</a></li>
+            <li><a href="#OML">OML</a></li>
+            <li><a href="#xeraph">xeraph</a></li>
+            <li><a href="#Alumin">Alumin</a></li>
+            <li><a href="#Attache">Attache</a></li>
+            <li><a href="#categorized">categorized</a></li>
+            <li><a href="#kavod">kavod</a></li>
+            <li><a href="#Locksmith">Locksmith</a></li>
+            <li><a href="#LOWER">LOWER</a></li>
+            <li><a href="#Premier">Premier</a></li>
+            <li><a href="#Phooey">Phooey</a></li>
+            <li><a href="#memGAP">memGAP</a></li>
+            <li><a href="#Tir">Tir</a></li>
+            <li><a href="#Datache">Datache</a></li>
+            <li><a href="#DScript">DScript</a></li>
+            <li><a href="#Fynyl">Fynyl</a></li>
+            <li><a href="#Tidy">Tidy</a></li>
+            <li><a href="#Quadro">Quadro</a></li>
+            <li><a href="#Geuru">Geuru</a></li>
+            <li><a href="#smol">smol</a></li>
+            <li><a href="#Minat">Minat</a></li>
+            <li><a href="#ecndpcaalrlp">!@#$%^&*()_+</a></li>
+            <li><a href="#FQR">FQR</a></li>
+            <li><a href="#Twue">Twue</a></li>
+            <li><a href="#Airja">Airja</a></li>
+            <li><a href="#Peculi">Peculi</a></li>
+            <li><a href="#Owl">Owl</a></li>
+            <li><a href="#Myby">Myby</a></li>
+            <li><a href="#X">X</a></li>
+            <li><a href="#semi4">;;;;</a></li>
+            <li><a href="#PLIS">PLIS</a></li>
+            <li><a href="#Taste">Taste</a></li>
+            <li><a href="#oxy">oxy</a></li>
+            <li><a href="#CIR">CIR</a></li>
+            <li><a href="#StellerJ">StellerJ</a></li>
+            <li><a href="#mkgg">mkgg</a></li>
+            <li><a href="#Jaguar">Jaguar</a></li>
+            <li><a href="#Heist">Heist</a></li>
+            <li><a href="#Cabsi">Cabsi</a></li>
+            <li><a href="#Glint">Glint</a></li>
+            <li><a href="#SeraisToi">Serais-Toi?</a></li>
+            <li><a href="#Junction">Junction</a></li>
+            <li><a href="#Dyia">Dyia</a></li>
+        </ol>
+        
+        <h2 id="Simplex">Simplex (<a href="https://github.com/ConorOBrien-Foxx/Simplex" target="_blank">GitHub</a> &sdot; <a href="https://github.com/ConorOBrien-Foxx/SimplexOld" target="_blank">Old GitHub</a>)</h2>
+        <span class="subtitle">Oct 12, 2015&ndash;Sep 17, 2019</span> <span class="tag">esolang</span>
+        <p>TODO: describe</p>
+        
+        <h2 id="Nary">Nary (<a href="https://esolangs.org/wiki/Nary" target="_blank">Esolangs</a>)</h2>
+        <span class="subtitle">Oct 27&ndash;28, 2015</span> <span class="tag">esolang</span>
+        <p>TODO: describe</p>
+        
+        <h2 id="Cha_ne">Chaîne (<a href="https://github.com/ConorOBrien-Foxx/Cha-ne" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Oct 31&ndash;Dec 27, 2015</span> <span class="tag">esolang</span>
+        <p>TODO: describe</p>
+        
+        <h2 id="dash">- (<a href="https://github.com/ConorOBrien-Foxx/-" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">November 10, 2015</span> <span class="tag">unimplemented</span> <span class="tag">esolang</span>
+        <p>Aka &ldquo;dash&rdquo;, not to be confused with the shell. Name apparently chosen by my Witty Younger Self, &ldquo;Because GitHub won't allow the use of a space.&rdquo; I suppose I would have named the language a single space were it not for technical limitations.</p>
+        <p>A language which conceptually could operate under 3 programming paradigms via specifying the command: <code>O</code> for object-oriented programming, <code>S</code> for stack-based programming, and <code>T</code> for tape-based programming (à la <a href="https://esolangs.org/wiki/Brainfuck" target="_blank">Brainfuck</a>). Almost 10 years ago, I'm not sure exactly what I had in mind for the language&mdash;beyond the specification of loop instructions, I don't have any information on this language.</p>
+        
+        <h2 id="Merucik">Merucik (<a href="https://esolangs.org/wiki/Merucik" target="_blank">Esolangs</a>)</h2>
+        <span class="subtitle">November 12, 2015</span> <span class="tag">esolang</span>
+        <p>TODO: describe</p>
+        
+        <h2 id="Comm">Comm (<a href="https://github.com/ConorOBrien-Foxx/Comm" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">November 18&ndash;19, 2015</span> <span class="tag">esolang</span>
+        <p>A short-lived experiment into a <em>comm</em>unally-designed programming language. The idea was that people could open GitHub issues with a feature request for a specific command in the language. I would then implement it and add it to the documentation. Even though one of the commands was also paradigm-switching like <a href="dash">-</a> did, it was actually another person's idea. The language is woefully underimplemented.</p>
+        
+        <h2 id="EarthBit">~EarthBit (<a href="https://esolangs.org/wiki/~EarthBit" target="_blank">Esolangs</a>)</h2>
+        <span class="subtitle">November 18&ndash;19, 2015</span> <span class="tag">esolang</span> <span class="tag">unimplemented</span>
+        <p>TODO: describe.</p>
+        
+        <h2 id="Jolf">Jolf (<a href="https://github.com/ConorOBrien-Foxx/Jolf" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Nov 21, 2015&ndash;Nov 2, 2017</span> <span class="tag">esolang</span> <span class="tag">golf</span>
+        <p>TODO: describe.</p>
+        
+        <h2 id="GoLScript">GoLScript (<a href="https://github.com/ConorOBrien-Foxx/GoLScript" target="_blank">GitHub</a> &sdot; <a href="http://conorobrien-foxx.github.io/GoLScript/interpreter.html">Interpreter</a>)</h2>
+        <span class="subtitle">Dec 11, 2015&ndash;Mar 24, 2016</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        <h2 id="Sindesi">Sindesi (<a href="https://github.com/ConorOBrien-Foxx/Sindesi" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Dec 13, 2015</span> <span class="tag">esolang</span>
+        <p>A basic prototype aiming to provide a more consice format for representing <a href="https://www.desmos.com/" target="_blank">Desmos</a> &ldquo;programs&rdquo;. The language is a glorified find-and-replace with some convenience functions.</p>
+        
+        <h2 id="Emotinomicon">Emotinomicon (<a href="https://github.com/ConorOBrien-Foxx/Emotinomicon" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Dec 20, 2015&ndash;Aug 15, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Brainbash">Brainbash (<a href="https://github.com/ConorOBrien-Foxx/Brainbash" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Jan 20, 2016&ndash;Dec 10, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        <h2 id="Oration">Oration (<a href="https://github.com/ConorOBrien-Foxx/Assorted-Programming-Languages/tree/master/oration" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Feb 1&ndash;Apr 28, 2016</span> <span class="tag">esolang</span>
+        <p>TODO: describe</p>
+        
+        
+        <h2 id="NTFJ">NTFJ (<a href="https://github.com/ConorOBrien-Foxx/NTFJ" target="_blank">GitHub</a> &sdot; <a href="https://tio.run/#ntfjc">Try it online!</a> &sdot; <a href="http://conorobrien-foxx.github.io/NTFJ/" target="_blank">Defunct JS Interpreter</a>)</h2>
+        <span class="subtitle">Feb 4&ndash;Mar 10, 2016</span> <span class="tag">esolang</span>
+        <p>One of my first &ldquo;proper&rdquo; esolangs, NTFJ is a stack-based, Turing tarpit. It is <em>roughly</em> equivalent to <a href="https://esolangs.org/wiki/Etre" target="_blank">Etre</a>, which is Turing complete. Here is a truth machine, a program that outputs 0 if given a 0, and repeating 1s if given a 1, along with an explanation:</p>
+        <pre><code>:*:##~~~~~#@|########@|($~^)<br/>:                               pop top of stack and push twice<br/>                                popping from an empty stack yields the input<br/>                                stack: [48, 48] (for '0') or [49, 49] (for '1')<br/> *                              output top of stack (truth machine outputs once)<br/>  :                             duplicate again<br/>   ##~~~~~#@                    push byte 0b11000001 (=193)<br/>            |                   bitwise NAND with input<br/>                                for '0' (48):<br/>                                    00110000<br/>                                AND 11000001 = 00000000<br/>                                         NOT = 11111111 = 255<br/>                                for '1' (49):<br/>                                    00110001<br/>                                AND 11000001 = 00000001<br/>                                         NOT = 11111110 = 254<br/>                                stack: [48, 255] or [49, 254]<br/>             ########@          push byte 0b11111111 (=255)<br/>                      |         bitwise NAND with the last value<br/>                                for '0' (255), 255 NAND 255 = 0<br/>                                for '1' (254):<br/>                                    11111110<br/>                                AND 11111111 = 11111110<br/>                                         NOT = 00000001<br/>                       (   )    if top of stack is 1:<br/>                        $           drop top of stack<br/>                                    stack: [49]<br/>                         ~          push 0<br/>                          ^         jump to that command in the program</code></pre>
+        
+        <h2 id="CodenameDragon">Codename Dragon (<a href="https://github.com/ConorOBrien-Foxx/Codename-Dragon" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Feb 22&ndash;26, 2016</span> <span class="tag">praclang</span>
+        <p>My first attempt at a practical language (praclang), as well as infix interpretation. Pretty dysfunctional and buggy, but it works alright.</p>
+        <p>
+            <pre><code>a &lt;- 3; b = 5; disp a, b, a + b, a..b, a .+ "40", inv a; disp &lt;&gt; + a</code></pre>
+            will prompt the user for input (say, <code>(x=>x*3)(40)</code>, as it foolishly evaluates the prompt), and output <pre><code>3<br/>5<br/>8<br/>3<br/>4<br/>5<br/>43<br/>0.3333333333333333<br/>123</code></pre> Yes, the semicolons are necessary; this language does not support lines terminated by newlines, only semicolons.
+        </p>
+            
+        
+        <h2 id="Y">Y (<a href="https://github.com/ConorOBrien-Foxx/Y" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Feb 16, 2016&ndash;Jan 28, 2020</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        <h2 id="Pris">Pris (<a href="https://github.com/ConorOBrien-Foxx/Assorted-Programming-Languages/tree/master/Pris" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">March 11, 2016&ndash;June 29, 2024</span> <span class="tag">esolang</span>
+        <p>A strange language. Commands are series of consecutive parenthetical characters (one of <code>(){}</code>), with optional <code>[]</code> characters in between. Each command has a corresponding &ldquo;mode&rdquo;, which is calculated by reading the command left-to-right, and keep track of a running accumulator which increases by 1 for each character, but <code>[</code> will instead double and add 1, and <code>]</code> will double and subtract 1. Thus, <code>)))</code> has a mode of 3, <code>(](</code> has a mode of 4, and <code>}}}}}[</code> has a mode of 9.</p>
+        <p>The language operates on two registers, termed LEFT and RIGHT. At all times, one is &ldquo;focused&rdquo; and the other is &ldquo;unfocused&rdquo;. The LEFT register is focused initially. Commands are executed based on the first character of the command.</p>
+        <ul>
+            <li><code>(</code> increases the focused register by the command's mode.</li>
+            <li><code>)</code> increases the unfocused register by command's mode.</li>
+            <li><code>{</code> focuses on the LEFT register if the command's mode is even, otherwise focuses on the RIGHT register.</li>
+            <li><code>}</code> breaks into one of 14 subcommands, depending on the exact value of the command's mode. With each description, I have included the shortest way to invoke this command.
+                <ol>
+                    <li><code>}</code> sets the focused register to the Unicode value of the first byte in the <code>prompt()</code>. This command didn't work in the original implementation since it failed to call <code>prompt</code>.</li>
+                    <li><code>}}</code> sets the focused register to the numeric value of the <code>prompt()</code>. This command didn't work in the original implementation since it failed to call <code>prompt</code>, also it did the same thing as when the mode was 1.</li>
+                    <li><code>}]</code> appends the focused register as a character to the output buffer.</li>
+                    <li><code>}]}</code> appends the focused register as a number to the output buffer.</li>
+                    <li><code>}}]</code> skips the next command if the focused register is nonzero.</li>
+                    <li><code>}}]}</code> sets the instruction pointer to the value of the unfocused register.</li>
+                    <li><code>}]]</code> sets the instruction pointer to the value of the unfocused register if and only if the focused register is nonzero.</li>
+                    <li><code>}]]}</code> adds the unfocused register to the focused register.</li>
+                    <li><code>}}][</code> multiples the focused register by the unfocused register.</li>
+                    <li><code>}}][}</code> divides the focused register by the unfocused register.</li>
+                    <li><code>}}]]</code> subtracts the unfocused register from the focused register.</li>
+                    <li><code>}}]]}</code> increments the focused register.</li>
+                    <li><code>}]][</code> decrements the focused register.</li>
+                    <li><code>}]][}</code> outputs the output buffer and clears its contents. I added this command (6/29/2024) after changing the behavior of the output buffer commands to not output every time a character was appended.</li>
+                </ol>
+            </code>
+        </ul>
+        <p>This language, as implemented, is not Turing complete, as it has finite memory cells (native JavaScript floating point numbers), and even if it used Bignums, it would not be reducible to, say, <a href="https://esolangs.org/wiki/Collatz_function#Reduction_to_3-cell_brainfuck">3-cell brainfuck</a>, due to only having 2 values, or really only 1 value if you use the unfocused register to simulate looping.</p>
+        <p>Here is a program that outputs <code>Hello, World!</code>: <pre><code>(]]]((]](}}}(]]][}}}(]]}}} }}}(]}}}{(][][](}}}{{}}]] }}]](][[}}}(]][]]}}}(][]](}}}(]}}}{(]]]]](}}}{{}}]](][]]][(}}}{}}]](]][[}}}</code></pre></p>
+        
+        <h2 id="Reng">Reng (<a href="https://github.com/ConorOBrien-Foxx/Reng" target="_blank">GitHub</a> &sdot; <a href="https://github.com/ConorOBrien-Foxx/Assorted-Programming-Languages/tree/master/Constant">Old GitHub</a> &sdot; <a href="https://conorobrien-foxx.github.io/Reng/reng.html" target="_blank">Interpreter</a>)</h2>
+        <span class="subtitle">Mar 19, 2016&ndash;July 31, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe</p>
+        
+        <h2 id="Constant">Constant (<a href="https://github.com/ConorOBrien-Foxx/Assorted-Programming-Languages/tree/master/Constant" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Apr 3, 2016</span> <span class="tag">esolang</span>
+        <p>TODO: describe</p>
+        
+        <h2 id="dotKill">.kill(); (<a href="https://github.com/ConorOBrien-Foxx/Assorted-Programming-Languages/tree/master/dotKill" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Apr 8, 2016</span> <span class="tag">esolang</span>
+        <p>TODO: describe</p>
+        
+        
+        <h2 id="ITML">ITML (<a href="https://github.com/ConorOBrien-Foxx/ITML" target="_blank">GitHub</a> &sdot; <a href="http://conorobrien-foxx.github.io/ITML/" target="_blank">Website</a>)</h2>
+        <span class="subtitle">May 14&ndash;16, 2016</span> <span class="tag">esolang</span>
+        <p>TODO: describe</p>
+        
+        
+        <h2 id="yup">yup (<a href="https://github.com/ConorOBrien-Foxx/yup" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">June 6, 2016&ndash;May 19, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        <h2 id="vectil">vectil (<a href="https://github.com/ConorOBrien-Foxx/vectil" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">July 24, 2016</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        <h2 id="reticular">reticular (<a href="https://github.com/ConorOBrien-Foxx/reticular" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Aug 3, 2016&ndash;Feb 26, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Confiture">Confiture (<a href="https://github.com/ConorOBrien-Foxx/Confiture" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Sep 20&ndash;21, 2016</span> <span class="tag">esolang</span>
+        <p>TODO: describe. Fork of Jelly.</p>
+        
+        
+        
+        <h2 id="jext">jext (<a href="https://github.com/ConorOBrien-Foxx/jext" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Dec 1&ndash;8, 2016</span> <span class="tag">praclang</span>
+        <p>An extended version of J. Basically just a preprocessor.
+        
+        
+        
+        
+        <h2 id="stacked">stacked (<a href="https://github.com/ConorOBrien-Foxx/stacked" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Dec 20, 2016&ndash;Apr 10, 2022</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Somme">Somme (<a href="https://github.com/ConorOBrien-Foxx/Somme" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Jan 3, 2017&ndash;Sep 15, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe. Entry for the 2017 PPCG Time Capsule.</p>
+        
+        
+        <h2 id="Maverick">Maverick (<a href="https://github.com/ConorOBrien-Foxx/Maverick" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Jan 27&ndash;29, 2017</span> <span class="tag">esolang</span>
+        <p>A simple infix language using <code>shunt.js</code>. Entry for the 2017 PPCG Time Capsule.</p>
+            
+        
+        <h2 id="PyramidScheme">Pyramid Scheme (<a href="https://github.com/ConorOBrien-Foxx/Pyramid-Scheme" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Jan 29, 2017&ndash;July 29, 2019</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        <h2 id="Sir">Sir (<a href="https://github.com/ConorOBrien-Foxx/Sir" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Jan 31, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        <h2 id="Chain">Chain (<a href="https://github.com/ConorOBrien-Foxx/Chain" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Feb 19&ndash;20, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe. Successor to <a href="#Cha_ne">Chaîne</a>.</p>
+        
+        <h2 id="Betrothed">Betrothed (<a href="https://github.com/ConorOBrien-Foxx/Betrothed" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Feb 27, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        <h2 id="Kevin">Kevin (<a href="https://github.com/ConorOBrien-Foxx/Kevin" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Mar 11&ndash;13, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        <h2 id="Spectrum">Spectrum (<a href="https://github.com/ConorOBrien-Foxx/Spectrum" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Mar 27&ndash;29, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        <h2 id="shp">;#+ (<a href="https://github.com/ConorOBrien-Foxx/shp" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">May 22, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+            
+        
+        <h2 id="str">str (<a href="https://github.com/ConorOBrien-Foxx/str" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">June 3, 2017&ndash;Aug 27, 2021</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        <h2 id="ExtraC">ExtraC (<a href="https://github.com/ConorOBrien-Foxx/ExtraC" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">July 9&ndash;17, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="eacal">eacal (<a href="https://github.com/ConorOBrien-Foxx/eacal" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">July 20&ndash;22, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Spaced">Spaced (<a href="https://github.com/ConorOBrien-Foxx/Spaced" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Aug 5, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        
+        <h2 id="stac">stac (<a href="https://github.com/ConorOBrien-Foxx/stac" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Aug 5, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Corea">Corea (<a href="https://github.com/ConorOBrien-Foxx/Corea" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Aug 31, 2017&ndash;Oct 9, 2019</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        
+        <h2 id="OML">OML (<a href="https://github.com/ConorOBrien-Foxx/OML" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Oct 18&ndash;20, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="xeraph">xeraph (<a href="https://github.com/ConorOBrien-Foxx/xeraph" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Oct 30&ndash;31, 2017</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        
+        <h2 id="Alumin">Alumin (<a href="https://github.com/ConorOBrien-Foxx/Alumin" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Nov 22, 2017&ndash;Aug 18, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Attache">Attache (<a href="https://github.com/ConorOBrien-Foxx/Attache" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Jan 5, 2018&ndash;July 30, 2019</span> <span class="tag">praclang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="categorized">categorized (<a href="https://github.com/ConorOBrien-Foxx/categorized" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Jan 11, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        
+        <h2 id="kavod">kavod (<a href="https://github.com/ConorOBrien-Foxx/kavod" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Jan 27&ndash;Feb 4, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        
+        <h2 id="Locksmith">Locksmith (<a href="https://github.com/ConorOBrien-Foxx/Locksmith" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Feb 4&ndash;5, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        
+        
+        <h2 id="LOWER">LOWER (<a href="https://github.com/ConorOBrien-Foxx/LOWER" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Feb 4&ndash;5, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        
+        
+        
+        <h2 id="Premier">Premier (<a href="https://github.com/ConorOBrien-Foxx/Premier" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Jan 1&ndash;2, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        
+        <h2 id="Phooey">Phooey (<a href="https://github.com/ConorOBrien-Foxx/Phooey" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Mar 31&ndash;May 17, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        
+        <h2 id="memGAP">memGAP (<a href="https://github.com/ConorOBrien-Foxx/memory-GAP" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Mar 17&ndash;19, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Tir">Tir (<a href="https://github.com/ConorOBrien-Foxx/Tir" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">May 7&ndash;June 1, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Datache">Datache (<a href="https://github.com/ConorOBrien-Foxx/datache" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">May 28&ndash;Nov 10, 2018</span> <span class="tag">praclang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="DScript">DScript (<a href="https://github.com/ConorOBrien-Foxx/DScript" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">June 23&ndash;24, 2018</span> <span class="tag">praclang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Fynyl">Fynyl (<a href="https://github.com/ConorOBrien-Foxx/Fynyl" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Aug 11&ndash;26, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+            
+        
+        <h2 id="Tidy">Tidy (<a href="https://github.com/ConorOBrien-Foxx/Y" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Aug 13, 2018&ndash;Feb 24, 2020</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Quadro">Quadro (<a href="https://github.com/ConorOBrien-Foxx/Quadro" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Sep 18, 2018</span> <span class="tag">unimplemented</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Geuru">Geuru (<a href="https://github.com/ConorOBrien-Foxx/Geuru" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Oct 4, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="smol">smol (<a href="https://github.com/ConorOBrien-Foxx/smol" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Oct 26, 2018</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Minat">Minat (<a href="https://github.com/ConorOBrien-Foxx/Minat" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Dec 18&ndash;21, 2018</span> <span class="tag">praclang</span>
+        <p>TODO: describe.</p>
+            
+        
+        <h2 id="ecndpcaalrlp">!@#$%^&amp;*()_+ (<a href="https://github.com/ConorOBrien-Foxx/ecndpcaalrlp" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Dec 26, 2018&ndash;Nov 4, 2020</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="FQR">FQR (<a href="https://github.com/ConorOBrien-Foxx/FQR" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">June 16, 2020&ndash;Jan 14, 2023</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Twue">Twue (<a href="https://github.com/ConorOBrien-Foxx/Twue" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Mar 30&ndash;Oct 8, 2021</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+            
+        
+        <h2 id="Airja">Airja (<a href="https://github.com/ConorOBrien-Foxx/Airja" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">May 16&ndash;June 1, 2021</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Peculi">Peculi (<a href="https://github.com/ConorOBrien-Foxx/Peculi" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Oct 13, 2021</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Owl">Owl (<a href="https://github.com/ConorOBrien-Foxx/Peculi" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Nov 30, 2021</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        
+        <h2 id="Myby">Myby (<a href="https://github.com/ConorOBrien-Foxx/Myby" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Aug 4, 2022&ndash;Jan 4, 2023</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="X">X (<a href="https://github.com/ConorOBrien-Foxx/X" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Sep 2&ndash;3, 2022</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        
+        <h2 id="semi4">;;;; (<a href="https://github.com/ConorOBrien-Foxx/semi4" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Nov 20, 2022</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        
+        
+        <h2 id="PLIS">PLIS (<a href="https://github.com/ConorOBrien-Foxx/PLIS" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Dec 2&ndash;5, 2022</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Taste">Taste (<a href="https://github.com/ConorOBrien-Foxx/Taste" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Jan 5&ndash;19, 2023</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="oxy">oxy (<a href="https://github.com/ConorOBrien-Foxx/oxy" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Jan 31, 2023</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="CIR">CIR (<a href="https://github.com/ConorOBrien-Foxx/CIR" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">May 8&ndash;15, 2023</span> <span class="tag">praclang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="StellerJ">StellerJ (<a href="https://github.com/ConorOBrien-Foxx/StellerJ" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">May 12&ndash;16, 2023</span> <span class="tag">praclang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="mkgg">mkgg (<a href="https://github.com/ConorOBrien-Foxx/mkgg" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">July 23&ndash;29, 2023</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Jaguar">Jaguar (<a href="https://github.com/ConorOBrien-Foxx/Jaguar" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Aug 26&ndash;27, 2023</span> <span class="tag">praclang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Heist">Heist (<a href="https://github.com/ConorOBrien-Foxx/Heist" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Oct 9, 2023</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Cabsi">Cabsi (<a href="https://github.com/ConorOBrien-Foxx/Cabsi" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Dec 2&ndash;17, 2023</span> <span class="tag">esolang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        <h2 id="Glint">Glint (<a href="https://github.com/ConorOBrien-Foxx/Cabsi" target="_blank">GitHub</a>)</h2>
+        <span class="subtitle">Feb 19&ndash;June 15, 2024</span> <span class="tag">praclang</span>
+        <p>TODO: describe.</p>
+        
+        
+        
+        
+        <h2 id="SeraisToi">Serais-Toi? (<a href="https://github.com/ConorOBrien-Foxx/SeraisToi" target="_blank">GitHub</a> &sdot; <a href="https://jsfiddle.net/Conor_OBrien/mchz2Lfr/3/" target="_blank">Interpreter</a>)</h2>
+        <span class="subtitle">April 4, 2016&ndash;?</span> <span class="tag">esolang</span> <span class="tag">unimplemented</span>
+        <p>TODO: describe</p>
+        
+        <h2 id="Junction">Junction (<a href="https://jsfiddle.net/Conor_OBrien/vmanej33/58/" target="_blank">Interpreter</a>)</h2>
+        <span class="subtitle">Date unknown</span> <span class="tag">esolang</span>
+        <p>A simple, functional language, similar to J, but woefully underimplemented. Try input <code>1,2,3,4</code> and code <code>+/</code>. Only implements addition (<code>+</code>), division (<code>%</code>), reverse (<code>~</code>), and insertion (<code>/</code>). Exact date unknown since it is only a JSFiddle without a corresponding repository, or any frame of reference.</p>
+        
+        <h2 id="Dyia">Dyia (<a href="https://jsfiddle.net/Conor_OBrien/r6qf2jfL/4/" target="_blank">Interpreter</a>)</h2>
+        <span class="subtitle">Date unknown</span> <span class="tag">esolang</span>
+        <p>A simple, functional language, similar to J, but less woefully underimplemented. Seems to support more complex expressions, like <code>(i.5) + 2 * i.5</code>. Once again, no confident date, as it is just a JSFiddle.</p>
+    </div>
+</body>
+</html>

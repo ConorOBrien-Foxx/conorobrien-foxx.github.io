@@ -10,6 +10,7 @@
     --accent2-light: #546156;
     --accent3: #D0C88E;
     --accent4: #9D96EE;
+    --accent4-dark: #443BA4;
     --text-highlight: #279034;
     
     --header-font: 'Nova Round', cursive;
@@ -44,6 +45,19 @@ body {
 
 code, pre {
     font-family: var(--code-font);
+}
+
+code, pre {
+    background-color: rgba(0, 255, 255, 0.3);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    white-space: pre-wrap;
 }
 
 @media screen and (min-width: 900px) {
@@ -270,4 +284,27 @@ img + p, .img-gallery + p, .inline.page-link + p {
 flex-br {
     flex-basis: 100%;
     display: block;
+}
+
+.tag {
+    border-radius: 9px;
+    background-color: var(--accent4-dark);
+    padding: 0 5px;
+}
+.action.tag {
+    user-select: none;
+    cursor: pointer;
+    border: 3px solid var(--accent4);
+}
+.action.tag:before {
+    content: "− ";
+}
+.action.tag:hover {
+    background-color: var(--accent4);
+}
+.action.tag.selected {
+    border-color: var(--highlight);
+}
+.action.tag.selected:before {
+    content: "+ ";
 }
