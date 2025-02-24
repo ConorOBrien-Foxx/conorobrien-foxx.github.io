@@ -13,3 +13,12 @@ const hidePopup = (popupElement = null, popupBackgroundElement = null) => {
     popupBackgroundElement.style.display = "none";
     popupElement.style.display = "none";
 };
+
+const registerApps = (klass, cb) => {
+    // TODO: check if already loaded
+    window.addEventListener("load", function () {
+        for(let app of document.querySelectorAll(klass)) {
+            cb(app);
+        }
+    });
+};

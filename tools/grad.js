@@ -72,92 +72,90 @@ const colorsToGgp = (colors, generationMode) => {
     return resultString;
 };
 
-window.addEventListener("load", function () {
+registerApps(".gimp-grad-app", app => {
     // TODO: presets
-    for(let app of document.querySelectorAll(".gimp-grad-app")) {
-        const updateOutput = () => {
-            const colors = [...app.querySelectorAll("input[type=color]")]
-                .map(input => input.value);
-            const isDiscrete = app.querySelector(".discrete-input").checked;
-            const generationMode = isDiscrete ? 1 : 0;
-            
-            
-            let backgroundStyle;
-            if(colors.length === 1) {
-                backgroundStyle = colors[0];
-            }
-            else if(isDiscrete) {
-                const percentages = Array.from({ length: colors.length + 1 }, (_, i) => i / colors.length * 100);
-                const colorsWithStops = colors.flatMap((color, idx) => [
-                    `${color} ${percentages[idx]}%`,
-                    `${color} ${percentages[idx + 1]}%`,
-                ]);
-                backgroundStyle = `linear-gradient(to right, ${colorsWithStops.join(", ")})`;
-            }
-            else {
-                const displayColors = colors.length === 1 ? colors.concat(colors) : colors;
-                backgroundStyle = `linear-gradient(to right, ${colors.join(", ")})`;
-            }
-            app.querySelector(".sample-output").style.background = backgroundStyle;
-            
-            const ggrOutput = app.querySelector(".ggr-output");
-            ggrOutput.value = colorsToGgp(colors, generationMode);
-            ggrOutput.style.height = "auto";
-            ggrOutput.style.height = ggrOutput.scrollHeight + "px";
-        };
+    const updateOutput = () => {
+        const colors = [...app.querySelectorAll("input[type=color]")]
+            .map(input => input.value);
+        const isDiscrete = app.querySelector(".discrete-input").checked;
+        const generationMode = isDiscrete ? 1 : 0;
         
-        const syncChangesBetween = function (ev) {
-            // sync changes between text and color inputs
-            const friends = ev.target.closest(".color-input")
-                .querySelectorAll(`input:not([type=${ev.target.type}])`);
-            for(let friend of friends) {
-                friend.value = ev.target.value;
-            }
-            updateOutput();
-        };
         
-        const attachInputListenersWithin = parent => {
-            for(let input of parent.querySelectorAll("input")) {
-                input.addEventListener("input", syncChangesBetween);
-            }
-        };
+        let backgroundStyle;
+        if(colors.length === 1) {
+            backgroundStyle = colors[0];
+        }
+        else if(isDiscrete) {
+            const percentages = Array.from({ length: colors.length + 1 }, (_, i) => i / colors.length * 100);
+            const colorsWithStops = colors.flatMap((color, idx) => [
+                `${color} ${percentages[idx]}%`,
+                `${color} ${percentages[idx + 1]}%`,
+            ]);
+            backgroundStyle = `linear-gradient(to right, ${colorsWithStops.join(", ")})`;
+        }
+        else {
+            const displayColors = colors.length === 1 ? colors.concat(colors) : colors;
+            backgroundStyle = `linear-gradient(to right, ${colors.join(", ")})`;
+        }
+        app.querySelector(".sample-output").style.background = backgroundStyle;
         
-        app.querySelector(".discrete-input").addEventListener("input", ev => {
-            updateOutput();
-        });
-        
-        app.addEventListener("click", ev => {
-            const container = app.querySelector(".color-input-container");
-            const colorInputs = container.querySelectorAll(".color-input");
-            const closest = ev.target.closest(".color-input");
-            const myIndex = [...container.children].indexOf(closest);
-            
-            if(ev.target.classList.contains("remove-color")) {
-                const container = app.querySelector(".color-input-container");
-                if(colorInputs.length > 1) {
-                    container.removeChild(colorInputs[myIndex]);
-                }
-                updateOutput();
-            }
-            else if(ev.target.classList.contains("add-color")) {
-                const newColorInput = document.createElement("div");
-                newColorInput.className = "color-input";
-                const randomColor = "#" + ((0x1000000 + Math.random() * 0xFFFFFF | 0) & 0xFFFFFF).toString(16);
-                
-                newColorInput.innerHTML = `
-                    <input type="text" class="short mono" value="${randomColor}">
-                    <input type="color" value="${randomColor}">
-                    <button class="symbol remove-color">-</button>
-                    <button class="symbol add-color">+</button>
-                `;
-                attachInputListenersWithin(newColorInput);
-                container.insertBefore(newColorInput, colorInputs[myIndex].nextSibling);
-                newColorInput.scrollIntoView({ behavior: "instant", block: "nearest" });
-                updateOutput();
-            }
-        });
-        attachInputListenersWithin(app.querySelector(".color-input-container"));
+        const ggrOutput = app.querySelector(".ggr-output");
+        ggrOutput.value = colorsToGgp(colors, generationMode);
+        ggrOutput.style.height = "auto";
+        ggrOutput.style.height = ggrOutput.scrollHeight + "px";
+    };
+    
+    const syncChangesBetween = function (ev) {
+        // sync changes between text and color inputs
+        const friends = ev.target.closest(".color-input")
+            .querySelectorAll(`input:not([type=${ev.target.type}])`);
+        for(let friend of friends) {
+            friend.value = ev.target.value;
+        }
         updateOutput();
-        // TODO: download as .ggr
-    }
+    };
+    
+    const attachInputListenersWithin = parent => {
+        for(let input of parent.querySelectorAll("input")) {
+            input.addEventListener("input", syncChangesBetween);
+        }
+    };
+    
+    app.querySelector(".discrete-input").addEventListener("input", ev => {
+        updateOutput();
+    });
+    
+    app.addEventListener("click", ev => {
+        const container = app.querySelector(".color-input-container");
+        const colorInputs = container.querySelectorAll(".color-input");
+        const closest = ev.target.closest(".color-input");
+        const myIndex = [...container.children].indexOf(closest);
+        
+        if(ev.target.classList.contains("remove-color")) {
+            const container = app.querySelector(".color-input-container");
+            if(colorInputs.length > 1) {
+                container.removeChild(colorInputs[myIndex]);
+            }
+            updateOutput();
+        }
+        else if(ev.target.classList.contains("add-color")) {
+            const newColorInput = document.createElement("div");
+            newColorInput.className = "color-input";
+            const randomColor = "#" + ((0x1000000 + Math.random() * 0xFFFFFF | 0) & 0xFFFFFF).toString(16);
+            
+            newColorInput.innerHTML = `
+                <input type="text" class="short mono" value="${randomColor}">
+                <input type="color" value="${randomColor}">
+                <button class="symbol remove-color">-</button>
+                <button class="symbol add-color">+</button>
+            `;
+            attachInputListenersWithin(newColorInput);
+            container.insertBefore(newColorInput, colorInputs[myIndex].nextSibling);
+            newColorInput.scrollIntoView({ behavior: "instant", block: "nearest" });
+            updateOutput();
+        }
+    });
+    attachInputListenersWithin(app.querySelector(".color-input-container"));
+    updateOutput();
+    // TODO: download as .ggr
 });
