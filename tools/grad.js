@@ -24,6 +24,7 @@ const colorsToGgp = (colors, generationMode) => {
 
     let resultString = "GIMP Gradient\nName: generated gradient #1\n";
 
+    // continuous
     if (generationMode === 0) {
         const segmentCount = colors.length - 1;
         const coordinates = Array.from({
@@ -45,7 +46,9 @@ const colorsToGgp = (colors, generationMode) => {
             });
         resultString += segmentCount + "\n";
         resultString += segments.map(seg => seg.join(" ")).join("\n");
-    } else if (generationMode === 1) {
+    }
+    // discrete
+    else if (generationMode === 1) {
         const segmentCount = colors.length;
         const coordinates = Array.from({
             length: segmentCount + 1
