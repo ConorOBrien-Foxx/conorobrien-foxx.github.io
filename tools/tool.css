@@ -35,10 +35,13 @@ body, html, nav ul, h1 {
 
 main {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 main > * {
-    margin: 10px;
+    margin: 0;
 }
 
 nav, nav ul, .input-holder {
@@ -228,6 +231,7 @@ textarea {
 textarea {
     resize: none;
     width: 100%;
+    box-sizing: border-box;
 }
 input[type="color"] {
     padding: 6px;

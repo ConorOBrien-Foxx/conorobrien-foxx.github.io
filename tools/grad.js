@@ -101,8 +101,7 @@ registerApps(".gimp-grad-app", app => {
         
         const ggrOutput = app.querySelector(".ggr-output");
         ggrOutput.value = colorsToGgp(colors, generationMode);
-        ggrOutput.style.height = "auto";
-        ggrOutput.style.height = ggrOutput.scrollHeight + "px";
+        resizeTextareaToContent(ggrOutput);
     };
     
     const syncChangesBetween = function (ev) {

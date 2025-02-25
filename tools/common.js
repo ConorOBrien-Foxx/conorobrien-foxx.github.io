@@ -23,6 +23,20 @@ const registerApps = (klass, cb) => {
     });
 };
 
+const resizeTextareaToContent = textarea => {
+    let style = window.getComputedStyle(textarea, null);
+    let targetHeight = textarea.scrollHeight;
+    
+    if(style.getPropertyValue("box-sizing") === "border-box") {
+        // TODO: do not assume px measurements?
+        targetHeight += parseFloat(style.getPropertyValue("padding-top"));
+        targetHeight += parseFloat(style.getPropertyValue("padding-bottom"));
+    }
+    
+    textarea.style.height = "auto";
+    textarea.style.height = `${targetHeight}px`;
+};
+
 // resolve(true) - toast decayed naturally
 // resolve(false) - toast was dismissed
 const showToast = (message, timeout = 3000, container = null) => new Promise((resolve, reject) => {
