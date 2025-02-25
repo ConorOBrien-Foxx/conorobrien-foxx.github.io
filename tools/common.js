@@ -14,6 +14,12 @@ const hidePopup = (popupElement = null, popupBackgroundElement = null) => {
     popupElement.style.display = "none";
 };
 
+const clearChildren = el => {
+    while(el.firstChild) {
+        el.removeChild(el.firstChild);
+    }
+};
+
 const registerApps = (klass, cb) => {
     // TODO: check if already loaded
     window.addEventListener("load", function () {
@@ -24,16 +30,18 @@ const registerApps = (klass, cb) => {
 };
 
 const resizeTextareaToContent = textarea => {
+    textarea.style.height = "auto";
+    
     let style = window.getComputedStyle(textarea, null);
     let targetHeight = textarea.scrollHeight;
+    // let targetHeight = textarea.getBoundingClientRect().height;
     
     if(style.getPropertyValue("box-sizing") === "border-box") {
-        // TODO: do not assume px measurements?
+        // TODO: do not assume px unit measurements?
         targetHeight += parseFloat(style.getPropertyValue("padding-top"));
         targetHeight += parseFloat(style.getPropertyValue("padding-bottom"));
     }
     
-    textarea.style.height = "auto";
     textarea.style.height = `${targetHeight}px`;
 };
 

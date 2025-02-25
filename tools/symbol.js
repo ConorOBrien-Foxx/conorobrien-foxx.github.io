@@ -129,12 +129,6 @@ const SYMBOLS = [
     },
 ];
 
-const clearChildren = el => {
-    while(el.firstChild) {
-        el.removeChild(el.firstChild);
-    }
-};
-
 const copyTextToClipboard = target => {
     target.select();
     document.execCommand("copy");
