@@ -23,6 +23,9 @@
     
     --danger-cancel-color: #a22;
     --danger-cancel-darken-color: #722;
+    
+    --global-radius: 8px;
+    --global-radius-small: 3px;
 }
 
 body, html, nav ul, h1 {
@@ -120,7 +123,7 @@ code, pre, button.symbol, .mono {
 	max-width: 1200px;
 	margin: 20px auto;
 	background-color: var(--content-background);
-	border-radius: 5px;
+	border-radius: var(--global-radius);
 	box-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }
 .container.thin {
@@ -145,16 +148,16 @@ code, pre, button.symbol, .mono {
     text-align: center;
 }
 
-button {
+button, .toast {
 	background-color: var(--button-color);
 	padding: 10px 20px;
 	border: none;
-	border-radius: 5px;
+	border-radius: var(--global-radius);
 	cursor: pointer;
 	transition: background-color .3s;
 }
 
-button:hover {
+button:hover, .toast:hover {
 	background-color: var(--button-highlight);
 }
 button.symbol {
@@ -185,7 +188,7 @@ p {
 code {
 	background-color: #444;
 	padding: 2px 5px;
-	border-radius: 3px;
+	border-radius: var(--global-radius);
 }
 
 
@@ -218,7 +221,7 @@ textarea {
     border: 3px solid var(--field-color-light);
     color: var(--text-color);
     padding: 3px;
-    border-radius: 5px;
+    border-radius: var(--global-radius);
     /* width: 100%; */
     transition: border-color 0.3s, background-color 0.3s;
 }
@@ -242,6 +245,9 @@ input.medium {
 }
 input.wide {
     width: 20ch;
+}
+input.fullwidth {
+    width: 80%;
 }
 input.center {
     text-align: center;
@@ -323,4 +329,24 @@ label {
     border: 1px solid;
     overflow-y: auto;
     padding: 5px;
+}
+
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+}
+
+.toast {
+	transition: background-color .3s, opacity .5s;
+    margin: 5px 0;
+    opacity: 0;
+    user-select: none;
+}
+.toast.showing {
+    opacity: 1;
 }
