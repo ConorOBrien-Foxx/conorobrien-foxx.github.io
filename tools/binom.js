@@ -31,7 +31,13 @@ const binomialProbabilities = (p, n, x) => {
     return result;
 }
 
-const parseInput = str => parseFloat(str);
+const parseInput = str => {
+    let floatValue = parseFloat(str);
+    if(str.endsWith("%")) {
+        floatValue /= 100;
+    }
+    return floatValue;
+};
 // const formatFloat = f => Math.round(f * 1000) / 1000;
 // const formatFloat = f => f.toFixed(5).replace(/\.?0+$/, "");
 const formatFloat = f =>
@@ -48,7 +54,7 @@ registerApps(".binom-app", app => {
     for(let output of app.querySelectorAll(".output")) {
         output.value = "";
     }
-    // TODO: allow for input like "100%"
+    
     // TODO: highlight elements causing/related to errors
     const validateP = (silent = false) => {
         let p = parseInput(pInput.value);
@@ -114,7 +120,7 @@ registerApps(".binom-app", app => {
     };
     
     
-    // i seem to remember return true/false corresponds to state changes in the HTML system
+    // i seem to remember return true/false corresponds to state changes in the HTML system, so use anonymous lambdas with no return values instead of e.g. pInput.addEventListener("change", validateP);
     pInput.addEventListener("change", () => {
         validateP();
     });
@@ -132,7 +138,7 @@ registerApps(".binom-app", app => {
         }
     });
     
-    submitButton.addEventListener("click", function () {
+    const submit = () => {
         if(!pInput.value || !nInput.value || !xInput.value) {
             // invalid: empty
             showPopup("Error: Some entries empty", "Please double check you entered values for p, n, and x.");
@@ -153,7 +159,16 @@ registerApps(".binom-app", app => {
             let output = app.querySelector(`input.${key}`);
             output.value = formatFloat(value);
         }
-    });
+    };
+    
+    for(let input of [ pInput, nInput, xInput ]) {
+        input.addEventListener("keydown", function (ev) {
+            if(ev.key === "Enter" && !ev.ctrlKey) {
+                submit();
+            }
+        });
+    }
+    submitButton.addEventListener("click", submit);
     
     typesetX(true);
 });
