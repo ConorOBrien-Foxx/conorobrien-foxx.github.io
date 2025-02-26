@@ -12,7 +12,9 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools</title>
+    <script src="./common.js"></script>
+    <script src="./dictionarygrep.js"></script>
+    <title>Dictionary Grep</title>
     <link rel="stylesheet" href="tool.css">
 </head>
 <body>
@@ -27,30 +29,22 @@
         </ul>
     </nav>
 
-    <div class="container thin">
+    <div class="container dictionary-grep-app">
         <div class="centerer">
-            <div>
-            <h2>Home</h2>
-            <h3>List of Tools</h3>
-            <ul>
-                <li><a href="./symbol">Symbol Lookup</a></li>
-            </ul>
-            <ul>
-                <li><a href="./dictionary-grep">Dictionary Grep</a></li>
-            </ul>
-            <ul>
-                <li><a href="./text-effects">Text Effect Generator</a></li>
-            </ul>
-            <ul>
-                <li><a href="./gimp-gradient">GIMP <code>.ggr</code> Gradient Generator</a></li>
-            </ul>
-            <ul>
-                <li><a href="./mouse-move">Is my mouse moving?</a></li>
-            </ul>
-            <ul>
-                <li><a href="./binomial">Binomial Probability Distribution Calculator</a> (somewhat buggy)</li>
-            </ul>
-            </div>
+            <main>
+                <h2>Dictionary Grep</h2>
+                <p>
+                    <label>Regular expression: <input type="text" class="regex-input" placeholder="E.g., ^hi.+o$"></label>
+                </p>
+                <p>
+                <label>Word set: <select class="word-sets"></select></label>
+                </p>
+                <p>
+                    <button class="submit">Submit</button>
+                </p>
+                <h3>Output</h3>
+                <textarea readonly class="resizeable filtered-words mono" placeholder="Output will appear here..."></textarea>
+            </main>
         </div>
     </div>
     
@@ -65,6 +59,8 @@
             <p>Popup message goes here.</p>
         </div>
     </div>
+    
+    <div class="toast-container"></div>
 
     <footer>
         <p>Made by <a href="https://conorobrien-foxx.github.io/" target="_blank">Conor O'Brien</a>.</p>

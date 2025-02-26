@@ -159,8 +159,21 @@ button, .toast {
 	cursor: pointer;
 	transition: background-color .3s;
 }
+.toast {
+    cursor: auto;
+    display: flex;
+    align-items: center;
+}
+.toast.cancellable {
+    cursor: pointer;
+}
+.toast .cancel-button {
+    margin-left: 15px;
+    margin-right: -5px;
+    font-size: 0.8em;
+}
 
-button:hover, .toast:hover {
+button:hover, .toast.cancellable:hover {
 	background-color: var(--button-highlight);
 }
 button.symbol {
@@ -219,7 +232,8 @@ input[type="email"],
 input[type="password"],
 input[type="number"],
 input[type="color"],
-textarea {
+textarea,
+select {
     background-color: var(--field-color);
     border: 3px solid var(--field-color-light);
     color: var(--text-color);
@@ -228,10 +242,18 @@ textarea {
     /* width: 100%; */
     transition: border-color 0.3s, background-color 0.3s;
 }
+/* css sucks and this doesn't work */
+select option:hover {
+    background-color: var(--field-color-light) !important;
+}
 textarea {
     resize: none;
     width: 100%;
     box-sizing: border-box;
+}
+textarea.resizeable {
+    resize: vertical;
+    min-height: 16em;
 }
 input[type="color"] {
     padding: 6px;
@@ -342,7 +364,8 @@ label {
     transform: translateX(-50%);
     display: flex;
     flex-direction: column-reverse;
-    align-items: flex-end;
+    align-items: center;
+    /* justify-content: center; */
 }
 
 .toast {

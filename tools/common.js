@@ -45,33 +45,80 @@ const resizeTextareaToContent = textarea => {
     textarea.style.height = `${targetHeight}px`;
 };
 
+class Toast {
+    constructor(message, options = {}) {
+        this.container = options.container ?? document.querySelector(".toast-container");
+        this.cancellable = options.cancellable ?? true;
+        this.timeout = options.timeout ?? 3000; // ms
+        this.useTimeout = options.useTimeout ?? true; // ms
+        this.killed = false;
+        this.resolve = null;
+        
+        this.toastElement = document.createElement("div");
+        this.toastElement.textContent = message;
+        this.toastElement.classList.add("toast");
+        if(this.cancellable) {
+            this.toastElement.classList.add("cancellable");
+        }
+        if(this.cancellable) {
+            let cancelButton = document.createElement("span");
+            cancelButton.textContent = "X";
+            cancelButton.classList.add("cancel-button");
+            this.toastElement.appendChild(cancelButton);
+            this.toastElement.addEventListener("click", () => {
+                this.kill();
+            });
+        }
+    }
+    
+    kill() {
+        return new Promise((resolve, reject) => {
+        this.toastElement.classList.remove("showing");
+            setTimeout(() => {
+                if(this.killed) {
+                    this.showResolve?.(false);
+                    resolve(false);
+                    return;
+                }
+                this.toastElement.classList.add("killed")
+                this.container.removeChild(this.toastElement);
+                this.killed = true;
+                resolve(true);
+                this.showResolve?.(true);
+            }, 500);
+        });
+    }
+    
+    killWithTimeout() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if(this.killed) {
+                    resolve(false);
+                    return;
+                }
+                this.kill().then(resolve);
+            }, this.timeout);
+        });
+    }
+    
+    show() {
+        if(this.showResolve) {
+            throw "Cannot show already shown toast";
+        }
+        return new Promise((resolve, reject) => {
+            this.showResolve = resolve;
+            this.toastElement.classList.add("showing");
+            this.container.appendChild(this.toastElement);
+            
+            if(this.useTimeout) {
+                this.killWithTimeout().then(value => {
+                    this.showResolve = null;
+                    resolve(value);
+                });
+            }
+        });
+    }
+}
 // resolve(true) - toast decayed naturally
 // resolve(false) - toast was dismissed
-const showToast = (message, timeout = 3000, container = null) => new Promise((resolve, reject) => {
-    container ??= document.querySelector(".toast-container");
-    let toast = document.createElement("div");
-    toast.textContent = message;
-    toast.classList.add("toast");
-    toast.classList.add("showing");
-    container.appendChild(toast);
-    
-    toast.addEventListener("click", function () {
-        container.removeChild(toast);
-        resolve(false);
-        toast = null;
-    });
-    
-    setTimeout(() => {
-        if(!toast) {
-            return;
-        }
-        toast.classList.remove("showing");
-        setTimeout(() => {
-            if(!toast) {
-                return;
-            }
-            container.removeChild(toast);
-            resolve(true);
-        }, 500);
-    }, timeout);
-});
+const showToast = (message, options = {}) => new Toast(message, options).show();
