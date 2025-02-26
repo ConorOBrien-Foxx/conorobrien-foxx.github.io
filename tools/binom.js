@@ -1,19 +1,22 @@
-const factorialCache = {};
-const factorial = n =>
-    n <= 1
-        ? 1
-        : (factorialCache[n] ??= n * factorial(n - 1));
+const binomial = (n, r) => math.combinations(n, r);
 
-const binomial = (n, r) =>
-    factorial(n) / (factorial(r) * factorial(n - r));
-
+const BIG_ONE = math.bignumber(1);
 const probabilityAt = (p, n, x) =>
-    binomial(n, x) * p ** x * (1 - p) ** (n - x);
+    // binomial(n, x) * p ** x * (1 - p) ** (n - x);
+    math.multiply(
+        binomial(n, x),
+        math.pow(p, x),
+        math.pow(math.subtract(BIG_ONE, p), math.subtract(n, x))
+    );
 
 const binomialProbabilities = (p, n, x) => {
-    let cumulative = 0;
+    p = math.bignumber(p);
+    n = math.bignumber(n);
+    x = math.bignumber(x);
+    let cumulative = math.bignumber(0);
+    
     for(let i = 0; i < x; i++) {
-        cumulative += probabilityAt(p, n, i);
+        cumulative = math.add(cumulative, probabilityAt(p, n, i));
     }
     let exact = probabilityAt(p, n, x);
     
@@ -21,16 +24,19 @@ const binomialProbabilities = (p, n, x) => {
         cumulativeLess: cumulative,
         exact: exact,
     };
-    result.cumulativeLessEqual = result.cumulativeLess + result.exact;
-    result.cumulativeGreater = 1 - result.cumulativeLessEqual;
-    result.cumulativeGreaterEqual = 1 - result.cumulativeLess;
+    result.cumulativeLessEqual = math.add(result.cumulativeLess, result.exact);
+    result.cumulativeGreater = math.subtract(BIG_ONE, result.cumulativeLessEqual);
+    result.cumulativeGreaterEqual = math.subtract(BIG_ONE, result.cumulativeLess);
     
     return result;
 }
 
-const parseInput = str => parseFloat(str, 10);
+const parseInput = str => parseFloat(str);
 // const formatFloat = f => Math.round(f * 1000) / 1000;
-const formatFloat = f => f.toFixed(3).replace(/\.?0+$/, "");
+// const formatFloat = f => f.toFixed(5).replace(/\.?0+$/, "");
+const formatFloat = f =>
+    math.format(f, { notation: "fixed", precision: 5 })
+        .replace(/\.?0+$/, "");
 
 registerApps(".binom-app", app => {
     let pInput = app.querySelector("input.trial");
@@ -39,9 +45,11 @@ registerApps(".binom-app", app => {
     let submitButton = app.querySelector("button.submit");
     let clearButton = app.querySelector("button.clear");
     
+    for(let output of app.querySelectorAll(".output")) {
+        output.value = "";
+    }
     // TODO: allow for input like "100%"
     // TODO: highlight elements causing/related to errors
-    // TODO: allow for large inputs e.g. p=0.3333, n=1515, x=500
     const validateP = (silent = false) => {
         let p = parseInput(pInput.value);
         if(p < 0) {

@@ -13,15 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" integrity="sha512-jgMqxLG97m1BO3cRIW5ESD++rF8uJ6Fbufba2xKb102eTX8UPCWhrKua+uKSNidBFFLKXKAByX2HmQUMQZBSUg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        math.config({
-            number: "BigNumber",
-            precision: 64,
-            //precision: 1009,
-            epsilon: 1e-60
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/14.0.1/math.js" integrity="sha512-ldafwBWmh8q0wplbjDzai4As66n/6e0kxw51a+LRJ6+aZ27t0oGpz7HH5dUh+MwWLacrsF8cGT4zR0p2S3QHtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./common.js"></script>
     <script src="./binom.js"></script>
     <title>Binomial Probability Calculator</title>
@@ -63,27 +55,27 @@
                 <tr>
                     <td>Binomial probability</td>
                     <td class="displayExact">\(P(X=x)\)</td>
-                    <td><input readonly class="exact short center" type="text"></td>
+                    <td><input readonly class="exact output short center" type="text"></td>
                 </tr>
                 <tr>
                     <td>Cumulative probability</td>
                     <td class="displayCumulativeLess">\(P(X\lt x)\)</td>
-                    <td><input readonly class="cumulativeLess short center" type="text"></td>
+                    <td><input readonly class="cumulativeLess output short center" type="text"></td>
                 </tr>
                 <tr>
                     <td>Cumulative probability</td>
                     <td class="displayCumulativeLessEqual">\(P(X\le x)\)</td>
-                    <td><input readonly class="cumulativeLessEqual short center" type="text"></td>
+                    <td><input readonly class="cumulativeLessEqual output short center" type="text"></td>
                 </tr>
                 <tr>
                     <td>Cumulative probability</td>
                     <td class="displayCumulativeGreater">\(P(X\gt x)\)</td>
-                    <td><input readonly class="cumulativeGreater short center" type="text"></td>
+                    <td><input readonly class="cumulativeGreater output short center" type="text"></td>
                 </tr>
                 <tr>
                     <td>Cumulative probability</td>
                     <td class="displayCumulativeGreaterEqual">\(P(X\ge x)\)</td>
-                    <td><input readonly class="cumulativeGreaterEqual short center" type="text"></td>
+                    <td><input readonly class="cumulativeGreaterEqual output short center" type="text"></td>
                 </tr>
             </table>
             <div class="button-row">
