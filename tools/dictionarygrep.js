@@ -5,8 +5,18 @@ const DICTIONARY_SOURCES = [
         cachedList: null,
     },
     {
+        url: "./princeton-words.shakespeare.txt",
+        name: "29k princeton/words.shakespeare.txt",
+        cachedList: null,
+    },
+    {
+        url: "./umich-jlawler-wordlist.txt",
+        name: "69k ~jlawler/wordlist",
+        cachedList: null,
+    },
+    {
         url: "https://raw.githubusercontent.com/dwyl/english-words/refs/heads/master/words_alpha.txt",
-        name: "466k dwyl/english-words",
+        name: "370k dwyl/english-words",
         cachedList: null,
     },
 ];
@@ -28,16 +38,32 @@ registerApps(".dictionary-grep-app", app => {
                 timeout: 1000,
             });
             toast.show();
-            let response = await fetch(list.url);
+            let response;
+            try {
+                response = await fetch(list.url);
+            }
+            catch(e) {
+                console.error(e);
+                toast.killWithTimeout();
+                showToast("Error while networking (check console)");
+                return;
+            }
+            if(!response.ok) {
+                console.error(response.status);
+                toast.killWithTimeout();
+                showToast(`Error while networking (Error ${response.status})`);
+                return;
+            }
             let text = await response.text();
             let sizeInKiloBytes = text.length / 1000;
+            console.log(text);
             list.cachedList = text.trim().split("\n").map(e => e.trim());
             toast.killWithTimeout();
             showToast(`Downloaded list, ${sizeInKiloBytes.toFixed(1)}kB`);
         }
         let regex = new RegExp(input.value, "i");
         let results = list.cachedList.filter(word => regex.test(word));
-        output.value = results.join("\n");
+        output.value = `${results.length} result${results.length === 1 ? "" : "s"} found:\n${results.join("\n")}`;
     };
     
     input.addEventListener("keydown", ev => {
