@@ -31,7 +31,7 @@ registerApps(".dictionary-grep-app", app => {
             let response = await fetch(list.url);
             let text = await response.text();
             let sizeInKiloBytes = text.length / 1000;
-            list.cachedList = text.trim().split("\n");
+            list.cachedList = text.trim().split("\n").map(e => e.trim());
             toast.killWithTimeout();
             showToast(`Downloaded list, ${sizeInKiloBytes.toFixed(1)}kB`);
         }
