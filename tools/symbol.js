@@ -24,6 +24,14 @@ const SYMBOLS = [
         "name": "down arrow",
     },
     {
+        "symbol": "≤",
+        "name": "less than or equal to",
+    },
+    {
+        "symbol": "≥",
+        "name": "greater than or equal to",
+    },
+    {
         "symbol": "–",
         "name": "en dash",
     },
