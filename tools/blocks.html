@@ -13,8 +13,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./common.js"></script>
-    <script src="./dictionarygrep.js"></script>
-    <title>Dictionary Grep</title>
+    <script src="./blocks.js"></script>
+    <title>Block Word Finder</title>
     <link rel="stylesheet" href="tool.css">
 </head>
 <body>
@@ -29,22 +29,13 @@
         </ul>
     </nav>
 
-    <div class="container dictionary-grep-app">
+    <div class="container binom-app thin">
         <div class="centerer">
-            <main>
-                <h2>Dictionary Grep</h2>
-                <p>
-                    <label>Regular expression: <input type="text" class="regex-input" placeholder="E.g., ^hi.+o$"></label> <label>Case sensitive? <input type="checkbox" class="regex-case-sensitive"></label>
-                </p>
-                <p>
-                <label>Word set: <select class="word-sets"></select></label>
-                </p>
-                <p>
-                    <button class="submit">Submit</button>
-                </p>
-                <h3>Output</h3>
-                <textarea readonly class="resizeable filtered-words mono" placeholder="Output will appear here..."></textarea>
-            </main>
+            <div>
+            <h2>Block Word Finder</h2>
+            <div class="input-holder">
+            </div>
+            </div>
         </div>
     </div>
     
@@ -59,8 +50,6 @@
             <p>Popup message goes here.</p>
         </div>
     </div>
-    
-    <div class="toast-container"></div>
 
     <footer>
         <p>Made by <a href="https://conorobrien-foxx.github.io/" target="_blank">Conor O'Brien</a>.</p>

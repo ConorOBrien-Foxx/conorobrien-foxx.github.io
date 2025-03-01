@@ -15,6 +15,11 @@ const DICTIONARY_SOURCES = [
         cachedList: null,
     },
     {
+        url: "https://raw.githubusercontent.com/redbo/scrabble/refs/heads/master/dictionary.txt",
+        name: "179k redbo/scrabble",
+        cachedList: null,
+    },
+    {
         url: "https://raw.githubusercontent.com/dwyl/english-words/refs/heads/master/words_alpha.txt",
         name: "370k dwyl/english-words",
         cachedList: null,
@@ -24,6 +29,7 @@ const DICTIONARY_SOURCES_ADDRESSED = {};
 
 registerApps(".dictionary-grep-app", app => {
     let input = app.querySelector(".regex-input");
+    let caseSensitive = app.querySelector(".regex-case-sensitive");
     let select = app.querySelector(".word-sets");
     let submit = app.querySelector(".submit");
     let output = app.querySelector(".filtered-words");
@@ -56,12 +62,13 @@ registerApps(".dictionary-grep-app", app => {
             }
             let text = await response.text();
             let sizeInKiloBytes = text.length / 1000;
-            console.log(text);
+            // console.log(text);
             list.cachedList = text.trim().split("\n").map(e => e.trim());
             toast.killWithTimeout();
             showToast(`Downloaded list, ${sizeInKiloBytes.toFixed(1)}kB`);
         }
-        let regex = new RegExp(input.value, "i");
+        let flags = caseSensitive.checked ? "" : "i";
+        let regex = new RegExp(input.value, flags);
         let results = list.cachedList.filter(word => regex.test(word));
         output.value = `${results.length} result${results.length === 1 ? "" : "s"} found:\n${results.join("\n")}`;
     };
