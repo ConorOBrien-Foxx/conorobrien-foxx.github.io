@@ -5,6 +5,11 @@ const DICTIONARY_SOURCES = [
         cachedList: null,
     },
     {
+        url: "https://gist.githubusercontent.com/eyturner/3d56f6a194f411af9f29df4c9d4a4e6e/raw/63b6dbaf2719392cb2c55eb07a6b1d4e758cc16d/20k.txt",
+        name: "20k eyturner/20k.txt",
+        cachedList: null,
+    },
+    {
         url: "./princeton-words.shakespeare.txt",
         name: "29k princeton/words.shakespeare.txt",
         cachedList: null,
