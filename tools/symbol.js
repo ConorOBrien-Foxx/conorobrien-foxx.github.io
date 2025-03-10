@@ -96,6 +96,14 @@ const SYMBOLS = [
         "name": "infinity",
     },
     {
+        "symbol": "∈",
+        "name": "element of",
+    },
+    {
+        "symbol": "∉",
+        "name": "not element of",
+    },
+    {
         "symbol": "⊆",
         "name": "subset equal",
     },
@@ -199,6 +207,7 @@ class SymbolSearchRenderer {
     start() {
         this.elements.searchBar.addEventListener("input", () => this.updateResults());
         this.updateResults();
+        this.elements.searchBar.focus();
     }
 }
 
