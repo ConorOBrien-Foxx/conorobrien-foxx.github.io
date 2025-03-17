@@ -38,6 +38,8 @@ registerApps(".dictionary-grep-app", app => {
     let select = app.querySelector(".word-sets");
     let submit = app.querySelector(".submit");
     let output = app.querySelector(".filtered-words");
+    let sortOrder = app.querySelector(".sort-order");
+    let sortAscending = app.querySelector(".sort-ascending");
     output.value = "";
     
     const filterResults = async function () {
@@ -75,6 +77,26 @@ registerApps(".dictionary-grep-app", app => {
         let flags = caseSensitive.checked ? "" : "i";
         let regex = new RegExp(input.value, flags);
         let results = list.cachedList.filter(word => regex.test(word));
+        switch(sortOrder.value) {
+            case "default":
+                break;
+            case "alpha-case-sensitive":
+                // results.sort((a, b) => a.localeCompare(b));
+                results.sort();
+                break;
+            case "alpha-case-insensitive":
+                results.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }));
+                break;
+            case "word-length":
+                results.sort((a, b) => a.length - b.length);
+                break;
+            default:
+                console.error("Unimplemented sort order", sortOrder.value);
+                break;
+        }
+        if(!sortAscending.checked) {
+            results.reverse();
+        }
         output.value = `${results.length} result${results.length === 1 ? "" : "s"} found:\n${results.join("\n")}`;
     };
     
