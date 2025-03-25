@@ -20,6 +20,11 @@ const DICTIONARY_SOURCES = [
         cachedList: null,
     },
     {
+        url: "https://raw.githubusercontent.com/open-dict-data/ipa-dict/refs/heads/master/data/en_US.txt",
+        name: "125k open-dict-data/ipa-dict",
+        cachedList: null,
+    },
+    {
         url: "https://raw.githubusercontent.com/redbo/scrabble/refs/heads/master/dictionary.txt",
         name: "179k redbo/scrabble",
         cachedList: null,
