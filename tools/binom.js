@@ -89,12 +89,12 @@ registerApps(".binom-app", app => {
     };
     const validateX = (silent = false) => {
         let x = parseInput(xInput.value);
-        if(x <= 0) {
-            silent || showPopup("Error: x too small", "Expected x to be a positive integer.");
+        if(x < 0) {
+            silent || showPopup("Error: x too small", "Expected x to be a non-negative integer.");
             return false;
         }
         if(x != Math.floor(x)) {
-            silent || showPopup("Error: non-integer x", "Expected x to be a positive integer.");
+            silent || showPopup("Error: non-integer x", "Expected x to be a non-negative integer.");
             return false;
         }
         if(nInput.value) {
