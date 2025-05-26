@@ -40,9 +40,18 @@ const parseInput = str => {
 };
 // const formatFloat = f => Math.round(f * 1000) / 1000;
 // const formatFloat = f => f.toFixed(5).replace(/\.?0+$/, "");
-const formatFloat = f =>
-    math.format(f, { notation: "fixed", precision: 5 })
-        .replace(/\.?0+$/, "");
+const formatFloat = (f, asPercent = false) => {
+    if(asPercent) {
+        return math.format(math.multiply(f, 100), { notation: "fixed", precision: 2 })
+            // .replace(/\.?0+$/, "")
+            + "%";
+    }
+    else {
+        return math.format(f, { notation: "fixed", precision: 5 })
+            // .replace(/\.?0+$/, "")
+            ;
+    }
+};
 
 registerApps(".binom-app", app => {
     let pInput = app.querySelector("input.trial");
@@ -50,6 +59,7 @@ registerApps(".binom-app", app => {
     let xInput = app.querySelector("input.successes");
     let submitButton = app.querySelector("button.submit");
     let clearButton = app.querySelector("button.clear");
+    let configPercent = app.querySelector("input.format-percent");
     
     for(let output of app.querySelectorAll(".output")) {
         output.value = "";
@@ -138,37 +148,54 @@ registerApps(".binom-app", app => {
         }
     });
     
-    const submit = () => {
+    const updateOutput = (silent = false) => {
         if(!pInput.value || !nInput.value || !xInput.value) {
             // invalid: empty
-            showPopup("Error: Some entries empty", "Please double check you entered values for p, n, and x.");
-            return;
+            silent || showPopup("Error: Some entries empty", "Please double check you entered values for p, n, and x.");
+            return false;
         }
         
         if(!validateP() || !validateN() || !validateX()) {
             // invalid value
-            return;
+            return false;
         }
         
         let p = parseInput(pInput.value);
         let n = parseInput(nInput.value);
         let x = parseInput(xInput.value);
         
+        let formatAsPercent = configPercent.checked;
+        
         let result = binomialProbabilities(p, n, x);
         for(let [ key, value ] of Object.entries(result)) {
             let output = app.querySelector(`input.${key}`);
-            output.value = formatFloat(value);
+            let indicator = app.querySelector(`.indicator-holder.${key}`);
+            // console.log(output, indicator);
+            output.value = formatFloat(value, formatAsPercent);
+            indicator && updateIndicator(indicator, {
+                min: 0,
+                value,
+                max: 1,
+            });
         }
-    };
+        
+        return true;
+    }
     
     for(let input of [ pInput, nInput, xInput ]) {
         input.addEventListener("keydown", function (ev) {
             if(ev.key === "Enter" && !ev.ctrlKey) {
-                submit();
+                updateOutput();
             }
         });
     }
-    submitButton.addEventListener("click", submit);
+    submitButton.addEventListener("click", () => {
+        updateOutput();
+    });
+    configPercent.addEventListener("change", () => {
+        updateOutput(true);
+    });
     
     typesetX(true);
+    updateOutput(true);
 });

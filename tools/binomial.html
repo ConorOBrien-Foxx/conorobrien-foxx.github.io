@@ -33,52 +33,98 @@
 
     <div class="container binom-app thin">
         <div class="centerer">
+            <div class="extra-options popout-tray">
+                <button class="settings-icon popout-tray-toggle">⚙</button>
+                <div class="popout-tray-data" data-name="global-settings">
+                    <label><input class="format-percent" checked type="checkbox"> Format output as %?</label>
+                </div>
+            </div>
             <div>
             <h2>Binomial Probability Calculator</h2>
             <div class="input-holder">
-            <table>
+            <table class="probability-indicator">
                 <tr>
-                    <td>Probability of success per trial</td>
-                    <td>\(p\)</td>
+                    <td>Probability of success per trial <span>\(p\)</span></td>
                     <td><input class="trial short center" type="text" tabindex="1"></td>
                 </tr>
                 <tr>
-                    <td>Number of trials</td>
-                    <td>\(n\)</td>
+                    <td>Number of trials <span>\(n\)</span></td>
                     <td><input class="number short center" type="text" tabindex="1"></td>
                 </tr>
                 <tr>
-                    <td>Number of successes</td>
-                    <td>\(x\)</td>
+                    <td>Number of successes <span>\(x\)</span></td>
                     <td><input class="successes short center" type="text" tabindex="1"></td>
                 </tr>
+                <!-- <tr>
+                    <td colspan="3"></td>
+                </tr> -->
                 <tr>
-                    <td>Binomial probability</td>
-                    <td class="displayExact">\(P(X=x)\)</td>
+                    <td>Binomial probability <span class="displayExact">\(P(X=x)\)</span></td>
                     <td><input readonly class="exact output short center" type="text"></td>
+                    <td>
+                        <div class="horizontal indicator-holder exact">
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Cumulative probability</td>
-                    <td class="displayCumulativeLess">\(P(X\lt x)\)</td>
+                    <td>Cumulative probability <span class="displayCumulativeLess">\(P(X\lt x)\)</span></td>
                     <td><input readonly class="cumulativeLess output short center" type="text"></td>
+                    <td>
+                        <div class="horizontal indicator-holder cumulativeLess">
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Cumulative probability</td>
-                    <td class="displayCumulativeLessEqual">\(P(X\le x)\)</td>
+                    <td>Cumulative probability <span class="displayCumulativeLessEqual">\(P(X\le x)\)</span></td>
                     <td><input readonly class="cumulativeLessEqual output short center" type="text"></td>
+                    <td>
+                        <div class="horizontal indicator-holder cumulativeLessEqual">
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Cumulative probability</td>
-                    <td class="displayCumulativeGreater">\(P(X\gt x)\)</td>
+                    <td>Cumulative probability <span class="displayCumulativeGreater">\(P(X\gt x)\)</span></td>
                     <td><input readonly class="cumulativeGreater output short center" type="text"></td>
+                    <td>
+                        <div class="horizontal indicator-holder cumulativeGreater">
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Cumulative probability</td>
-                    <td class="displayCumulativeGreaterEqual">\(P(X\ge x)\)</td>
+                    <td>Cumulative probability <span class="displayCumulativeGreaterEqual">\(P(X\ge x)\)</span></td>
                     <td><input readonly class="cumulativeGreaterEqual output short center" type="text"></td>
+                    <td>
+                        <div class="horizontal indicator-holder cumulativeGreaterEqual">
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                            <div class="indicator-level"></div>
+                        </div>
+                    </td>
                 </tr>
             </table>
-            <div class="button-row">
+            <div class="button-row control">
                 <button tabindex="1" class="submit">Submit</button>
                 <button tabindex="1" class="clear danger">Clear Entries</button>
             </div>

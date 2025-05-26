@@ -22,7 +22,7 @@
     --field-readonly-color-light: #555;
     
     --danger-cancel-color: #a22;
-    --danger-cancel-darken-color: #722;
+    --danger-cancel-darken-color: #f22;
     
     --global-radius: 8px;
     --global-radius-small: 3px;
@@ -145,6 +145,7 @@ code, pre, button.symbol, .mono {
 .centerer {
     display: flex;
     justify-content: center;
+    position: relative; /* to allow this as a stacking context for the settings button */
     /* flex-direction: column; */
 }
 .centerer h1, .centerer h2, .centerer h3 {
@@ -227,6 +228,10 @@ td:last-child {
     text-align: left;
 }
 
+input, button, textarea {
+    font-size: 16px;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -284,12 +289,6 @@ input[readonly], textarea[readonly] {
 }
 label {
     user-select: none;
-}
-
-@media (max-width:768px) {
-	.container {
-		padding: 10px;
-	}
 }
 
 /* popup related */
@@ -376,4 +375,108 @@ label {
 }
 .toast.showing {
     opacity: 1;
+}
+
+.indicator-holder {
+    --indicator-margin-width-default: 5px;
+    --base-color: var(--dark-background);
+    --off-color: #777777;
+    --on-color: #dddddd;
+    font-size: var(--indicator-font-size, 1em);
+    width: 1em;
+    height: 1.6em;
+    background-color: var(--base-color);
+    display: inline-flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    gap: var(--indicator-margin-width, var(--indicator-margin-width-default));
+    padding: var(--indicator-margin-width, var(--indicator-margin-width-default));
+}
+.indicator-holder.horizontal {
+    flex-direction: row-reverse;
+    width: 1.6em;
+    height: 1em;
+}
+.indicator-holder.low {
+    --base-color: #441111;
+    --off-color: #886666;
+    --on-color: #ffaaaa;
+}
+.indicator-holder.medium {
+    --base-color: #444411;
+    --off-color: #888866;
+    --on-color: #ffffaa;
+}
+.indicator-holder.high {
+    --base-color: #114411;
+    --off-color: #668866;
+    --on-color: #ccffcc;
+}
+.indicator-level {
+    background-color: var(--off-color);
+    flex-grow: 1;
+}
+.indicator-level.status-on, .indicator-level.status-on ~ .indicator-level {
+    background-color: var(--on-color);
+}
+
+.extra-options {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.settings-icon {
+    font-size: 20px;
+}
+.popout-tray {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+.popout-tray-data {
+    display: none;
+    border: 3px solid var(--dark-background);
+    background-color: var(--content-background);
+    padding: 5px;
+    border-radius: 7px;
+}
+.popout-tray-data.showing {
+    display: block;
+}
+
+.probability-indicator {
+    --indicator-font-size: 32px;
+    --indicator-margin-width: 3px;
+}
+
+/* mobile-only settings */
+@media (max-width:768px) {
+	.container {
+		padding: 10px;
+	}
+    .popup {
+        left: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+    .extra-options {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+    }
+    .probability-indicator {
+        --indicator-font-size: 26px;
+        --indicator-margin-width: 3px;
+    }
+    td {
+        padding: 10px;
+        padding: 5px;
+    }
+    .button-row.control {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--content-background);
+    }
 }

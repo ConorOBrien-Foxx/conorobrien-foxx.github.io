@@ -4,7 +4,14 @@ const showPopup = (title, content, popupElement = null, popupBackgroundElement =
     popupBackgroundElement.style.display = "block";
     popupElement.style.display = "block";
     popupElement.querySelector(".popup-title").textContent = title;
-    popupElement.querySelector(".popup-content p").textContent = content;
+    let contentElement = popupElement.querySelector(".popup-content p");
+    if(typeof content === "string") {
+        contentElement.textContent = content;
+    }
+    else {
+        clearChildren(contentElement);
+        contentElement.appendChild(content);
+    }
 };
 
 const hidePopup = (popupElement = null, popupBackgroundElement = null) => {
@@ -13,6 +20,14 @@ const hidePopup = (popupElement = null, popupBackgroundElement = null) => {
     popupBackgroundElement.style.display = "none";
     popupElement.style.display = "none";
 };
+
+window.addEventListener("load", () => {
+    document.body.addEventListener("keydown", ev => {
+        if(ev.key === "Escape") {
+            hidePopup();
+        }
+    });
+});
 
 const clearChildren = el => {
     while(el.firstChild) {
@@ -122,3 +137,54 @@ class Toast {
 // resolve(true) - toast decayed naturally
 // resolve(false) - toast was dismissed
 const showToast = (message, options = {}) => new Toast(message, options).show();
+
+registerApps(".popout-tray", app => {
+    let toggleButton = app.querySelector(".popout-tray-toggle");
+    let trayData = app.querySelectorAll(".popout-tray-data");
+    toggleButton.addEventListener("click", () => {
+        for(let data of trayData) {
+            data.classList.toggle("showing");
+        }
+    });
+});
+
+const updateIndicator = (indicator, { min, max, value, offMax, lowMax, mediumMax, highMax }) => {
+    let categoryCount = indicator.children.length;
+    let remappedValue = (value - min) / (max - min);
+    let targetIndex = Math.round(categoryCount * remappedValue);
+    console.log(+value, remappedValue, targetIndex);
+    for(let child of indicator.children) {
+        child.classList.remove("status-on");
+    }
+    let reverseIndex = indicator.children.length - targetIndex;
+    // can exceed, in which case we do not want any on
+    indicator.children[reverseIndex]?.classList.add("status-on");
+    
+    indicator.classList.remove("low");
+    indicator.classList.remove("medium");
+    indicator.classList.remove("high");
+    
+    let updatedClass = null;
+    
+    let lowMaxIndex = Math.round(0.25 * categoryCount);
+    let mediumMaxIndex = Math.round(0.50 * categoryCount);
+    let highMaxIndex = Math.round(1.00 * categoryCount);
+    console.log({lowMaxIndex, mediumMaxIndex, highMaxIndex});
+    
+    if(targetIndex === 0) {
+        // no class
+    }
+    else if(targetIndex <= lowMaxIndex) {
+        updatedClass = "low";
+    }
+    else if(targetIndex <= mediumMaxIndex) {
+        updatedClass = "medium";
+    }
+    else if(targetIndex <= highMaxIndex) {
+        updatedClass = "high";
+    }
+    
+    if(updatedClass) {
+        indicator.classList.add(updatedClass);
+    }
+};
