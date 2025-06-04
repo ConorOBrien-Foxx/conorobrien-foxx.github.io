@@ -13,6 +13,7 @@
     
     --button-color: #10786f;
     --button-highlight: #1ccebe;
+    --button-depressed: #0c5751;
     
     --field-color: #555;
     --field-color-light: #777;
@@ -148,8 +149,24 @@ code, pre, button.symbol, .mono {
     position: relative; /* to allow this as a stacking context for the settings button */
     /* flex-direction: column; */
 }
-.centerer h1, .centerer h2, .centerer h3 {
+.centerer h1, .centerer h2, .centerer h3, .centerer hgroup {
     text-align: center;
+}
+
+hgroup :is(h1, h2, h3):has(+ *) {
+    margin-bottom: 0;
+}
+hgroup p {
+    margin-top: 0;
+    font-style: italic;
+}
+
+details {
+    margin: 0;
+}
+details > summary {
+    user-select: none;
+    cursor: pointer;
 }
 
 button, .toast {
@@ -158,7 +175,11 @@ button, .toast {
 	border: none;
 	border-radius: var(--global-radius);
 	cursor: pointer;
-	transition: background-color .3s;
+	transition: background-color .3s, outline .1s;
+    outline-width: 0px;
+    outline-style: solid;
+    outline-color: var(--button-depressed);
+    outline-offset: -5px;
 }
 .toast {
     cursor: auto;
@@ -174,8 +195,11 @@ button, .toast {
     font-size: 0.8em;
 }
 
-button:hover, .toast.cancellable:hover {
+button:hover, button.depressed, .toast.cancellable:hover {
 	background-color: var(--button-highlight);
+}
+button.depressed {
+    outline-width: 5px;
 }
 button.symbol {
     font-size: 1.2em;

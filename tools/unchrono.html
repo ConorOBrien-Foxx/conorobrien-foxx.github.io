@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N67W0KBG4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+
+      gtag("config", "G-5N67W0KBG4");
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/14.0.1/math.js" integrity="sha512-ldafwBWmh8q0wplbjDzai4As66n/6e0kxw51a+LRJ6+aZ27t0oGpz7HH5dUh+MwWLacrsF8cGT4zR0p2S3QHtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="./common.js"></script>
+    <script src="./unchrono.js"></script>
+    <title>Unchrono: Stopwatch Timings to Absolute Time</title>
+    <link rel="stylesheet" href="tool.css">
+</head>
+<body>
+    <header>
+        <h1>Tools</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="./">Home</a></li>
+            <li><a href="./about">About</a></li>
+            <li><a href="./contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container unchrono-app thin">
+        <div class="centerer">
+            <main>
+                <hgroup>
+                    <h2>Unchrono</h2>
+                    <p>Stopwatch Timings to Absolute Timestamps</p>
+                </hgroup>
+                <details class="how-to-use">
+                    <summary>How to Use</summary>
+                    <p>Convert a list of stopwatch timings (aka time per lap) to absolute timestamps given the wall clock time at which the timer was stopped. Please use <code>YYYY-MM-DD HH:MM:SS</code> for the wall clock reading, and <code>DD:HH:MM:SS</code>, <code>HH:MM:SS</code>, <code>MM:SS</code>, or simply <code>SS</code> formats for stopwatching timings.</p>
+                    <p>Press and hold the <code>Now</code> button to constantly update the time, and release when satisfied with the time.</p>
+                    <p><strong>Note: This app uses the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal"><code>Temporal</code> API</a>, which is not universally supported.</strong> Works best on Firefox.</p>
+                </details>
+                <div class="unstructured-input-holder">
+                    <p>
+                        <label>Wall clock time at end of reading <input type="text" class="wall-clock"></label> <button class="set-now">Now</button>
+                    </p>
+                    <p>
+                        <label>List of stopwatch timings <textarea class="chrono-readings" placeholder="Comma or newline separated. See 'How to Use' for more info."></textarea></label>
+                    </p>
+                    <p>
+                        <label>Resulting absolute wall clock times <textarea readonly class="result-times"></textarea></label>
+                    </p>
+                    <div class="button-row control">
+                        <button tabindex="1" class="submit">Submit</button>
+                        <button tabindex="1" class="clear danger">Clear Entries</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <div id="popup-background" class="popup-background" onclick="hidePopup()"></div>
+
+    <div id="popup" class="popup">
+        <div class="popup-header">
+            <span class="popup-title">Popup Title</span>
+            <button class="close-button danger" onclick="hidePopup()">X</span>
+        </div>
+        <div class="popup-content">
+            <p>Popup message goes here.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made by <a href="https://conorobrien-foxx.github.io/" target="_blank">Conor O'Brien</a>.</p>
+    </footer>
+</body>
+</html>
