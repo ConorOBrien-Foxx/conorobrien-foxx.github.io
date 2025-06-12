@@ -114,13 +114,16 @@ nav a {
 	padding: 16px;
     display: inline-block;
     width: 80px;
-    cursor: pointer;
 	text-decoration: none;
 	font-weight: 700;
-	transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-nav a:hover {
+nav a, .hoverable {
+    cursor: pointer;
+	transition: background 0.2s ease-in-out, color 0.3s ease-in-out;
+}
+
+nav a:hover, .hoverable:hover {
     background: var(--overall-background-light);
 }
 

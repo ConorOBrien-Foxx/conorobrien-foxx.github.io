@@ -188,3 +188,37 @@ const updateIndicator = (indicator, { min, max, value, offMax, lowMax, mediumMax
         indicator.classList.add(updatedClass);
     }
 };
+
+const copyTextToClipboard = target => {
+    target.select();
+    document.execCommand("copy");
+};
+
+const iterateChunked = (array, fn, config) => new Promise((resolve, reject) => {
+    config = {
+        perChunk: 100,
+        chunkDelay: 100, // ms
+        ...config,
+    };
+    let iteration = startIdx => {
+        let endIdx = startIdx + config.perChunk;
+        let range = array.slice(startIdx, endIdx);
+        
+        if(range.length === 0) {
+            resolve();
+            return;
+        }
+        
+        for(let element of range) {
+            let result = fn(element);
+            if(result === iterateChunked.BREAK) {
+                break;
+            }
+        }
+        
+        setTimeout(iteration, config.chunkDelay, endIdx);
+    };
+    
+    iteration(0);
+});
+iterateChunked.BREAK = Symbol("iterateChunked.BREAK");

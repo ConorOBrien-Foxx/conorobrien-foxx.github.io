@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N67W0KBG4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+
+      gtag("config", "G-5N67W0KBG4");
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./common.js"></script>
+    <script src="./unicode.js"></script>
+    <title>Unicode Lookup</title>
+    <link rel="stylesheet" href="tool.css">
+    <style>
+        table {
+            table-layout: fixed;
+        }
+        th:first-child, td:first-child {
+            width: 50px;
+            overflow: clip;
+        }
+        th:nth-child(2), td:nth-child(2) {
+            width: 50px;
+            overflow: clip;
+        }
+        th:nth-child(3), td:nth-child(3) {
+            <!-- width: 400px; -->
+            <!-- overflow: clip; -->
+        }
+        th {
+            text-align: left;
+        }
+        th, td {
+            padding: 10px;
+        }
+        td.symbol {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px red;
+            width: 50px;
+            height: 50px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tools</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="./">Home</a></li>
+            <li><a href="./about">About</a></li>
+            <li><a href="./contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container unicode-lookup-app thin">
+        <div class="centerer">
+            <main>
+                <h2>Unicode Lookup</h2>
+                <p>Type part of the name of a symbol. Click a button to copy the symbol, or copy it yourself from the provided input field.</p>
+                <div class="centerer">
+                    <input type="text" class="unicode-search-bar fullwidth">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody class="unicode-results">
+                        
+                    </tbody>
+                    <!--<div class="single-result">
+                        <h3 class="result-title">up arrow</h3>
+                        <button class="symbol">↑</button>
+                        <input type="text" value="↑" class="center">
+                    </div>-->
+                </table>
+            </main>
+        </div>
+    </div>
+    
+    <div id="popup-background" class="popup-background" onclick="hidePopup()"></div>
+
+    <div id="popup" class="popup">
+        <div class="popup-header">
+            <span class="popup-title">Popup Title</span>
+            <button class="close-button danger" onclick="hidePopup()">X</span>
+        </div>
+        <div class="popup-content">
+            <p>Popup message goes here.</p>
+        </div>
+    </div>
+    
+    <div class="toast-container"></div>
+
+    <footer>
+        <p>Made by <a href="https://conorobrien-foxx.github.io/" target="_blank">Conor O'Brien</a>.</p>
+    </footer>
+</body>
+</html>

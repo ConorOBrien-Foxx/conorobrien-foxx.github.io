@@ -145,11 +145,6 @@ const SYMBOLS = [
     },
 ];
 
-const copyTextToClipboard = target => {
-    target.select();
-    document.execCommand("copy");
-};
-
 class SymbolSearchRenderer {
     constructor(app) {
         this.app = app;
