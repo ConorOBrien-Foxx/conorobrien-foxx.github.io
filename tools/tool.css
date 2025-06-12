@@ -45,6 +45,10 @@ main > * {
     margin: 0;
 }
 
+main ul > li + li {
+    padding-top: 0.6em;
+}
+
 nav, nav ul, .input-holder {
 	display: flex;
 }
@@ -102,12 +106,14 @@ nav ul {
 }
 
 nav li {
-	padding: 16px 0;
-    background: var(--overall-background);
 }
 
 nav a {
+    background: var(--overall-background);
+    text-align: center;
 	padding: 16px;
+    display: inline-block;
+    width: 80px;
     cursor: pointer;
 	text-decoration: none;
 	font-weight: 700;
