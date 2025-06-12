@@ -27,12 +27,11 @@ const fuzzyMatch = (query, entry) => {
     let relevancy = 0;
     let matches = false;
     
-    if(entry.name === query.base || query.base === String.fromCharCode(entry.dec)) {
+    if(entry.name === query.base || query.base === String.fromCodePoint(entry.dec)) {
         matches = true;
         relevancy = Infinity;
     }
     else {
-        // if(
         matches = query.words.every(word => entry.name.includes(word));
         wordsOf(entry.name).forEach(entryWord => {
             if(query.words.includes(entryWord)) {
@@ -40,17 +39,6 @@ const fuzzyMatch = (query, entry) => {
             }
         });
         relevancy -= entry.name.length;
-        // query.words.forEach(word => {
-            // if(entry.name.includes(word)) {
-                // matches = true;
-                // if(entry.name === word) {
-                    // relevancy += 12;
-                // }
-                // else {
-                    // relevancy += 3;
-                // }
-            // }
-        // });
     }
     
     relevancy += intrinsicRelevancy(entry);
@@ -108,7 +96,7 @@ registerApps(".unicode-lookup-app", app => {
             let row = document.createElement("tr");
             row.classList.add("hoverable");
             let symbolCell = document.createElement("td");
-            symbolCell.textContent = String.fromCharCode(dbEntry.dec);
+            symbolCell.textContent = String.fromCodePoint(dbEntry.dec);
             symbolCell.classList.add("symbol");
             row.appendChild(symbolCell);
             let cells = [
