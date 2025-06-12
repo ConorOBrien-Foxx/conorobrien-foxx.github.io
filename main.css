@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Nova+Round&family=Ubuntu+Mono&display=swap');
  
 :root {
-    --background-theme: #0A0A32;
-    --background-theme-dark: #141466;
+    /* --background-theme: #0A0A32; */
+    --background-theme: #12122e;
+    --background-theme-accent: #141466;
     --text: #E1ECF4;
     --highlight: #84DD63;
     --highlight-bright: #BDEDAB;
@@ -18,9 +19,13 @@
     --main-font: 'Lora', serif;
     
     --line-height: 38px;
+    
+    --header-height: 30px;
+    --header-vertical-padding: 20px;
 }
 
 html {
+    scroll-padding-top: calc(var(--header-height) + 2 * var(--header-vertical-padding));
     font-family: var(--main-font);
     background-color: var(--background-theme);
     color: var(--text);
@@ -88,6 +93,7 @@ h2:after, h2:before {
 }
 
 header {
+    height: var(--header-height);
     font-size: 30px;
     display: flex;
     align-items: center;
@@ -96,7 +102,7 @@ header {
     justify-content: space-between;
     border-bottom: 2px solid var(--highlight);
     /* margin-bottom: 15px; */
-    padding: 20px 0;
+    padding: var(--header-vertical-padding) 0;
     position: sticky;
     background-color: var(--background-theme);
     top: 0;
@@ -276,7 +282,7 @@ img + p, .img-gallery + p, .inline.page-link + p {
     margin: 5px;
     padding: 8px;
     border-radius: 10px;
-    background-color: var(--background-theme-dark);
+    background-color: var(--background-theme-accent);
     border: 2px solid rgba(255, 255, 255, 0.2);
     min-width: 3ch;
     text-align: center;
