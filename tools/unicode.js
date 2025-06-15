@@ -27,7 +27,7 @@ const fuzzyMatch = (query, entry) => {
     let relevancy = 0;
     let matches = false;
     
-    if(entry.name === query.base || query.base === String.fromCodePoint(entry.dec)) {
+    if(entry.name === query.base || query.base === String.fromCodePoint(entry.dec) || (query.base.length <= 4 && query.base.padStart(4, "0") === entry.hex)) {
         matches = true;
         relevancy = Infinity;
     }
