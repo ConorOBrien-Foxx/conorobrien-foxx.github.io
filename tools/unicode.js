@@ -55,6 +55,8 @@ registerApps(".unicode-lookup-app", app => {
     let searchInput = app.querySelector(".unicode-search-bar");
     let databaseRows;
     
+    searchInput.focus();
+    
     const AppConfig = {
         MaxResults: 1000,
     };
