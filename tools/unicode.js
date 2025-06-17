@@ -19,6 +19,7 @@ const intrinsicRelevancy = resultEntry => {
 
 const wordsOf = str => str.trim().split(/\s+/);
 const makeFuzzy = query => ({
+    raw: query,
     base: query.toUpperCase(),
     words: wordsOf(query.toUpperCase()),
 });
@@ -27,9 +28,13 @@ const fuzzyMatch = (query, entry) => {
     let relevancy = 0;
     let matches = false;
     
-    if(entry.name === query.base || query.base === String.fromCodePoint(entry.dec) || (query.base.length <= 4 && query.base.padStart(4, "0") === entry.hex)) {
+    if(entry.name === query.base || query.raw === entry.symbol || (query.base.length <= 4 && query.base.padStart(4, "0") === entry.hex)) {
         matches = true;
-        relevancy = Infinity;
+        relevancy = 200000;
+    }
+    else if(query.raw.localeCompare(entry.symbol, undefined, { sensitivity: "base" }) === 0) {
+        matches = true;
+        relevancy = 100000;
     }
     else {
         matches = query.words.every(word => entry.name.includes(word));
@@ -119,6 +124,9 @@ registerApps(".unicode-lookup-app", app => {
         .then(req => req.json())
         .then(res => {
             databaseRows = res;
+            databaseRows.forEach(entry => {
+                entry.symbol = String.fromCodePoint(entry.dec);
+            });
             if(queuedSearchQuery) {
                 showToast("Resources loaded!");
                 searchUnicode(queuedSearchQuery);
