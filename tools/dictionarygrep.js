@@ -47,6 +47,12 @@ registerApps(".dictionary-grep-app", app => {
     let sortAscending = app.querySelector(".sort-ascending");
     output.value = "";
     
+    Object.defineProperty(window, "dictionary", {
+        get() {
+            return DICTIONARY_SOURCES_ADDRESSED[select.value].cachedList;
+        }
+    }); 
+    
     const filterResults = async function () {
         let list = DICTIONARY_SOURCES_ADDRESSED[select.value];
         if(list.cachedList === null) {

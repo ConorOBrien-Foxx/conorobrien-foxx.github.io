@@ -32,6 +32,11 @@ const binomialProbabilities = (p, n, x) => {
 }
 
 const parseInput = str => {
+    if(str.indexOf("/") !== -1) {
+        // i don't care if there's more parts tbh that's on you
+        let [ num, den ] = str.split("/");
+        return math.divide(math.bignumber(num), math.bignumber(den));
+    }
     let floatValue = parseFloat(str);
     if(str.endsWith("%")) {
         floatValue /= 100;
