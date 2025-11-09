@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6, header, .page-link {
     margin: 0;
 }
 
-h2:after, h2:before {
+h2:after, h2:before, footer:before {
     content: " ";
     display: block;
     border: 1px solid var(--text-highlight);
@@ -107,6 +107,10 @@ header {
     background-color: var(--background-theme);
     top: 0;
     z-index: 1;
+}
+
+footer {
+    text-align: center;
 }
 
 a, a:visited {
