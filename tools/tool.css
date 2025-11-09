@@ -482,6 +482,22 @@ label {
     --indicator-margin-width: 3px;
 }
 
+.onionring {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    font-size: 0.8em;
+    margin: 20px auto;
+}
+.onionring > table, .onionring > div {
+    background-color: var(--overall-background);
+    border-radius: var(--global-radius);
+    padding: 5px;
+    display: block;
+}
+
 /* mobile-only settings */
 @media (max-width:768px) {
 	.container {
