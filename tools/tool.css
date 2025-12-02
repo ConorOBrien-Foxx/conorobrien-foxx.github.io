@@ -25,6 +25,18 @@
     --danger-cancel-color: #a22;
     --danger-cancel-darken-color: #f22;
     
+    /* --secondary-button-color: var(--field-color); */
+    /* --secondary-button-highlight: var(--field-color-light); */
+    /* --secondary-button-depressed: #333; */
+    
+    /* --secondary-button-color: #6a6a6a; */
+    /* --secondary-button-highlight: #b7b7b7; */
+    /* --secondary-button-depressed: #4d4d4d; */
+    
+    --secondary-button-color: #7b6092;
+    --secondary-button-highlight: #d2a6fb;
+    --secondary-button-depressed: #5a456a;
+    
     --global-radius: 8px;
     --global-radius-small: 3px;
 }
@@ -58,6 +70,7 @@ nav, nav ul, .input-holder {
     /* flex-wrap: wrap; */
     max-width: 500px;
     padding: 5px;
+    gap: 5px;
 }
 .input-holder > * {
     /* display: block; */
@@ -131,6 +144,10 @@ code, pre, button.symbol, .mono {
     font-family: "Roboto Mono", "Consolas", monospace;
 }
 
+.hidden {
+    display: none;
+}
+
 .container {
 	padding: 20px;
 	max-width: 1200px;
@@ -143,13 +160,37 @@ code, pre, button.symbol, .mono {
     max-width: 600px;
 }
 
+.secondary {
+    --button-color: var(--secondary-button-color);
+    --button-highlight: var(--secondary-button-highlight);
+    --button-depressed: var(--secondary-button-depressed);
+}
+
 .button-row {
     display: flex;
     flex-direction: row;
 }
-.button-row button {
+.button-row button, .button-row .label-button {
     flex: 1;
-    margin: 5px;
+    margin: 0 5px;
+}
+.button-row.segmented {
+    background-color: var(--button-depressed);
+    padding: 3px;
+    gap: 3px;
+    border-radius: var(--global-radius);
+}
+.button-row.segmented > * {
+    border-radius: 0px;
+    margin: 0;
+}
+.button-row.segmented > *:first-child {
+    border-top-left-radius: var(--global-radius);
+    border-bottom-left-radius: var(--global-radius);
+}
+.button-row.segmented > *:last-child {
+    border-top-right-radius: var(--global-radius);
+    border-bottom-right-radius: var(--global-radius);
 }
 
 .centerer {
@@ -178,17 +219,13 @@ details > summary {
     cursor: pointer;
 }
 
-button, .toast {
+button, .toast, .label-button {
+    text-align: center;
 	background-color: var(--button-color);
 	padding: 10px 20px;
 	border: none;
 	border-radius: var(--global-radius);
 	cursor: pointer;
-	transition: background-color .3s, outline .1s;
-    outline-width: 0px;
-    outline-style: solid;
-    outline-color: var(--button-depressed);
-    outline-offset: -5px;
 }
 .toast {
     cursor: auto;
@@ -203,8 +240,28 @@ button, .toast {
     margin-right: -5px;
     font-size: 0.8em;
 }
+.label-button > input[type=radio] {
+    appearance: none;
+}
+.label-button:has(> input[type=radio]:checked) {
+    outline: 3px solid var(--button-highlight);
+    outline-offset: -3px;
+    /* simple alternative */
+    /* background-color: var(--button-highlight); */
+}
 
-button:hover, button.depressed, .toast.cancellable:hover {
+button, .label-button {
+	transition: background-color .3s;
+}
+button.depressed {
+	transition: background-color .3s, outline .1s;
+    outline-width: 0px;
+    outline-style: solid;
+    outline-color: var(--button-depressed);
+    outline-offset: -5px;
+}
+
+button:hover, button.depressed, .toast.cancellable:hover, .label-button:hover {
 	background-color: var(--button-highlight);
 }
 button.depressed {
@@ -224,10 +281,10 @@ button.symbol, input[type="color"] {
     margin: 5px;
 }
 
-button.danger {
+button.danger, .label-button.danger {
     background: var(--danger-cancel-color);
 }
-button.danger:hover {
+button.danger:hover, .label-button.danger:hover {
     background: var(--danger-cancel-darken-color);
 }
 
@@ -261,7 +318,7 @@ td:last-child {
     text-align: left;
 }
 
-input, button, textarea {
+input, button, textarea, .label-button {
     font-size: 16px;
 }
 

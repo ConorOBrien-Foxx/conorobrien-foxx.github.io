@@ -42,87 +42,110 @@
             <div>
             <h2>Binomial Probability Calculator</h2>
             <div class="input-holder">
+            <div class="button-row segmented secondary">
+                <label class="label-button">Solve for \(P(X)\)<input name="solve-for" type="radio" checked value="px"></label>
+                <label class="label-button">Solve for \(n\)<input name="solve-for" type="radio" value="n"></label>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);grid-column-gap:0px;grid-row-gap:0.5em;text-align:center;">
+                <div style="align-self:center;grid-area:1/1/2/2;">Probability of success per trial <span>\(p\)</span></div>
+                <div class="toggleable-solve-for solve-for-px" style="align-self:center;grid-area:1/2/2/3;">Number of trials <span>\(n\)</span></div>
+                <div class="toggleable-solve-for solve-for-n hidden" style="align-self:center;grid-area:1/2/2/3;" class="hidden">Target probability <span>\(P(X\ge x)\)</span></div>
+                <div style="align-self:center;grid-area:1/3/2/4;">Number of successes <span>\(x\)</span></div>
+                <div style="grid-area:2/1/3/2;"><input class="trial short center" type="text" tabindex="1"></div>
+                <div class="toggleable-solve-for solve-for-px" style="grid-area:2/2/3/3;"><input class="number short center" type="text" tabindex="1"></div>
+                <div class="toggleable-solve-for solve-for-n hidden" style="grid-area:2/2/3/3;"><input class="target-probability short center" type="text" tabindex="1"></div>
+                <div style="grid-area:2/3/3/4;"><input class="successes short center" type="text" tabindex="1"></div>
+            </div>
             <table class="probability-indicator">
-                <tr>
-                    <td>Probability of success per trial <span>\(p\)</span></td>
-                    <td><input class="trial short center" type="text" tabindex="1"></td>
-                </tr>
-                <tr>
-                    <td>Number of trials <span>\(n\)</span></td>
-                    <td><input class="number short center" type="text" tabindex="1"></td>
-                </tr>
-                <tr>
-                    <td>Number of successes <span>\(x\)</span></td>
-                    <td><input class="successes short center" type="text" tabindex="1"></td>
-                </tr>
                 <!-- <tr>
                     <td colspan="3"></td>
                 </tr> -->
-                <tr>
-                    <td>Binomial probability <span class="displayExact">\(P(X=x)\)</span></td>
-                    <td><input readonly class="exact output short center" type="text"></td>
-                    <td>
-                        <div class="horizontal indicator-holder exact">
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Cumulative probability <span class="displayCumulativeLess">\(P(X\lt x)\)</span></td>
-                    <td><input readonly class="cumulativeLess output short center" type="text"></td>
-                    <td>
-                        <div class="horizontal indicator-holder cumulativeLess">
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Cumulative probability <span class="displayCumulativeLessEqual">\(P(X\le x)\)</span></td>
-                    <td><input readonly class="cumulativeLessEqual output short center" type="text"></td>
-                    <td>
-                        <div class="horizontal indicator-holder cumulativeLessEqual">
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Cumulative probability <span class="displayCumulativeGreater">\(P(X\gt x)\)</span></td>
-                    <td><input readonly class="cumulativeGreater output short center" type="text"></td>
-                    <td>
-                        <div class="horizontal indicator-holder cumulativeGreater">
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Cumulative probability <span class="displayCumulativeGreaterEqual">\(P(X\ge x)\)</span></td>
-                    <td><input readonly class="cumulativeGreaterEqual output short center" type="text"></td>
-                    <td>
-                        <div class="horizontal indicator-holder cumulativeGreaterEqual">
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                            <div class="indicator-level"></div>
-                        </div>
-                    </td>
-                </tr>
+                <tbody class="toggleable-solve-for solve-for-px">
+                    <tr>
+                        <td>Binomial probability <span class="displayExact">\(P(X=x)\)</span></td>
+                        <td><input readonly class="exact output short center" type="text"></td>
+                        <td>
+                            <div class="horizontal indicator-holder exact">
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cumulative probability <span class="displayCumulativeLess">\(P(X\lt x)\)</span></td>
+                        <td><input readonly class="cumulativeLess output short center" type="text"></td>
+                        <td>
+                            <div class="horizontal indicator-holder cumulativeLess">
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cumulative probability <span class="displayCumulativeLessEqual">\(P(X\le x)\)</span></td>
+                        <td><input readonly class="cumulativeLessEqual output short center" type="text"></td>
+                        <td>
+                            <div class="horizontal indicator-holder cumulativeLessEqual">
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cumulative probability <span class="displayCumulativeGreater">\(P(X\gt x)\)</span></td>
+                        <td><input readonly class="cumulativeGreater output short center" type="text"></td>
+                        <td>
+                            <div class="horizontal indicator-holder cumulativeGreater">
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cumulative probability <span class="displayCumulativeGreaterEqual">\(P(X\ge x)\)</span></td>
+                        <td><input readonly class="cumulativeGreaterEqual output short center" type="text"></td>
+                        <td>
+                            <div class="horizontal indicator-holder cumulativeGreaterEqual">
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody class="toggleable-solve-for solve-for-n hidden">
+                    <tr>
+                        <td>Minimum \(n\) needed</td>
+                        <td><input readonly class="minimum-n output short center" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>\(P(X)\)</td>
+                        <td><input readonly class="achieved-probability output short center" type="text"></td>
+                        <td>
+                            <div class="horizontal indicator-holder achieved-probability-indicator">
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                                <div class="indicator-level"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             <div class="button-row control">
                 <button tabindex="1" class="submit">Submit</button>
