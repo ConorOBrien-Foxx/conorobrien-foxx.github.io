@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<!-- By Conor O'Brien (https://conorobrien-foxx.github.io/). This image is marked CC0 1.0. To view a copy of this mark, visit https://creativecommons.org/publicdomain/zero/1.0/ -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1">
+    <circle
+       style="fill:none;stroke:#000000;stroke-width:32;stroke-dasharray:none;stroke-opacity:1"
+       id="path1"
+       cx="256"
+       cy="320"
+       r="176" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:32;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 256,208 V 320 H 368"
+       id="path2" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       d="m 224,16 v 64 h 64 V 16 h -64"
+       id="path4" />
+  </g>
+</svg>

@@ -555,6 +555,46 @@ label {
     display: block;
 }
 
+.grid-group {
+    --column-count: 4;
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(var(--column-count), 1fr);
+    justify-content: center;
+    padding: 0;
+    gap: 15px;
+}
+.container.thin .grid-group {
+    --column-count: 2;
+}
+
+.grid-item {
+    list-style: none;
+    padding: 8px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+.grid-item.labeled {
+    display: grid;
+    grid-template-columns: minmax(60px, 1fr) 4fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+}
+.grid-item.labeled .icon {
+    width: 45px;
+    height: 45px;
+    mask-size: cover;
+    background-color: currentcolor;
+}
+.icon {
+    grid-area: 1 / 1 / 2 / 2;
+    justify-self: center;
+}
+.icon.chrono { mask-image: url(./icon/chrono.svg); }
+.icon.mouse { mask-image: url(./icon/mouse.svg); }
+.icon.distribution { mask-image: url(./icon/distribution.svg); }
+.grid-item.labeled .text { grid-area: 1 / 2 / 2 / 3; }
+
 /* mobile-only settings */
 @media (max-width:768px) {
 	.container {
