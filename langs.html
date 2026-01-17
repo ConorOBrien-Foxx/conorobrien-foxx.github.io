@@ -13,17 +13,20 @@
     </script>
     <meta charset="UTF-8">
     <title>Languages | Conor O'Brien</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="STYLESHEET" href="./main.css">
     <script src="tag-filter.js"></script>
+    <script src="menu.js"></script>
 </head>
 <body>
     <header>
         <a href="./">Conor O'Brien</a>
-        <div>
-            <a href="./">About</a> &sdot; <a href="./contact">Contact</a> &sdot; <a href="./projects">Projects</a> &sdot; <a href="./papers">Papers</a>
-        </div>
+        <button class="nav">☰</button>
+        <nav>
+            <a href="./">About</a> <span class="dot">&sdot;</span> <a href="./contact">Contact</a> <span class="dot">&sdot;</span> <a href="./projects">Projects</a> <span class="dot">&sdot;</span> <a href="./papers">Papers</a>
+        </nav>
     </header>
-    <div>
+    <main>
         <h1>Languages</h1>
         <p>Programming language design and implementation has always been one of my greatest coding passions. For a time in my life, implementing small, unique programming languages was something I did on a weekly basis. I am now at the point in my life where, although I do not design languages with such frequency, I want to look over all that I've done, and chronicle all the languages I've made. Early on, I had a bad habit of not including any relevant code in the main/master branch, but everything in the gh-pages branch.</p>
         <p>I've sorted them here chronologically. You can also click on the tags to filter by languages with them (eventually, when I get around to implementing that. Ctrl+F should work in the meantime.):</p>
@@ -616,6 +619,6 @@
         <h2 id="Dyia">Dyia (<a href="https://jsfiddle.net/Conor_OBrien/r6qf2jfL/4/" target="_blank">Interpreter</a>)</h2>
         <span class="subtitle">Date unknown</span> <span class="tag">esolang</span>
         <p>A simple, functional language, similar to J, but less woefully underimplemented. Seems to support more complex expressions, like <code>(i.5) + 2 * i.5</code>. Once again, no confident date, as it is just a JSFiddle.</p>
-    </div>
+    </main>
 </body>
 </html>

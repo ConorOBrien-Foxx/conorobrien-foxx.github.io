@@ -32,6 +32,15 @@ html {
     font-size: 22px;
 }
 
+button {
+    font-family: var(--code-font);
+    color: var(--text);
+    background-color: var(--background-theme-accent);
+    border: 1px solid var(--highlight);
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
 .smaller-text {
     font-size: 18px;
     --line-height: 30px;
@@ -113,14 +122,14 @@ footer {
     text-align: center;
 }
 
-a, a:visited {
+a, a:visited, button.nav {
     color: var(--highlight);
-    transition: color 0.1s linear;
+    transition: all 0.1s linear;
 }
 header a {
     text-decoration: none;
 }
-a:hover {
+a:hover, button.nav:hover {
     color: var(--highlight-bright);
 }
 a.current {
@@ -303,6 +312,7 @@ flex-br {
 }
 .action.tag {
     user-select: none;
+    white-space: nowrap;
     cursor: pointer;
     border: 3px solid var(--accent4);
 }
@@ -317,4 +327,90 @@ flex-br {
 }
 .action.tag.selected:before {
     content: "+ ";
+}
+
+header button.nav {
+    display: none;
+    border: 1px solid rgba(0,0,0,0);
+    background: none;
+    font-size: 1em;
+}
+
+/* mobile-only settings */
+@media (max-width:768px) {
+    :root {
+        --line-height: 31px;
+    }
+    html {
+        font-size: 18px;
+    }
+    body {
+        display: revert;
+        margin: 0;
+    }
+    header {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    header > * {
+        margin: 0;
+    }
+    header button.nav {
+        display: revert;
+    }
+    header button.nav.open {
+        border: 1px solid var(--highlight);
+    }
+    header nav {
+        display: none;
+        font-size: 0.8em;
+    }
+    header nav .dot {
+        display: none;
+    }
+    header nav.shown {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 15px;
+        background-color: var(--background-theme);
+        position: fixed;
+        top: calc(var(--header-height) + 2 * var(--header-vertical-padding) + 2px);
+        right: 0;
+        left: 0;
+        border-bottom: 2px solid var(--highlight);
+    }
+    main {
+        overflow-x: hidden;
+        padding-top: 8px;
+        margin: 4px;
+    }
+    ul {
+        padding-left: 8px;
+    }
+    .flex-list {
+        padding-left: 0;
+        font-size: 0.7em;
+    }
+    flex-br {
+        display: none;
+    }
+    main > ul {
+        padding-left: 16px;
+    }
+    img.preview {
+        margin-left: 0;
+        max-width: 95vw !important;
+    }
+    img.display {
+        max-width: 95vw;
+    }
+    .main-figure {
+        float: none;
+        display: block;
+        margin: 0;
+    }
+    .bipanel .left, .bipanel .right {
+        float: none;
+    }
 }
