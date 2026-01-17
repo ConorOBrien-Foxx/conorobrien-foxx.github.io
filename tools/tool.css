@@ -593,6 +593,11 @@ label {
 .icon.chrono { mask-image: url(./icon/chrono.svg); }
 .icon.mouse { mask-image: url(./icon/mouse.svg); }
 .icon.distribution { mask-image: url(./icon/distribution.svg); }
+.icon.textselect { mask-image: url(./icon/text.svg); }
+.icon.book { mask-image: url(./icon/book.svg); }
+.icon.symbolsearch { mask-image: url(./icon/symbol.svg); }
+.icon.unicodesearch { mask-image: url(./icon/unicode.svg); }
+.icon.gradient { mask-image: url(./icon/gradient.svg); }
 .grid-item.labeled .text { grid-area: 1 / 2 / 2 / 3; }
 
 /* mobile-only settings */
