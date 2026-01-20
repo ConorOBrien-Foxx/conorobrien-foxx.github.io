@@ -386,7 +386,7 @@ header button.nav {
         margin: 4px;
     }
     ul {
-        padding-left: 8px;
+        padding-left: 14px;
     }
     .flex-list {
         padding-left: 0;
@@ -396,7 +396,7 @@ header button.nav {
         display: none;
     }
     main > ul {
-        padding-left: 16px;
+        padding-left: 28px;
     }
     img.preview {
         margin-left: 0;
