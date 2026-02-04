@@ -286,7 +286,9 @@ registerApps(".binom-app", app => {
                 
                 let formatAsPercent = configPercent.checked;
                 
+                console.time("inverseBinomialProbability");
                 let n = inverseBinomialProbability(p, pTarget, x);
+                console.timeEnd("inverseBinomialProbability");
                 let ceg = +binomialProbabilities(p, n, x).cumulativeGreaterEqual;
                 minimumN.value = n;
                 nInput.value = n; // convenience :)

@@ -35,6 +35,7 @@
                 <h2>Dictionary Grep</h2>
                 <p>
                     <label>Regular expression: <input type="text" class="regex-input" placeholder="E.g., ^hi.+o$" spellcheck="false"></label>
+                    <span class="if-advanced hidden"><label>Exclude: <input type="text" class="exclude-regex" spellcheck="false" placeholder="E.g. a|ei"></label></span>
                 </p>
                 <p><label>Case sensitive regular expression? <input type="checkbox" class="regex-case-sensitive"></label></p>
                 <p>
@@ -50,7 +51,8 @@
                 <label>Ascending? <input type="checkbox" class="sort-ascending" checked></label>
                 </p>
                 <p>
-                    <button class="submit">Submit</button>
+                    <button class="submit">Submit</button> <button class="advanced-toggle">Show Advanced</button>
+                    <input class="hidden show-advanced" type="checkbox">
                 </p>
                 <h3>Output</h3>
                 <textarea readonly class="resizeable filtered-words mono" placeholder="Output will appear here..."></textarea>

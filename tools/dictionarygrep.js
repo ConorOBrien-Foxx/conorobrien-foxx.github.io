@@ -45,7 +45,29 @@ registerApps(".dictionary-grep-app", app => {
     let output = app.querySelector(".filtered-words");
     let sortOrder = app.querySelector(".sort-order");
     let sortAscending = app.querySelector(".sort-ascending");
+    
+    // advanced elements
+    let excludeRegexInput = app.querySelector(".exclude-regex");
+    let showAdvancedState = app.querySelector(".show-advanced");
+    let showAdvancedToggle = app.querySelector(".advanced-toggle");
+    let showAdvanced = false;
+    
+    // reset state
     output.value = "";
+    
+    let ifAdvanced = app.querySelectorAll(".if-advanced");
+    const syncAdvancedState = () => {
+        showAdvanced = showAdvancedState.checked;
+        showAdvancedToggle.textContent = `${showAdvanced ? "Hide" : "Show"} Advanced`;
+        ifAdvanced.forEach(el =>
+            el.classList.toggle("hidden", !showAdvanced));
+    };
+    syncAdvancedState();
+    
+    showAdvancedToggle.addEventListener("click", () => {
+        showAdvancedState.checked = !showAdvancedState.checked;
+        syncAdvancedState();
+    });
     
     Object.defineProperty(window, "dictionary", {
         get() {
@@ -58,6 +80,20 @@ registerApps(".dictionary-grep-app", app => {
         let errorToast = Toast.errorToast(errorMessage);
         livingEternalToasts.push(errorToast);
         return errorToast.show();
+    };
+    const validateInputRegex = (inputElement, flags) => {
+        let regex = null;
+        try {
+            regex = new RegExp(inputElement.value, flags);
+        }
+        catch(e) {
+            let errorReason = e.message
+                .replace("Invalid regular expression: ", ""); // at least iOS has this prefix
+            let errorMessage = "Regular expression has errors: " + errorReason;
+            addErrorToast(errorMessage);
+            inputElement.classList.add("error");
+        }
+        return regex;
     };
     const filterResults = async function () {
         // old toasts are no longer relevant to the user
@@ -89,21 +125,26 @@ registerApps(".dictionary-grep-app", app => {
             toast.killWithTimeout();
             showToast(`Downloaded list, ${sizeInKiloBytes.toFixed(1)}kB`);
         }
+        
         let flags = caseSensitive.checked ? "" : "i";
-        let regex;
-        try {
-            regex = new RegExp(input.value, flags);
-        }
-        catch(e) {
-            let errorReason = e.message
-                .replace("Invalid regular expression: ", ""); // at least iOS has this prefix
-            let errorMessage = "Regular expression has errors: " + errorReason;
-            addErrorToast(errorMessage);
-            input.classList.add("error");
+        let regex = validateInputRegex(input, flags);
+        if(!regex) {
             return;
         }
         input.classList.remove("error");
-        let results = list.cachedList.filter(word => regex.test(word));
+        
+        let excludeRegex;
+        if(showAdvanced && excludeRegexInput.value) {
+            excludeRegex = validateInputRegex(excludeRegexInput, flags);
+            if(!excludeRegex) {
+                return;
+            }
+        }
+        excludeRegexInput.classList.remove("error");
+        
+        let results = list.cachedList.filter(word =>
+            regex.test(word) && (!excludeRegex || !excludeRegex.test(word))
+        );
         switch(sortOrder.value) {
             case "default":
                 break;
@@ -127,11 +168,13 @@ registerApps(".dictionary-grep-app", app => {
         output.value = `${results.length} result${results.length === 1 ? "" : "s"} found:\n${results.join("\n")}`;
     };
     
-    input.addEventListener("keydown", ev => {
-        if(ev.key === "Enter" && !ev.ctrlKey) {
-            filterResults();
-        }
-    });
+    for(let enterElement of [ input, excludeRegexInput ]) {
+        enterElement.addEventListener("keydown", ev => {
+            if(ev.key === "Enter" && !ev.ctrlKey) {
+                filterResults();
+            }
+        });
+    }
     
     DICTIONARY_SOURCES.forEach(obj => {
         DICTIONARY_SOURCES_ADDRESSED[obj.name] ??= obj;
