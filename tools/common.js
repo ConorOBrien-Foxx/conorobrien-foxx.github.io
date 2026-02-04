@@ -65,13 +65,15 @@ class Toast {
         this.container = options.container ?? document.querySelector(".toast-container");
         this.cancellable = options.cancellable ?? true;
         this.timeout = options.timeout ?? 3000; // ms
-        this.useTimeout = options.useTimeout ?? true; // ms
+        this.useTimeout = options.useTimeout ?? true;
+        this.classes = options.classes ?? [];
         this.killed = false;
         this.resolve = null;
         
         this.toastElement = document.createElement("div");
         this.toastElement.textContent = message;
         this.toastElement.classList.add("toast");
+        this.toastElement.classList.add(...this.classes);
         if(this.cancellable) {
             this.toastElement.classList.add("cancellable");
         }
@@ -88,7 +90,7 @@ class Toast {
     
     kill() {
         return new Promise((resolve, reject) => {
-        this.toastElement.classList.remove("showing");
+            this.toastElement.classList.remove("showing");
             setTimeout(() => {
                 if(this.killed) {
                     this.showResolve?.(false);
@@ -123,7 +125,7 @@ class Toast {
         return new Promise((resolve, reject) => {
             this.showResolve = resolve;
             this.toastElement.classList.add("showing");
-            this.container.appendChild(this.toastElement);
+            this.container.prepend(this.toastElement);
             
             if(this.useTimeout) {
                 this.killWithTimeout().then(value => {
@@ -131,6 +133,24 @@ class Toast {
                     resolve(value);
                 });
             }
+        });
+    }
+    
+    static statusToast(message, options = {}) {
+        return new Toast(message, {
+            cancellable: false,
+            useTimeout: false,
+            timeout: 1000,
+            ...options,
+        });
+    }
+    
+    static errorToast(message, options = {}) {
+        return new Toast(message, {
+            cancellable: true,
+            useTimeout: false,
+            classes: ["error"],
+            ...options,
         });
     }
 }

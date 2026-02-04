@@ -1,37 +1,37 @@
 const DICTIONARY_SOURCES = [
     {
         url: "https://raw.githubusercontent.com/first20hours/google-10000-english/refs/heads/master/google-10000-english.txt",
-        name: "10k first20hours/google-10000-english",
+        name: "English 10k - first20hours/google-10000-english (10k)",
         cachedList: null,
     },
     {
         url: "https://gist.githubusercontent.com/eyturner/3d56f6a194f411af9f29df4c9d4a4e6e/raw/63b6dbaf2719392cb2c55eb07a6b1d4e758cc16d/20k.txt",
-        name: "20k eyturner/20k.txt",
+        name: "English 20k - eyturner/20k.txt (20k)",
         cachedList: null,
     },
     {
         url: "./princeton-words.shakespeare.txt",
-        name: "29k princeton/words.shakespeare.txt",
+        name: "Shakespeare - princeton/words.shakespeare.txt (29k)",
         cachedList: null,
     },
     {
         url: "./umich-jlawler-wordlist.txt",
-        name: "69k ~jlawler/wordlist",
+        name: "English 69k - ~jlawler/wordlist (69k)",
         cachedList: null,
     },
     {
         url: "https://raw.githubusercontent.com/open-dict-data/ipa-dict/refs/heads/master/data/en_US.txt",
-        name: "125k open-dict-data/ipa-dict",
+        name: "IPA - open-dict-data/ipa-dict (125k)",
         cachedList: null,
     },
     {
         url: "https://raw.githubusercontent.com/redbo/scrabble/refs/heads/master/dictionary.txt",
-        name: "179k redbo/scrabble",
+        name: "Scrabble - redbo/scrabble (179k)",
         cachedList: null,
     },
     {
         url: "https://raw.githubusercontent.com/dwyl/english-words/refs/heads/master/words_alpha.txt",
-        name: "370k dwyl/english-words",
+        name: "English 370k - dwyl/english-words (370k)",
         cachedList: null,
     },
 ];
@@ -53,14 +53,18 @@ registerApps(".dictionary-grep-app", app => {
         }
     }); 
     
+    let livingEternalToasts = [];
+    let addErrorToast = (errorMessage) => {
+        let errorToast = Toast.errorToast(errorMessage);
+        livingEternalToasts.push(errorToast);
+        return errorToast.show();
+    };
     const filterResults = async function () {
+        // old toasts are no longer relevant to the user
+        livingEternalToasts.splice(0).forEach(toast => toast.kill());
         let list = DICTIONARY_SOURCES_ADDRESSED[select.value];
         if(list.cachedList === null) {
-            let toast = new Toast("Downloading word list...", {
-                cancellable: false,
-                useTimeout: false,
-                timeout: 1000,
-            });
+            let toast = Toast.statusToast("Downloading word list...");
             toast.show();
             let response;
             try {
@@ -69,13 +73,13 @@ registerApps(".dictionary-grep-app", app => {
             catch(e) {
                 console.error(e);
                 toast.killWithTimeout();
-                showToast("Error while networking (check console)");
+                addErrorToast("Error while networking (check console)");
                 return;
             }
             if(!response.ok) {
                 console.error(response.status);
                 toast.killWithTimeout();
-                showToast(`Error while networking (Error ${response.status})`);
+                addErrorToast(`Error while networking (Error ${response.status})`);
                 return;
             }
             let text = await response.text();
@@ -86,7 +90,19 @@ registerApps(".dictionary-grep-app", app => {
             showToast(`Downloaded list, ${sizeInKiloBytes.toFixed(1)}kB`);
         }
         let flags = caseSensitive.checked ? "" : "i";
-        let regex = new RegExp(input.value, flags);
+        let regex;
+        try {
+            regex = new RegExp(input.value, flags);
+        }
+        catch(e) {
+            let errorReason = e.message
+                .replace("Invalid regular expression: ", ""); // at least iOS has this prefix
+            let errorMessage = "Regular expression has errors: " + errorReason;
+            addErrorToast(errorMessage);
+            input.classList.add("error");
+            return;
+        }
+        input.classList.remove("error");
         let results = list.cachedList.filter(word => regex.test(word));
         switch(sortOrder.value) {
             case "default":

@@ -11,6 +11,10 @@
     --link-highlight: #00bcd4;
     --link-darken: #007f8b;
     
+    --error-text-color: #db3529;
+    --error-button-color: #7c1e17;
+    --error-button-color-highlight: #b12b21;
+    
     --button-color: #10786f;
     --button-highlight: #1ccebe;
     --button-depressed: #0c5751;
@@ -74,6 +78,10 @@ nav, nav ul, .input-holder {
 }
 .input-holder > * {
     /* display: block; */
+}
+
+.error-message {
+    color: var(--error-text-color);
 }
 
 footer, header {
@@ -227,6 +235,9 @@ button, .toast, .label-button {
 	border-radius: var(--global-radius);
 	cursor: pointer;
 }
+button.error, .toast.error, .label-button.error {
+    background-color: var(--error-button-color);
+}
 .toast {
     cursor: auto;
     display: flex;
@@ -263,6 +274,9 @@ button.depressed {
 
 button:hover, button.depressed, .toast.cancellable:hover, .label-button:hover {
 	background-color: var(--button-highlight);
+}
+button.error:hover, button.error.depressed, .toast.cancellable.error:hover, .label-button.error:hover {
+	background-color: var(--error-button-color-highlight);
 }
 button.depressed {
     outline-width: 5px;
@@ -336,6 +350,16 @@ select {
     border-radius: var(--global-radius);
     /* width: 100%; */
     transition: border-color 0.3s, background-color 0.3s;
+}
+input[type="text"].error,
+input[type="email"].error,
+input[type="password"].error,
+input[type="number"].error,
+input[type="color"].error,
+textarea.error,
+select.error {
+    border-color: var(--error-text-color);
+    /* color: var(--error-text-color); */
 }
 /* css sucks and this doesn't work */
 select option:hover {
