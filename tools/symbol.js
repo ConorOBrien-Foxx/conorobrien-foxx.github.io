@@ -24,6 +24,10 @@ const SYMBOLS = [
         "name": "down arrow",
     },
     {
+        "symbol": "≈",
+        "name": "approximately equal to",
+    },
+    {
         "symbol": "≤",
         "name": "less than or equal to",
     },
@@ -81,7 +85,7 @@ const SYMBOLS = [
     },
     {
         "symbol": "×",
-        "name": "multiplication",
+        "name": "multiplication times",
     },
     {
         "symbol": "·",
