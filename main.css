@@ -119,7 +119,9 @@ header {
 }
 
 footer {
+    font-size: 18px;
     text-align: center;
+    padding-bottom: 16px;
 }
 
 a, a:visited, button.nav {
@@ -202,7 +204,7 @@ img.display {
 .bipanel > .right {
 }
 .bipanel > .right img.preview {
-    max-width: 600px;
+    max-width: 540px;
 }
 .bipanel + * {
     clear: left;
@@ -280,11 +282,27 @@ img + p, .img-gallery + p, .inline.page-link + p {
 }
 .inline.page-link {
     width: 150px;
-    
 }
 .inline.page-link img {
     width: 3ch;
 }
+
+.site-map {
+    line-height: 1.2em;
+}
+.site-map, .site-map ul {
+    list-style: none;
+}
+.site-map li::before {
+    content: "├";
+}
+.site-map li:last-child::before {
+    content: "└";
+}
+.site-map li:has(ul):before {
+    content: "└";
+}
+
 
 .flex-list {
     display: flex;
