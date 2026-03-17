@@ -80,6 +80,22 @@ const SYMBOLS = [
         "name": "japanese single close quote",
     },
     {
+        "symbol": "«",
+        "name": "french guillemet double open quote",
+    },
+    {
+        "symbol": "»",
+        "name": "french guillemet double close quote",
+    },
+    {
+        "symbol": "‹",
+        "name": "french guillemet single open quote",
+    },
+    {
+        "symbol": "›",
+        "name": "french guillemet single close quote",
+    },
+    {
         "symbol": "¥",
         "name": "japanese yen",
     },
