@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N67W0KBG4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+
+      gtag("config", "G-5N67W0KBG4");
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./common.js"></script>
+    <title>Copy Remove Formatting</title>
+    <link rel="stylesheet" href="tool.css">
+</head>
+<body>
+    <header>
+        <h1>Tools</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="./">Home</a></li>
+            <li><a href="./about">About</a></li>
+            <li><a href="./contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container copy-app">
+        <div class="centerer">
+            <main>
+                <h2>Copy remove formatting</h2>
+                <h3>Copy paste single line</h3>
+                <input type="text">
+                <h3>Copy paste multiline</h3>
+                <textarea></textarea>
+            </main>
+        </div>
+    </div>
+    
+    <div id="popup-background" class="popup-background" onclick="hidePopup()"></div>
+
+    <div id="popup" class="popup">
+        <div class="popup-header">
+            <span class="popup-title">Popup Title</span>
+            <button class="close-button danger" onclick="hidePopup()">X</span>
+        </div>
+        <div class="popup-content">
+            <p>Popup message goes here.</p>
+        </div>
+    </div>
+    
+    <!-- <div class="toast-container"></div> -->
+
+    <footer>
+        <p>Made by <a href="https://conorobrien-foxx.github.io/" target="_blank">Conor O'Brien</a>.</p>
+    </footer>
+</body>
+</html>
