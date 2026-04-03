@@ -24,6 +24,14 @@ const SYMBOLS = [
         "name": "down arrow",
     },
     {
+        "symbol": "±",
+        "name": "plus minus",
+    },
+    {
+        "symbol": "∓",
+        "name": "minus plus",
+    },
+    {
         "symbol": "≈",
         "name": "approximately equal to",
     },

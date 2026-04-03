@@ -622,6 +622,8 @@ label {
 .icon.symbolsearch { mask-image: url(./icon/symbol.svg); }
 .icon.unicodesearch { mask-image: url(./icon/unicode.svg); }
 .icon.gradient { mask-image: url(./icon/gradient.svg); }
+.icon.copy { mask-image: url(./icon/copy.svg); }
+.icon.space { mask-image: url(./icon/space.svg); }
 .grid-item.labeled .text { grid-area: 1 / 2 / 2 / 3; }
 
 /* mobile-only settings */

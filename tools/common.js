@@ -63,6 +63,15 @@ const resizeTextareaToContent = textarea => {
 class Toast {
     constructor(message, options = {}) {
         this.container = options.container ?? document.querySelector(".toast-container");
+        if(!this.container) {
+            console.error("No container provided to Toast constructor"
+                + (
+                    Object.hasOwn(options, "container")
+                        ? ""
+                        : `Maybe try including <div class="toast-container"></div> somewhere in the page?`
+                )
+            );
+        }
         this.cancellable = options.cancellable ?? true;
         this.timeout = options.timeout ?? 3000; // ms
         this.useTimeout = options.useTimeout ?? true;
