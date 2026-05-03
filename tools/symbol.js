@@ -174,12 +174,15 @@ const SYMBOLS = [
 ];
 
 class SymbolSearchRenderer {
-    constructor(app) {
+    constructor(app, defaultQuery) {
         this.app = app;
         this.elements = {
             searchBar: app.querySelector(".symbol-search-bar"),
             results: app.querySelector(".symbol-results"),
         };
+        if(defaultQuery) {
+            this.elements.searchBar.value = defaultQuery;
+        }
     }
     
     renderResult(symbolInfo) {
@@ -235,6 +238,7 @@ class SymbolSearchRenderer {
 }
 
 registerApps(".symbol-lookup-app", app => {
-    let renderer = new SymbolSearchRenderer(app);
+    let urlSearchQuery = new URL(window.location).searchParams.get("s");
+    let renderer = new SymbolSearchRenderer(app, urlSearchQuery);
     renderer.start();
 });

@@ -668,6 +668,11 @@ registerApps(".text-effects-app", app => {
         });
     };
     
+    let urlSearchQuery = new URL(window.location).searchParams.get("s");
+    if(urlSearchQuery) {
+        textInput.value = urlSearchQuery;
+    }
+    
     textInput.addEventListener("input", syncOutput);
     syncOutput();
 });

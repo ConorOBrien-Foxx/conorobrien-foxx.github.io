@@ -60,6 +60,11 @@ registerApps(".unicode-lookup-app", app => {
     let searchInput = app.querySelector(".unicode-search-bar");
     let databaseRows;
     
+    let urlSearchQuery = new URL(window.location).searchParams.get("s");
+    if(urlSearchQuery) {
+        searchInput.value = urlSearchQuery;
+    }
+    
     searchInput.focus();
     
     const AppConfig = {
