@@ -36,6 +36,10 @@ const SYMBOLS = [
         "name": "approximately equal to",
     },
     {
+        "symbol": "≠",
+        "name": "not equal to",
+    },
+    {
         "symbol": "≤",
         "name": "less than or equal to",
     },
