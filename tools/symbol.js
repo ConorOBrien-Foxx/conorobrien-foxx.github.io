@@ -8,6 +8,10 @@ const SYMBOLS = [
         "name": "large bullet"
     },
     {
+        "symbol": "°",
+        "name": "degrees",
+    },
+    {
         "symbol": "←",
         "name": "left arrow",
     },
